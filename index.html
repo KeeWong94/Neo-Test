@@ -1,15 +1,225 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <title>Neo CIEM - 专业舞台监听耳机</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-black text-white flex items-center justify-center min-h-screen text-center">
-  <div>
-    <h1 class="text-4xl font-bold mb-4">欢迎来到 Neo CIEM</h1>
-    <p class="text-lg text-gray-300">为舞台和音乐人打造的定制入耳监听器</p>
+<html lang="zh-CN">     
+<head>     
+  <meta charset="UTF-8">     
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+  <title>Neo CIEM - 专业舞台监听耳机</title>     
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">     
+  <style>    
+    html { scroll-behavior: smooth; }    
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }    
+    .navbar { background-color: rgba(0, 0, 0, 0.9); color: white; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; }    
+    .navbar-container { display: flex; justify-content: space-between; align-items: center; padding: 15px; }    
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 40px; width: auto; }    
+    .menu-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; position: relative; }    
+    .menu-toggle span { height: 3px; width: 100%; background-color: white; border-radius: 3px; transition: all 0.3s ease; }    
+    .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }    
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }    
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }    
+    .nav-menu { display: none; flex-direction: column; width: 100%; background-color: rgba(0, 0, 0, 0.9); }    
+    .nav-menu.active { display: flex; }    
+    .nav-menu a { color: white; text-decoration: none; padding: 15px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); }    
+    .nav-menu a:hover { background-color: rgba(255, 255, 255, 0.1); }    
+    .nav-menu .has-submenu { position: relative; cursor: pointer; display: flex; flex-direction: column; }    
+    .nav-menu .menu-item-content { display: flex; justify-content: center; align-items: center; padding: 15px; border-top: 1px solid rgba(255, 255, 255, 0.1); }    
+    .nav-menu .submenu { display: none; flex-direction: column; width: 100%; background-color: rgba(50, 50, 50, 0.9); }    
+    .nav-menu .submenu.active { display: flex; }    
+    .nav-menu .submenu a { padding: 12px 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.95em; padding-left: 30px; }    
+    .arrow { margin-left: 5px; display: inline-block; transition: transform 0.3s ease; }    
+    .arrow.down { transform: rotate(90deg); }    
+    .content { padding-top: 80px; }    
+  </style>     
+</head>     
+<body class="bg-black text-white">     
+  <nav class="navbar">     
+    <div class="navbar-container">     
+      <div class="logo">     
+        <a href="#home">
+  <img src="neo-logo.png" alt="Neo CIEM Logo" class="h-10">
+</a>
+      </div>     
+      <div class="menu-toggle" id="mobile-menu"> 
+        <span></span><span></span><span></span>     
+      </div>     
+    </div>     
+    <div class="nav-menu" id="nav-menu"> 
+      <a href="#home">主页</a>     
+      <div class="has-submenu" id="products-menu">     
+        <div class="menu-item-content">产品介绍 <span class="arrow">›</span></div>     
+        <div class="submenu" id="products-submenu">
+  <a href="#n6p">N6 Pro</a>
+  <a href="#n8p">N8 Pro</a>
+</div>
+      </div> 
+      <a href="#specs">技术规格</a> 
+      <a href="#buy">试音咨询</a> 
+      <a href="#support">客户支持</a>     
+    </div>     
+  </nav>     
+  <div class="content">     
+    <section id="home" class="relative text-center text-white">
+  <div class="absolute inset-0">
+    <img src="your-image.jpg" alt="背景图" class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
   </div>
-</body>
+  <div class="relative z-10 py-24 px-4">
+    <h1 class="text-5xl md:text-6xl font-semibold mb-6">Neo CIEM</h1>
+    <p class="text-xl md:text-2xl text-gray-200 mb-12">为音乐制作人与舞台演出量身定制的专业入耳监听</p>
+  </div>
+</section>
+
+    <section id="features" class="bg-white text-black py-20 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-8">产品亮点</h2>
+    <p class="text-lg text-gray-700 leading-relaxed">
+      在 Neo，每一副定制入耳式监听器都依照您的耳型手工打造，拥有低失真表现和高声压监听性能，确保佩戴舒适、稳固贴合，并提供极致的隔音效果 —— 尤其适用于严苛的现场演出需求。
+    </p>
+  </div>
+</section>
+
+<section id="specs" class="py-20 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center pt-24 -mt-24">技术规格</h2><!-- Neo 6 Pro -->
+<div id="n6p" class="pt-24 -mt-24">
+  <div class="bg-gray-900 p-6 rounded-lg mb-6">
+    <h3 class="text-xl font-semibold mb-4">Neo 6 Pro</h3>
+    <p class="text-gray-400 mb-4">采用低失真与高声压设计，确保清晰监听表现的专业入耳式耳机</p>
+    <ul class="space-y-2 text-gray-300">
+      <li>• 每耳搭载3对双动铁（BA）驱动单元配置</li>
+      <li>• 高灵敏度与低失真表现，适合高声压监听</li>
+      <li>• 低阻抗设计，轻松驱动便携设备</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Neo 8 Pro -->
+<div id="n8p" class="pt-24 -mt-24">
+  <div class="bg-gray-900 p-6 rounded-lg mb-6">
+    <h3 class="text-xl font-semibold mb-4">Neo 8 Pro</h3>
+    <p class="text-gray-400 mb-4">精准监听而设计的顶级专业耳机</p>
+    <ul class="space-y-2 text-gray-300">
+      <li>• 每耳搭载8颗精密动铁（BA）驱动单元配置</li>
+      <li>• 延展频响范围，满足参考级监听需求</li>
+      <li>• 线性调音设计，精准重现细节</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 连接规格 -->
+<div id="connection" class="pt-24 -mt-24">
+  <div class="bg-gray-900 p-6 rounded-lg">
+    <h3 class="text-xl font-semibold mb-4">连接规格</h3>
+    <ul class="space-y-2 text-gray-300">
+      <li>• 支持可更换耳机线设计</li>
+      <li>• 提供 MMCX 或 2-pin（0.78mm）两种接口选项</li>
+      <li>• 默认搭载 MMCX 接口，亦可选配 2-pin 插针</li>
+      <li>• 满足不同用户连接偏好，便于线材更换与维护</li>
+    </ul>
+  </div>
+</div>
+
+  </div>
+</section>
+
+    <section id="buy" class="bg-black text-white py-24 px-4">
+  <div class="max-w-xl mx-auto text-center">
+    <h3 class="text-3xl font-semibold mb-6">有兴趣可以联系我们预约试音</h3>
+    <form action="https://formspree.io/f/mblybpog" method="POST" class="space-y-4 text-left">
+      <input type="hidden" name="_redirect" value="thank-you.html">
+      
+      <div>
+        <label for="name" class="block mb-1 text-sm">姓名</label>
+        <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-600">
+      </div>
+      
+      <div>
+        <label for="email" class="block mb-1 text-sm">电子邮箱</label>
+        <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-600">
+      </div>
+      
+      <div>
+        <label for="phone" class="block mb-1 text-sm">联络电话</label>
+        <input type="text" id="phone" name="phone" class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-600">
+      </div>
+      
+      <div>
+        <label for="message" class="block mb-1 text-sm">备注 / 希望试音时间</label>
+        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-600"></textarea>
+      </div>
+      
+      <div class="text-center pt-4">
+        <button type="submit" class="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-300 transition">提交预约申请</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+    <section id="support" class="bg-gray-900 py-20 px-6 text-white">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-8">客户支持与服务</h2>
+    <ul class="text-base text-gray-300 space-y-4 mb-10">
+      <li><a href="#service" class="hover:underline">服务与维修（Service and Repair）</a></li>
+      <li><a href="#warranty" class="hover:underline">产品保修政策（Warranty）</a></li>
+    </ul>
+    <div>
+      <h3 class="text-xl font-semibold mb-4">联系我们</h3>
+      <a href="https://wa.me/60165105093" target="_blank" class="inline-flex items-center space-x-2 text-base text-gray-300 hover:underline">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" class="h-5 w-5">
+        <span>通过 WhatsApp 联系我们</span>
+      </a>
+    </div>
+  </div>
+</section><footer class="bg-black text-white py-12 px-6 text-center">
+  <div class="mb-6">
+    <h3 class="text-xl font-semibold mb-4">Follow Us</h3>
+    <div class="flex justify-center items-center space-x-6">
+      <a href="https://www.facebook.com/NeoCIEM" target="_blank" aria-label="Facebook">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" class="h-6 w-6">
+      </a>
+      <a href="https://www.instagram.com/NeoCIEM" target="_blank" aria-label="Instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" class="h-6 w-6">
+      </a>
+    </div>
+  </div>
+  <p class="text-sm text-gray-400 mt-6">© 2025 Neo CIEM 版权所有</p>
+</footer>
+
+  <script>    
+    const mobileMenu = document.getElementById('mobile-menu');    
+    const navMenu = document.getElementById('nav-menu');    
+    const productsMenu = document.getElementById('products-menu');    
+    const productsSubmenu = document.getElementById('products-submenu');    
+    const productsArrow = productsMenu.querySelector('.arrow');  
+    
+    mobileMenu.addEventListener('click', function() {    
+      navMenu.classList.toggle('active');    
+      mobileMenu.classList.toggle('active');    
+    });    
+
+    productsMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+      productsSubmenu.classList.toggle('active');
+      productsArrow.classList.toggle('down');
+    });
+
+    const submenuLinks = document.querySelectorAll('.submenu a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        productsSubmenu.classList.remove('active');
+        productsArrow.classList.remove('down');
+      });
+    });
+
+    const navLinks = document.querySelectorAll('.nav-menu > a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navMenu.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+  </script>     
+</body>    
 </html>
