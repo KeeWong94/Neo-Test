@@ -430,27 +430,7 @@
     window.addEventListener('resize', function() {
       if (window.innerWidth >= 768) {
         menu.classList.remove('active');
-        productMenu.classList.remove('open');
-      }
-    });
-
-    <!-- 菜单展开/收起JS（如不需可删） -->
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('nav-menu');
-    toggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      menu.classList.toggle('active');
-    });
-    document.addEventListener('click', function() {
-      menu.classList.remove('active');
-    });
-    menu.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-    window.addEventListener('resize', function() {
-      if (window.innerWidth >= 768) {
-        menu.classList.remove('active');
+        productMenu.classList.remove('open')
       }
     });
   </script>
