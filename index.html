@@ -6,13 +6,21 @@
   <title>Neo CIEM</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      color: #fff;
+    }
     .navbar {
       background: #000;
       color: #fff;
       position: fixed;
-      width: 100%;
+      width: 100vw;
       top: 0;
       left: 0;
       z-index: 1000;
@@ -52,15 +60,13 @@
       border-radius: 2px;
       transition: 0.4s;
     }
-    /* PC菜单 */
     .nav-menu {
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 54px;
     }
-    .nav-menu > a,
-    .nav-menu > .relative > a {
+    .nav-menu > a {
       color: #fff;
       text-decoration: none;
       font-weight: 500;
@@ -69,56 +75,16 @@
       height: 54px;
       display: flex;
       align-items: center;
-      border-radius: 0;
       background: none;
       transition: color 0.2s;
     }
-    .nav-menu > a:hover,
-    .nav-menu > .relative > a:hover {
+    .nav-menu > a:hover {
       color: #47d5ff;
     }
-    .relative {
-      position: relative;
-      height: 54px;
-      display: flex;
-      align-items: center;
-    }
-    .submenu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #111;
-      min-width: 120px;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.15);
-      border-radius: 8px;
-      margin-top: 0;
-      z-index: 1200;
-    }
-    .submenu a {
-      display: block;
-      padding: 12px 28px;
-      color: #fff;
-      font-size: 1rem;
-      border-bottom: 1px solid #222;
-      white-space: nowrap;
-      background: #111;
-      text-align: left;
-    }
-    .submenu a:last-child {
-      border-bottom: none;
-    }
-    .submenu a:hover {
-      background: #222;
-      color: #47d5ff;
-    }
-    .relative:hover .submenu,
-    .relative.open .submenu {
-      display: block;
-    }
-    /* 移动端样式 */
     @media (max-width: 767px) {
+      .navbar-container {
+        padding: 10px 10px;
+      }
       .nav-menu {
         display: none;
         position: absolute;
@@ -128,7 +94,6 @@
         background: #151515;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0;
         min-width: 155px;
         max-width: 88vw;
         border-radius: 12px;
@@ -138,58 +103,24 @@
       }
       .nav-menu.active {
         display: flex;
-        animation: fadein .23s;
       }
-      @keyframes fadein {
-        from { opacity: 0; transform: translateY(-16px);}
-        to   { opacity: 1; transform: none;}
-      }
-      .nav-menu > a,
-      .nav-menu > .relative > a {
+      .nav-menu > a {
         font-size: 1rem;
         height: auto;
         padding: 10px 22px;
         width: 100%;
         text-align: left;
-        border-radius: 0;
-        background: none;
         display: block;
       }
-      .nav-menu > a:hover,
-      .nav-menu > .relative > a:hover {
-        color: #47d5ff;
-        background: #232323;
-      }
-      .relative {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-      .submenu {
-        display: none;
-        position: static;
-        transform: none;
-        background: #222;
-        box-shadow: none;
-        min-width: 0;
-        margin: 0;
-        border-radius: 0;
-      }
-      .submenu a {
-        padding: 10px 38px;
-        font-size: 1rem;
-        background: #222;
-        color: #fff;
-        border-bottom: 1px solid #252525;
-      }
-      .submenu a:last-child { border-bottom: none; }
-      .relative.open .submenu { display: block; }
     }
-    .content { padding-top: 80px; }
-    section, div[id] { scroll-margin-top: 80px; }
+    /* 内容留白，避免被fixed navbar遮住 */
+    .content {
+      padding-top: 68px;
+    }
   </style>
 </head>
-<body class="bg-black text-white">
+<body>
+  <!-- 导航栏 -->
   <nav class="navbar">
     <div class="navbar-container">
       <a class="logo" href="#home">
@@ -197,13 +128,7 @@
       </a>
       <div class="nav-menu" id="nav-menu">
         <a href="#home">主页</a>
-        <div class="relative" id="product-menu">
-          <a href="javascript:void(0)" id="product-link">产品 ▾</a>
-          <div class="submenu">
-            <a href="#n6p">N6 Pro</a>
-            <a href="#n8p">N8 Pro</a>
-          </div>
-        </div>
+        <a href="#products">产品</a>
         <a href="#buy">预约试音</a>
         <a href="#support">联系我们</a>
       </div>
@@ -508,6 +433,26 @@
         productMenu.classList.remove('open');
       }
     });
+
+    <!-- 菜单展开/收起JS（如不需可删） -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('nav-menu');
+    toggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      menu.classList.toggle('active');
+    });
+    document.addEventListener('click', function() {
+      menu.classList.remove('active');
+    });
+    menu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 768) {
+        menu.classList.remove('active');
+      }
+    });
   </script>
 </body>
-</html>
+</html>>
