@@ -212,8 +212,8 @@
     }
   });
 
-  // 点击所有菜单项收起
-  document.querySelectorAll('#nav-menu a').forEach(link => {
+  // ✅ 点击主菜单与子菜单项都会收起
+  document.querySelectorAll('#nav-menu a, #product-menu a').forEach(link => {
     link.addEventListener('click', function () {
       if (window.innerWidth < 768) {
         menu.classList.remove('active');
@@ -222,7 +222,6 @@
     });
   });
 
-  // 点击空白处关闭菜单
   document.addEventListener('click', function(e) {
     if (window.innerWidth < 768) {
       menu.classList.remove('active');
@@ -230,12 +229,10 @@
     }
   });
 
-  // 阻止菜单内部点击关闭
   menu.addEventListener('click', function(e) {
     e.stopPropagation();
   });
 
-  // 窗口宽度变化时自动关闭
   window.addEventListener('resize', function() {
     if (window.innerWidth >= 768) {
       menu.classList.remove('active');
