@@ -81,7 +81,6 @@
     .nav-menu > a:hover {
       color: #47d5ff;
     }
-
     .submenu {
       display: none;
       position: absolute;
@@ -93,7 +92,6 @@
       min-width: 160px;
       z-index: 1200;
     }
-
     .submenu a {
       display: block;
       padding: 8px 16px;
@@ -101,14 +99,8 @@
       color: #fff;
       text-decoration: none;
     }
-
     .submenu a:hover {
       background: #333;
-    }
-
-    .nav-menu .group:hover .submenu,
-    .nav-menu .peer:focus + .submenu {
-      display: block;
     }
 
     @media (max-width: 767px) {
@@ -147,6 +139,9 @@
         padding: 0;
         box-shadow: none;
       }
+      .submenu.show {
+        display: block !important;
+      }
       .submenu a {
         padding-left: 38px;
         font-size: 0.95rem;
@@ -172,7 +167,7 @@
       <div class="nav-menu" id="nav-menu">
         <a href="#home">主页</a>
         <div class="relative group">
-          <a href="#products" class="peer">产品</a>
+          <a href="#products" class="peer" id="product-link">产品</a>
           <div class="submenu" id="product-menu">
             <a href="#n6p">Neo 6 Pro</a>
             <a href="#n8p">Neo 8 Pro</a>
@@ -480,45 +475,51 @@
   <p class="text-sm text-gray-400 mt-6">© 2025 Neo CIEM 版权所有</p>
 </footer>
 
-<!-- 脚本：控制汉堡与产品子菜单 -->
 <script>
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('nav-menu');
-  const productMenu = document.getElementById('product-menu');
-  const productLink = document.querySelector('.peer');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('nav-menu');
+    const productLink = document.getElementById('product-link');
+    const productMenu = document.getElementById('product-menu');
 
-  toggle.addEventListener('click', function(e) {
-    e.stopPropagation();
-    menu.classList.toggle('active');
-  });
-
-  // 移动端：点击产品展开子菜单
-  productLink.addEventListener('click', function(e) {
-    if (window.innerWidth < 768) {
-      e.preventDefault();
+    toggle.addEventListener('click', function(e) {
       e.stopPropagation();
-      productMenu.classList.toggle('block');
-    }
-  });
+      menu.classList.toggle('active');
+    });
 
-  // 收起菜单
-  document.addEventListener('click', function(e) {
-    if (window.innerWidth < 768) {
-      menu.classList.remove('active');
-      productMenu.classList.remove('block');
-    }
-  });
+    productLink.addEventListener('click', function(e) {
+      if (window.innerWidth < 768) {
+        e.preventDefault();
+        e.stopPropagation();
+        productMenu.classList.toggle('show');
+      }
+    });
 
-  menu.addEventListener('click', function(e) {
-    e.stopPropagation();
-  });
+    document.querySelectorAll('#nav-menu a, #product-menu a').forEach(link => {
+      link.addEventListener('click', function () {
+        if (window.innerWidth < 768) {
+          menu.classList.remove('active');
+          productMenu.classList.remove('show');
+        }
+      });
+    });
 
-  window.addEventListener('resize', function() {
-    if (window.innerWidth >= 768) {
-      menu.classList.remove('active');
-      productMenu.classList.remove('block');
-    }
-  });
-</script>
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth < 768) {
+        menu.classList.remove('active');
+        productMenu.classList.remove('show');
+      }
+    });
+
+    menu.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 768) {
+        menu.classList.remove('active');
+        productMenu.classList.remove('show');
+      }
+    });
+  </script>
 </body>
 </html>
