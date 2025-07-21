@@ -99,30 +99,44 @@
         <h1 class="text-3xl md:text-5xl font-bold text-white drop-shadow-lg mb-2">Neo CIEM</h1>
         <p class="text-base md:text-2xl text-white drop-shadow-lg text-center max-w-xl">Custom In-Ear Monitors Designed for Live Performance & Monitoring</p>
       </div>
-    </div>
-    <div class="w-full bg-black">
-      <img src="Top Banner 1.png" alt="Custom IEM for Musicians" class="block w-full h-auto align-middle" style="object-fit:cover;">
-    </div>
-    <div class="w-full bg-black">
-      <img src="Top Banner 2.png" alt="Neo CIEM On Stage Performance" class="block w-full h-auto align-middle" style="object-fit:cover;">
-    </div>
+   <div class="w-full bg-black">
+  <img 
+    src="Top Banner 1.png" 
+    alt="Custom IEM for Musicians" 
+    class="block w-screen max-w-none h-auto object-cover"
+  />
+</div>
 
+<div class="w-full bg-black">
+  <img 
+    src="Top Banner 2.png" 
+    alt="Neo CIEM On Stage Performance" 
+    class="block w-screen max-w-none h-auto object-cover"
+  />
+</div>
+      
     <!-- Specs Section -->
     <section id="specs" class="py-20 px-6">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold mb-8 text-center">Technical Specifications</h2>
-        <div id="n6p" class="bg-gray-900 p-6 rounded-lg mb-6">
-          <h3 class="text-xl font-semibold mb-4">Neo 6 Pro</h3>
-          <img src="Neo 6 Pro Banner Cn.png" alt="Neo 6 Pro" class="block w-full h-auto align-middle" style="object-fit:cover;">
+        <div class="w-full bg-black">
+  <img 
+    src="Neo 6 Pro Banner Cn.png" 
+    alt="Neo 6 Pro" 
+    class="block w-screen max-w-none h-auto object-cover"
+  />
           <ul class="space-y-2 text-gray-300 mt-4">
             <li>Triple dual-balanced armature (BA) drivers per ear</li>
             <li>High sensitivity and low distortion for high SPL monitoring</li>
             <li>Low impedance design, easy to drive with portable gear</li>
           </ul>
         </div>
-        <div id="n8p" class="bg-gray-900 p-6 rounded-lg mb-6">
-          <h3 class="text-xl font-semibold mb-4">Neo 8 Pro</h3>
-          <img src="Neo 8 Pro Banner Cn.png" alt="Neo 8 Pro" class="block w-full h-auto align-middle" style="object-fit:cover;">
+       <div class="w-full bg-black">
+  <img 
+    src="Neo 8 Pro Banner Cn.png" 
+    alt="Neo 8 Pro" 
+    class="block w-screen max-w-none h-auto object-cover"
+  />
           <ul class="space-y-2 text-gray-300 mt-4">
             <li>8 precision BA drivers per ear</li>
             <li>Extended frequency response for reference-grade monitoring</li>
@@ -262,6 +276,16 @@
         productMenu.classList.remove('show');
       }
     });
+
+    .full-width-image {
+  display: block;
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 100vw;
+  height: auto;
+  object-fit: cover;
+}
+
   </script>
 </body>
 </html>
