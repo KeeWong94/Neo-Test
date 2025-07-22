@@ -6,116 +6,35 @@
   <title>Neo CIEM</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    html, body {
-      margin: 0; padding: 0; background-color: black; color: white;
-    }
-    .navbar {
-      background-color: rgba(0, 0, 0, 0.9);
-      color: white;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-    }
-    .navbar-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px;
-    }
-    .logo img {
-      height: 40px;
-      width: auto;
-    }
-    .menu-toggle {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 30px;
-      height: 21px;
-      cursor: pointer;
-    }
-    .menu-toggle span {
-      height: 3px;
-      width: 100%;
-      background-color: white;
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-    .menu-toggle.active span:nth-child(1) {
-      transform: translateY(9px) rotate(45deg);
-    }
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.active span:nth-child(3) {
-      transform: translateY(-9px) rotate(-45deg);
-    }
-    .nav-menu {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-    }
-    .nav-menu.active {
-      display: flex;
-    }
-    .nav-menu a, .menu-item-content {
-      color: white;
-      text-decoration: none;
-      padding: 15px;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .nav-menu a:hover, .menu-item-content:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-    .has-submenu {
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-    }
-    .menu-item-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1rem;
-    }
-    .submenu {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      background-color: rgba(50, 50, 50, 0.9);
-    }
-    .submenu.active {
-      display: flex;
-    }
-    .submenu a {
-      padding: 12px 15px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.95em;
-      padding-left: 30px;
-      text-align: left;
-    }
-    .arrow {
-      margin-left: 5px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-    .arrow.down {
-      transform: rotate(90deg);
-    }
-    .content {
-      padding-top: 70px;
-    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+    .navbar { background-color: rgba(0, 0, 0, 0.9); color: white; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; }
+    .navbar-container { display: flex; justify-content: space-between; align-items: center; padding: 15px; }
+    .logo img { height: 40px; width: auto; }
+    .menu-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; }
+    .menu-toggle span { height: 3px; width: 100%; background-color: white; border-radius: 3px; transition: all 0.3s ease; }
+    .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+    .nav-menu { display: none; flex-direction: column; width: 100%; background-color: rgba(0, 0, 0, 0.9); }
+    .nav-menu.active { display: flex; }
+    .nav-menu a, .menu-item-content { color: white; text-decoration: none; padding: 15px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .nav-menu a:hover, .menu-item-content:hover { background-color: rgba(255, 255, 255, 0.1); }
+    .has-submenu { cursor: pointer; display: flex; flex-direction: column; }
+    .menu-item-content { display: flex; justify-content: center; align-items: center; font-size: 1rem; }
+    .submenu { display: none; flex-direction: column; width: 100%; background-color: rgba(50, 50, 50, 0.9); }
+    .submenu.active { display: flex; }
+    .submenu a { padding: 12px 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.95em; padding-left: 30px; text-align: left; }
+    .arrow { margin-left: 5px; display: inline-block; transition: transform 0.3s ease; }
+    .arrow.down { transform: rotate(90deg); }
+    .content { padding-top: 70px; }
   </style>
 </head>
-<body class="bg-black text-white overflow-x-hidden">
+<body class="bg-black text-white m-0 p-0 overflow-x-hidden">
   <nav class="navbar">
     <div class="navbar-container">
       <div class="logo">
-        <img src="neo-logo.png" alt="Neo In-ear Monitor Logo">
+        <img src="neo-logo.png" alt="Neo CIEM Logo">
       </div>
       <div class="menu-toggle" id="mobile-menu">
         <span></span><span></span><span></span>
@@ -139,25 +58,27 @@
   </nav>
 
   <div class="content">
-    <!-- HOME Section with Banner -->
-    <section id="home" class="text-center">
-      <img src="Top Banner 1 EN.png" alt="Top Banner 1" class="w-full h-auto object-cover">
-      <img src="Top Banner 2 EN.png" alt="Top Banner 2" class="w-full h-auto object-cover">
+    <!-- Home Banner -->
+    <section id="home" class="relative w-full h-auto pt-[60px] overflow-hidden">
+      <div class="relative w-full h-auto">
+        <img src="Top Banner 1 EN.png" alt="Top Banner 1">
+        <img src="Top Banner 2 EN.png" alt="Top Banner 2">
+      </div>
     </section>
 
-   <!-- Neo 6 Pro Section -->
-<section id="n6p" class="relative w-full h-auto overflow-hidden">
-  <div class="relative w-full h-auto">
-    <img src="Neo 6 Pro Banner En.png" alt="Neo 6 Pro Banner">
-  </div>
-</section>
+    <!-- Neo 6 Pro Section -->
+    <section id="n6p" class="w-full py-12 bg-black text-center">
+      <div class="max-w-screen-md mx-auto px-4">
+        <img src="Neo 6 Pro Banner En.png" alt="Neo 6 Pro Banner" class="w-full h-auto rounded-lg shadow-lg">
+      </div>
+    </section>
 
-<!-- Neo 8 Pro Section -->
-<section id="n8p" class="relative w-full h-auto overflow-hidden">
-  <div class="relative w-full h-auto">
-    <img src="Neo 8 Pro Banner En.png" alt="Neo 8 Pro Banner">
-  </div>
-</section>
+    <!-- Neo 8 Pro Section -->
+    <section id="n8p" class="w-full py-12 bg-black text-center">
+      <div class="max-w-screen-md mx-auto px-4">
+        <img src="Neo 8 Pro Banner En.png" alt="Neo 8 Pro Banner" class="w-full h-auto rounded-lg shadow-lg">
+      </div>
+    </section>
   </div>
   
     <section id="specs" class="py-20 px-6"> 
