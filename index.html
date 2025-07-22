@@ -1,70 +1,154 @@
 <!doctype html>
-<html lang="en" class="m-0 p-0"> 
-<head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Neo CIEM</title> 
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet"> 
+<html lang="en" class="m-0 p-0 w-full h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neo CIEM</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
-    .navbar { background-color: rgba(0, 0, 0, 0.9); color: white; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; }
-    .navbar-container { display: flex; justify-content: space-between; align-items: center; padding: 15px; }
-    .logo { display: flex; align-items: center; }
-    .logo img { height: 40px; width: auto; }
-    .menu-toggle { display: flex; flex-direction: column; justify-content: space-between; width: 30px; height: 21px; cursor: pointer; position: relative; }
-    .menu-toggle span { height: 3px; width: 100%; background-color: white; border-radius: 3px; transition: all 0.3s ease; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background: black;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    }
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      height: 3px;
+      width: 100%;
+      background-color: white;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
     .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-    .nav-menu { display: none; flex-direction: column; width: 100%; background-color: rgba(0, 0, 0, 0.9); }
-    .nav-menu.active { display: flex; }
-    .nav-menu a, .menu-item-content { color: white; text-decoration: none; padding: 15px; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-    .nav-menu a:hover, .menu-item-content:hover { background-color: rgba(255, 255, 255, 0.1); }
-    .has-submenu { cursor: pointer; display: flex; flex-direction: column; }
-    .menu-item-content { display: flex; justify-content: center; align-items: center; font-size: 1rem; }
-    .submenu { display: none; flex-direction: column; width: 100%; background-color: rgba(50, 50, 50, 0.9); }
-    .submenu.active { display: flex; }
-    .submenu a { padding: 12px 15px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.95em; padding-left: 30px; text-align: left; }
-    .arrow { margin-left: 5px; display: inline-block; transition: transform 0.3s ease; }
-    .arrow.down { transform: rotate(90deg); }
-    .content { padding-top: 70px; }
-  </style> 
-</head> 
-<body class="bg-black text-white m-0 p-0 overflow-x-hidden"> 
-  <nav class="navbar"> 
-    <div class="navbar-container"> 
-      <div class="logo"> 
-        <img src="neo-logo.png" alt="Neo In-ear Monitor Logo" class="h-10 w-auto"> 
-      </div> 
-      <div class="menu-toggle" id="mobile-menu"> 
-        <span></span><span></span><span></span> 
-      </div> 
-    </div> 
-    <div class="nav-menu" id="nav-menu"> 
-      <a href="#home">Home</a> 
-      <div class="has-submenu" id="products-menu"> 
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+    .nav-menu.active {
+      display: flex;
+    }
+    .nav-menu a, .menu-item-content {
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .nav-menu a:hover, .menu-item-content:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .has-submenu {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .menu-item-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .submenu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: rgba(50, 50, 50, 0.9);
+    }
+    .submenu.active {
+      display: flex;
+    }
+    .submenu a {
+      padding: 12px 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.95em;
+      padding-left: 30px;
+      text-align: left;
+    }
+    .arrow {
+      margin-left: 5px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .arrow.down {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+
+<body class="bg-black text-white m-0 p-0 w-full h-full overflow-x-hidden">
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <img src="neo-logo.png" alt="Neo In-ear Monitor Logo">
+      </div>
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="nav-menu" id="nav-menu">
+      <a href="#home">Home</a>
+      <div class="has-submenu" id="products-menu">
         <div class="menu-item-content">
           Products <span class="arrow">›</span>
-        </div> 
-        <div class="submenu" id="products-submenu"> 
-          <a href="#n6p">Neo 6 Pro</a> 
-          <a href="#n8p">Neo 8 Pro</a> 
-        </div> 
-      </div> 
-      <a href="#specs">Specs</a> 
-      <a href="#buy">Book for Demo</a> 
+        </div>
+        <div class="submenu" id="products-submenu">
+          <a href="#n6p">Neo 6 Pro</a>
+          <a href="#n8p">Neo 8 Pro</a>
+        </div>
+      </div>
+      <a href="#specs">Specs</a>
+      <a href="#buy">Book for Demo</a>
       <a href="#contact">Contact Us</a>
-    </div> 
-  </nav> 
+    </div>
+  </nav>
 
-  <div class="content"> 
-  <section id="home" class="text-center w-screen overflow-hidden">
-  <div class="w-full">
-    <img src="Top Banner 1 EN.png" alt="Top Banner 1" class="w-full h-[100svh] object-cover m-0 p-0">
-    <img src="Top Banner 2 EN.png" alt="Top Banner 2" class="w-full h-[100svh] object-cover m-0 p-0">
-  </div>
-</section>
+ <section id="home" class="w-full h-auto overflow-hidden pt-[60px]">
+    <div class="w-screen min-h-screen flex flex-col">
+      <img src="Top Banner 1 EN.png" alt="Top Banner 1" class="w-screen h-auto object-cover block">
+      <img src="Top Banner 2 EN.png" alt="Top Banner 2" class="w-screen h-auto object-cover block">
+    </div>
+  </section>
   </div>
 
     <section id="features" class="bg-white text-black py-20 px-6"> 
