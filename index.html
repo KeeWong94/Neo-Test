@@ -1,33 +1,55 @@
-<!DOCTYPE html>
-<html lang="en" class="m-0 p-0">
+<!doctype html>
+<html lang="en" class="m-0 p-0 w-full h-full">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neo CIEM</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      background: #000;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      scroll-behavior: smooth;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
       overflow-x: hidden;
+      background: black;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      color: white;
+    }
+    img {
+      margin: 0;
+      padding: 0;
+      border: none;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      display: block;
     }
     .navbar {
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
       position: fixed;
-      top: 0;
       width: 100%;
+      top: 0;
+      left: 0;
       z-index: 1000;
+      height: 64px;
     }
     .navbar-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
     }
     .menu-toggle {
       display: flex;
@@ -44,15 +66,9 @@
       border-radius: 3px;
       transition: all 0.3s ease;
     }
-    .menu-toggle.active span:nth-child(1) {
-      transform: translateY(9px) rotate(45deg);
-    }
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.active span:nth-child(3) {
-      transform: translateY(-9px) rotate(-45deg);
-    }
+    .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
     .nav-menu {
       display: none;
       flex-direction: column;
@@ -63,25 +79,40 @@
       display: flex;
     }
     .nav-menu a, .menu-item-content {
-      padding: 15px;
       color: white;
+      text-decoration: none;
+      padding: 15px;
       text-align: center;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      text-decoration: none;
     }
-    .nav-menu a:hover {
+    .nav-menu a:hover, .menu-item-content:hover {
       background-color: rgba(255, 255, 255, 0.1);
+    }
+    .has-submenu {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .menu-item-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
     }
     .submenu {
       display: none;
       flex-direction: column;
+      width: 100%;
       background-color: rgba(50, 50, 50, 0.9);
     }
     .submenu.active {
       display: flex;
     }
     .submenu a {
-      padding: 12px 30px;
+      padding: 12px 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.95em;
+      padding-left: 30px;
       text-align: left;
     }
     .arrow {
@@ -94,10 +125,14 @@
     }
   </style>
 </head>
-<body>
+
+<body class="bg-black text-white m-0 p-0 w-full h-full overflow-x-hidden">
+  <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-container">
-      <img src="neo-logo.png" alt="Logo" class="h-10 w-auto">
+      <div class="logo">
+        <img src="neo-logo.png" alt="Neo In-ear Monitor Logo">
+      </div>
       <div class="menu-toggle" id="mobile-menu">
         <span></span><span></span><span></span>
       </div>
@@ -119,25 +154,13 @@
     </div>
   </nav>
 
-  <main class="pt-[64px]">
-    <!-- Top Banners -->
-    <section id="home" class="bg-black">
-      <div class="w-full overflow-hidden">
-        <img src="Top Banner 1 EN.png" alt="Top Banner 1" class="w-full h-auto block" />
-        <img src="Top Banner 2 EN.png" alt="Top Banner 2" class="w-full h-auto block" />
-      </div>
-    </section>
-
-    <!-- Neo 6 Pro -->
-    <section id="n6p" class="bg-black">
-      <img src="Neo 6 Pro Banner En.png" alt="Neo 6 Pro" class="w-full h-auto block" />
-    </section>
-
-    <!-- Neo 8 Pro -->
-    <section id="n8p" class="bg-black">
-      <img src="Neo 8 Pro Banner En.png" alt="Neo 8 Pro" class="w-full h-auto block" />
-    </section>
-  </main>
+  <!-- Home Section -->
+  <section id="home" class="w-full h-auto overflow-hidden" style="margin-top: 64px;">
+    <div class="w-full">
+      <img src="Top Banner 1 EN.png" alt="Top Banner 1">
+      <img src="Top Banner 2 EN.png" alt="Top Banner 2">
+    </div>
+  </section>
   
     <section id="specs" class="py-20 px-6"> 
       <div class="max-w-4xl mx-auto"> 
@@ -218,8 +241,19 @@
       productsArrow.classList.toggle('down');
     });
 
-    document.querySelectorAll('.submenu a, .nav-menu > a').forEach(link => {
-      link.addEventListener('click', () => {
+    const submenuLinks = document.querySelectorAll('.submenu a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        navMenu.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        productsSubmenu.classList.remove('active');
+        productsArrow.classList.remove('down');
+      });
+    });
+
+    const navLinks = document.querySelectorAll('.nav-menu > a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function () {
         navMenu.classList.remove('active');
         mobileMenu.classList.remove('active');
         productsSubmenu.classList.remove('active');
