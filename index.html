@@ -1,35 +1,13 @@
 <!doctype html>
-<html lang="en" class="m-0 p-0 w-full h-full">
+<html lang="en" class="m-0 p-0">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neo CIEM</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     html, body {
-      width: 100%;
-      height: 100%;
-      overflow-x: hidden;
-      background: black;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      color: white;
-    }
-    img {
-      margin: 0;
-      padding: 0;
-      border: none;
-      max-width: 100%;
-      width: 100%;
-      height: auto;
-      display: block;
+      margin: 0; padding: 0; background-color: black; color: white;
     }
     .navbar {
       background-color: rgba(0, 0, 0, 0.9);
@@ -39,7 +17,6 @@
       top: 0;
       left: 0;
       z-index: 1000;
-      height: 64px;
     }
     .navbar-container {
       display: flex;
@@ -66,9 +43,15 @@
       border-radius: 3px;
       transition: all 0.3s ease;
     }
-    .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
     .nav-menu {
       display: none;
       flex-direction: column;
@@ -123,11 +106,12 @@
     .arrow.down {
       transform: rotate(90deg);
     }
+    .content {
+      padding-top: 70px;
+    }
   </style>
 </head>
-
-<body class="bg-black text-white m-0 p-0 w-full h-full overflow-x-hidden">
-  <!-- Navbar -->
+<body class="bg-black text-white overflow-x-hidden">
   <nav class="navbar">
     <div class="navbar-container">
       <div class="logo">
@@ -154,14 +138,32 @@
     </div>
   </nav>
 
-  <!-- Home Section -->
-  <section id="home" class="w-full h-auto overflow-hidden" style="margin-top: 64px;">
-    <div class="w-full">
-      <img src="Top Banner 1 EN.png" alt="Top Banner 1">
-      <img src="Top Banner 2 EN.png" alt="Top Banner 2">
-    </div>
-  </section>
+  <div class="content">
+    <!-- HOME Section with Banner -->
+    <section id="home" class="text-center">
+      <img src="Top Banner 1 EN.png" alt="Top Banner 1" class="w-full h-auto object-cover">
+      <img src="Top Banner 2 EN.png" alt="Top Banner 2" class="w-full h-auto object-cover">
+    </section>
 
+    <!-- NEO 6 PRO -->
+    <section id="n6p" class="py-20 px-6 bg-black text-white text-center">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">Neo 6 Pro</h2>
+        <p class="text-lg text-gray-300 mb-8">Low Distortion & High SPL Design for Clear Monitoring Performance in a Professional IEM</p>
+        <img src="Neo 6 Pro Banner En.png" alt="Neo 6 Pro Banner" class="w-full max-w-xl mx-auto h-auto object-contain" />
+      </div>
+    </section>
+
+    <!-- NEO 8 PRO -->
+    <section id="n8p" class="py-20 px-6 bg-black text-white text-center">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-8">Neo 8 Pro</h2>
+        <p class="text-lg text-gray-300 mb-8">Engineered for Precise Stage & Studio Monitoring</p>
+        <img src="Neo 8 Pro Banner En.png" alt="Neo 8 Pro Banner" class="w-full max-w-xl mx-auto h-auto object-contain" />
+      </div>
+    </section>
+  </div>
+  
     <section id="specs" class="py-20 px-6"> 
       <div class="max-w-4xl mx-auto"> 
         <h2 class="text-3xl font-bold mb-8 text-center">Specifications</h2> 
