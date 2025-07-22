@@ -22,6 +22,14 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
       color: white;
     }
+    img {
+      margin: 0;
+      padding: 0;
+      border: none;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
     .navbar {
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
@@ -144,12 +152,10 @@
     </div>
   </nav>
 
-    <section id="home" class="w-full h-auto overflow-hidden pt-[60px]">
-    <div class="w-full flex flex-col items-center justify-center">
-      <img src="Top Banner 1 EN.png" alt="Top Banner 1"
-           class="w-full max-w-screen-sm h-auto object-contain">
-      <img src="Top Banner 2 EN.png" alt="Top Banner 2"
-           class="w-full max-w-screen-sm h-auto object-contain">
+    <section id="home" class="relative w-full h-auto pt-[60px] overflow-hidden">
+    <div class="relative w-full h-auto">
+      <img src="Top Banner 1 EN.png" alt="Top Banner 1">
+      <img src="Top Banner 2 EN.png" alt="Top Banner 2">
     </div>
   </section>
 
@@ -214,7 +220,7 @@
     </footer>
   </div> 
 
- <script>
+  <script>
     const mobileMenu = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
     const productsMenu = document.getElementById('products-menu');
