@@ -33,27 +33,32 @@
       object-fit: contain;
     }
 
-    /* ✅ 导航栏撑满手机宽度 */
+    /* ✅ 导航栏贴边、无缩进 */
     .navbar {
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
       position: fixed;
-      width: 100vw;
+      width: 100%;
       top: 0;
       left: 0;
       z-index: 1000;
       height: 64px;
+      margin: 0;
+      padding: 0;
     }
 
     .navbar-container {
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px;
+      padding-left: 12px;
+      padding-right: 12px;
     }
 
+    /* ✅ logo 放大 */
     .logo img {
-      height: 40px;
+      height: 56px;
       width: auto;
     }
 
