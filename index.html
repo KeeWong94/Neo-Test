@@ -33,28 +33,31 @@
       object-fit: contain;
     }
 
+    /* ✅ 导航栏撑满手机宽度 */
     .navbar {
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
       position: fixed;
-      width: 100%;
+      width: 100vw;
       top: 0;
       left: 0;
       z-index: 1000;
       height: 64px;
     }
+
     .navbar-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px;
     }
+
     .logo img {
       height: 40px;
       width: auto;
     }
 
-    /* ✅ 放大汉堡按钮 */
+    /* ✅ 汉堡按钮放大 */
     .menu-toggle {
       display: flex;
       flex-direction: column;
@@ -78,11 +81,13 @@
       display: none;
       flex-direction: column;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.95);
     }
+
     .nav-menu.active {
       display: flex;
     }
+
     .nav-menu a, .menu-item-content {
       color: white;
       text-decoration: none;
@@ -90,29 +95,35 @@
       text-align: center;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
+
     .nav-menu a:hover, .menu-item-content:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
+
     .has-submenu {
       cursor: pointer;
       display: flex;
       flex-direction: column;
     }
+
     .menu-item-content {
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 1rem;
     }
+
     .submenu {
       display: none;
       flex-direction: column;
       width: 100%;
       background-color: rgba(50, 50, 50, 0.9);
     }
+
     .submenu.active {
       display: flex;
     }
+
     .submenu a {
       padding: 12px 15px;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -120,11 +131,13 @@
       padding-left: 30px;
       text-align: left;
     }
+
     .arrow {
       margin-left: 5px;
       display: inline-block;
       transition: transform 0.3s ease;
     }
+
     .arrow.down {
       transform: rotate(90deg);
     }
