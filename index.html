@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="m-0 p-0 w-full h-full">
 <head>
   <meta charset="UTF-8" />
@@ -6,35 +6,63 @@
   <title>Neo CIEM</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     html, body {
       width: 100%;
       height: 100%;
-      background: #000;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      scroll-behavior: smooth;
       overflow-x: hidden;
+      background: black;
+      scroll-behavior: smooth;
     }
-    img { display: block; max-width: 100%; height: auto; object-fit: cover; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      color: white;
+    }
+    img {
+      margin: 0;
+      padding: 0;
+      border: none;
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
 
+    /* ✅ 导航栏贴边、无缩进 */
     .navbar {
       background-color: rgba(0, 0, 0, 0.9);
+      color: white;
       position: fixed;
-      top: 0; left: 0;
       width: 100%;
-      height: 64px;
+      top: 0;
+      left: 0;
       z-index: 1000;
-    }
-    .navbar-container {
       height: 64px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-container {
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 12px;
+      padding-left: 12px;
+      padding-right: 12px;
     }
-    .logo img { height: 56px; width: auto; margin-top: 11px; }
 
+    /* ✅ logo 放大 */
+    .logo img {
+      height: 56px;
+      width: auto;
+    }
+
+    /* ✅ 汉堡按钮放大 */
     .menu-toggle {
       display: flex;
       flex-direction: column;
@@ -46,9 +74,9 @@
     .menu-toggle span {
       height: 4px;
       width: 100%;
-      background: white;
+      background-color: white;
       border-radius: 3px;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
     }
     .menu-toggle.active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
@@ -57,103 +85,71 @@
     .nav-menu {
       display: none;
       flex-direction: column;
-      position: fixed;
-      top: 64px;
-      left: 0;
       width: 100%;
-      height: calc(100vh - 64px);
-      background-color: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.95);
     }
-    .nav-menu.active { display: flex; }
+
+    .nav-menu.active {
+      display: flex;
+    }
+
     .nav-menu a, .menu-item-content {
-      padding: 15px;
-      text-align: center;
       color: white;
       text-decoration: none;
+      padding: 15px;
+      text-align: center;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
+
     .nav-menu a:hover, .menu-item-content:hover {
       background-color: rgba(255, 255, 255, 0.1);
     }
 
-    .has-submenu { display: flex; flex-direction: column; cursor: pointer; }
-    .menu-item-content { display: flex; justify-content: center; align-items: center; gap: 6px; }
+    .has-submenu {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-item-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+    }
 
     .submenu {
       display: none;
       flex-direction: column;
-      background: rgba(50, 50, 50, 0.9);
-    }
-    .submenu.active { display: flex; }
-    .submenu a {
-      padding: 12px 30px;
-      text-align: left;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .arrow { transition: transform 0.3s ease; }
-    .arrow.down { transform: rotate(90deg); }
-
-    @media (min-width: 768px) {
-      .menu-toggle { display: none; }
-      .nav-menu {
-        display: flex !important;
-        flex-direction: row;
-        position: static;
-        background: transparent;
-        height: auto;
-        backdrop-filter: none;
-        justify-content: flex-end;
-        align-items: center;
-      }
-      .nav-menu a, .menu-item-content {
-        padding: 0 18px;
-        height: 64px;
-        display: flex;
-        align-items: center;
-      }
-      .has-submenu { position: relative; }
-      .submenu {
-        position: absolute;
-        top: 64px;
-        left: 0;
-        width: 200px;
-        display: none;
-      }
-      .has-submenu:hover .submenu { display: flex; }
-    }
-
-    body.lock { overflow: hidden; }
-
-    /* Sliding Banner */
-    .slide-wrapper {
-      margin-top: 64px;
-      overflow: hidden;
       width: 100%;
-      aspect-ratio: 16/9;
+      background-color: rgba(50, 50, 50, 0.9);
     }
-    .slide-track {
+
+    .submenu.active {
       display: flex;
-      width: 200%;
-      animation: slideLeft 20s linear infinite;
     }
-    .slide-track.pause { animation-play-state: paused; }
-    .slide-img {
-      width: 50%;
-      flex-shrink: 0;
-      object-fit: cover;
+
+    .submenu a {
+      padding: 12px 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.95em;
+      padding-left: 30px;
+      text-align: left;
     }
-    @keyframes slideLeft {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+
+    .arrow {
+      margin-left: 5px;
+      display: inline-block;
+      transition: transform 0.3s ease;
     }
-    @supports not (aspect-ratio: 1 / 1) {
-      .slide-wrapper { height: 56.25vw; }
+
+    .arrow.down {
+      transform: rotate(90deg);
     }
   </style>
 </head>
-<body>
+
+<body class="bg-black text-white m-0 p-0 w-full h-full overflow-x-hidden">
   <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-container">
@@ -163,48 +159,32 @@
       <div class="menu-toggle" id="mobile-menu">
         <span></span><span></span><span></span>
       </div>
-      <div class="nav-menu" id="nav-menu">
-        <a href="#home">Home</a>
-        <div class="has-submenu" id="products-menu">
-          <div class="menu-item-content">Products <span class="arrow">›</span></div>
-          <div class="submenu" id="products-submenu">
-            <a href="#n6p">Neo 6 Pro</a>
-            <a href="#n8p">Neo 8 Pro</a>
-          </div>
+    </div>
+    <div class="nav-menu" id="nav-menu">
+      <a href="#home">Home</a>
+      <div class="has-submenu" id="products-menu">
+        <div class="menu-item-content">
+          Products <span class="arrow">›</span>
         </div>
-        <a href="#specs">Specs</a>
-        <a href="#buy">Book for Demo</a>
-        <a href="#contact">Contact Us</a>
+        <div class="submenu" id="products-submenu">
+          <a href="#n6p">Neo 6 Pro</a>
+          <a href="#n8p">Neo 8 Pro</a>
+        </div>
       </div>
+      <a href="#specs">Specs</a>
+      <a href="#buy">Book for Demo</a>
+      <a href="#contact">Contact Us</a>
     </div>
   </nav>
 
-  <!-- Sliding Banner -->
-  <section id="home">
-    <div class="slide-wrapper" id="banner-slider">
-      <div class="slide-track" id="slide-track">
-        <img src="Top Banner 2 EN.png" alt="Top Banner 2" class="slide-img">
-        <img src="Top Banner 2 EN.png" alt="Top Banner 2 duplicate" class="slide-img">
-      </div>
+  <!-- Home Section -->
+  <section id="home" class="w-full h-auto overflow-hidden" style="margin-top: 64px;">
+    <div class="w-full">
+      <img src="Top Banner 1 EN.png" alt="Top Banner 1">
+      <img src="Top Banner 2 EN.png" alt="Top Banner 2">
     </div>
   </section>
 
-  <!-- Product Sections -->
-  <section id="n6p" class="py-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8">Neo 6 Pro</h2>
-      <!-- Your content here -->
-    </div>
-  </section>
-
-  <section id="n8p" class="py-20 px-6 bg-gray-900">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8">Neo 8 Pro</h2>
-      <!-- Your content here -->
-    </div>
-  </section>
-
-  <!-- Specs Section -->
   <section id="specs" class="py-20 px-6">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-3xl font-bold mb-8 text-center">Specifications</h2>
@@ -229,13 +209,11 @@
     </div>
   </section>
 
-  <!-- Book for Demo -->
   <section id="buy" class="bg-black text-white py-24 px-4 text-center">
     <h3 class="text-3xl font-semibold mb-6">Ready to experience Neo CIEM?</h3>
     <a href="#contact" class="inline-block bg-white text-black px-6 py-3 rounded-full text-lg hover:bg-gray-300 transition">Book a Demo</a>
   </section>
 
-  <!-- Contact Section -->
   <section id="contact" class="bg-gray-900 py-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl font-bold mb-8">Contact Us</h2>
@@ -246,56 +224,64 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-black text-gray-400 py-12 px-4 text-center">
-    <div class="text-sm text-gray-500">&copy; 2025 Neo CIEM. All rights reserved.</div>
+  <footer class="bg-black text-gray-400 py-12 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+      <div></div>
+      <div></div>
+      <div>
+        <h4 class="text-white font-semibold mb-2">Follow Us</h4>
+        <div class="flex justify-center md:justify-start space-x-4 mt-2">
+          <a href="https://www.instagram.com/neociem" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="/api/placeholder/24/24" alt="Instagram" class="inline-block h-6 w-6">
+          </a>
+          <a href="https://www.facebook.com/neociem" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="/api/placeholder/24/24" alt="Facebook" class="inline-block h-6 w-6">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 text-sm mt-8">
+      &copy; 2025 Neo CIEM. All rights reserved.
+    </div>
   </footer>
 
-  <!-- Script -->
-  <script>
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navMenu = document.getElementById('nav-menu');
-    const productsMenu = document.getElementById('products-menu');
-    const productsSubmenu = document.getElementById('products-submenu');
-    const productsArrow = productsMenu.querySelector('.arrow');
-    const slideTrack = document.getElementById('slide-track');
-    const slider = document.getElementById('banner-slider');
+<script>
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navMenu = document.getElementById('nav-menu');
+  const productsMenu = document.getElementById('products-menu');
+  const productsSubmenu = document.getElementById('products-submenu');
+  const productsArrow = productsMenu.querySelector('.arrow');
 
-    function closeMenus() {
+  mobileMenu.addEventListener('click', function () {
+    navMenu.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+  });
+
+  productsMenu.addEventListener('click', function (e) {
+    e.stopPropagation();
+    productsSubmenu.classList.toggle('active');
+    productsArrow.classList.toggle('down');
+  });
+
+  const submenuLinks = document.querySelectorAll('.submenu a');
+  submenuLinks.forEach(link => {
+    link.addEventListener('click', function () {
       navMenu.classList.remove('active');
       mobileMenu.classList.remove('active');
       productsSubmenu.classList.remove('active');
       productsArrow.classList.remove('down');
-      document.body.classList.remove('lock');
-    }
-
-    mobileMenu.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-      document.body.classList.toggle('lock', navMenu.classList.contains('active'));
     });
+  });
 
-    productsMenu.addEventListener('click', (e) => {
-      if (window.getComputedStyle(mobileMenu).display !== 'none') {
-        e.stopPropagation();
-        productsSubmenu.classList.toggle('active');
-        productsArrow.classList.toggle('down');
-      }
+  const navLinks = document.querySelectorAll('.nav-menu > a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function () {
+      navMenu.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      productsSubmenu.classList.remove('active');
+      productsArrow.classList.remove('down');
     });
-
-    document.querySelectorAll('.submenu a').forEach(link => link.addEventListener('click', closeMenus));
-    document.querySelectorAll('.nav-menu > a').forEach(link => link.addEventListener('click', closeMenus));
-
-    document.addEventListener('click', (e) => {
-      if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileMenu.contains(e.target)) {
-        closeMenus();
-      }
-    });
-
-    slider.addEventListener('mouseenter', () => slideTrack.classList.add('pause'));
-    slider.addEventListener('mouseleave', () => slideTrack.classList.remove('pause'));
-    slider.addEventListener('touchstart', () => slideTrack.classList.add('pause'));
-    slider.addEventListener('touchend', () => slideTrack.classList.remove('pause'));
-  </script>
+  });
+</script>
 </body>
 </html>
