@@ -33,7 +33,6 @@
       object-fit: contain;
     }
 
-    /* ✅ 导航栏贴边、无缩进 */
     .navbar {
       background-color: rgba(0, 0, 0, 0.9);
       color: white;
@@ -56,13 +55,12 @@
       padding-right: 12px;
     }
 
-    /* ✅ logo 放大 */
     .logo img {
       height: 56px;
       width: auto;
+      margin-top: 11px; /* ✅ LOGO 向下移动 11px */
     }
 
-    /* ✅ 汉堡按钮放大 */
     .menu-toggle {
       display: flex;
       flex-direction: column;
@@ -86,7 +84,7 @@
       display: none;
       flex-direction: column;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
+      background-color: rgba(0, 0, 0, 0.5); /* ✅ 半透明背景 */
     }
 
     .nav-menu.active {
