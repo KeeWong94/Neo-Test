@@ -1,287 +1,385 @@
-<!doctype html>
-<html lang="en" class="m-0 p-0 w-full h-full">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neo CIEM</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
+<!doctype html>  
+<html lang="en" class="m-0 p-0 w-full h-full">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+  <title>Neo CIEM</title>  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />  
+  <style>  
+    * {  
+      margin: 0;  
+      padding: 0;  
+      box-sizing: border-box;  
+    }  
+    html, body {  
+      width: 100%;  
+      height: 100%;  
+      overflow-x: hidden;  
+      background: black;  
+      scroll-behavior: smooth;  
+    }  
+    body {  
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;  
+      color: white;  
+    }  
+    img {  
+      margin: 0;  
+      padding: 0;  
+      border: none;  
+      max-width: 100%;  
+      width: 100%;  
+      height: auto;  
+      display: block;  
+      object-fit: contain;  
+    }  
+    .navbar {  
+      background-color: rgba(0, 0, 0, 0.9);  
+      color: white;  
+      position: fixed;  
+      width: 100%;  
+      top: 0;  
+      left: 0;  
+      z-index: 1000;  
+      height: 64px;  
+      margin: 0;  
+      padding: 0;  
+    }  
+    .navbar-container {  
+      width: 100%;  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: center;  
+      padding-left: 12px;  
+      padding-right: 12px;  
+    }  
+    .logo img {  
+      height: 56px;  
+      width: auto;  
+    }  
+    .menu-toggle {  
+      display: flex;  
+      flex-direction: column;  
+      justify-content: space-between;  
+      width: 36px;  
+      height: 27px;  
+      cursor: pointer;  
+    }  
+    .menu-toggle span {  
+      height: 4px;  
+      width: 100%;  
+      background-color: white;  
+      border-radius: 3px;  
+      transition: all 0.3s ease;  
+    }  
+    .menu-toggle.active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }  
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }  
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }  
+    .nav-menu {  
+      display: none;  
+      flex-direction: column;  
+      width: 100%;  
+      background-color: rgba(0, 0, 0, 0.95);  
+    }  
+    .nav-menu.active {  
+      display: flex;  
+    }  
+    .nav-menu a, .menu-item-content {  
+      color: white;  
+      text-decoration: none;  
+      padding: 15px;  
+      text-align: center;  
+      border-top: 1px solid rgba(255, 255, 255, 0.1);  
+    }  
+    .nav-menu a:hover, .menu-item-content:hover {  
+      background-color: rgba(255, 255, 255, 0.1);  
+    }  
+    .has-submenu {  
+      cursor: pointer;  
+      display: flex;  
+      flex-direction: column;  
+    }  
+    .menu-item-content {  
+      display: flex;  
+      justify-content: center;  
+      align-items: center;  
+      font-size: 1rem;  
+    }  
+    .submenu {  
+      display: none;  
+      flex-direction: column;  
+      width: 100%;  
+      background-color: rgba(50, 50, 50, 0.9);  
+    }  
+    .submenu.active {  
+      display: flex;  
+    }  
+    .submenu a {  
+      padding: 12px 15px;  
+      border-top: 1px solid rgba(255, 255, 255, 0.05);  
+      font-size: 0.95em;  
+      padding-left: 30px;  
+      text-align: left;  
+    }  
+    .arrow {  
+      margin-left: 5px;  
+      display: inline-block;  
+      transition: transform 0.3s ease;  
+    }  
+    .arrow.down {  
+      transform: rotate(90deg);  
+    }  
+  </style>  
+  <!-- Slice轮播的样式保持原样插入 -->
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow-x: hidden;
-      background: black;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      color: white;
-    }
-    img {
-      margin: 0;
-      padding: 0;
-      border: none;
-      max-width: 100%;
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-    }
-
-    /* ✅ 导航栏贴边、无缩进 */
-    .navbar {
-      background-color: rgba(0, 0, 0, 0.9);
-      color: white;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      height: 64px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .navbar-container {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-left: 12px;
-      padding-right: 12px;
-    }
-
-    /* ✅ logo 放大 */
-    .logo img {
-      height: 56px;
-      width: auto;
-    }
-
-    /* ✅ 汉堡按钮放大 */
-    .menu-toggle {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 36px;
-      height: 27px;
-      cursor: pointer;
-    }
-    .menu-toggle span {
-      height: 4px;
-      width: 100%;
-      background-color: white;
-      border-radius: 3px;
-      transition: all 0.3s ease;
-    }
-    .menu-toggle.active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; }
-    .menu-toggle.active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-
-    .nav-menu {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
-    }
-
-    .nav-menu.active {
-      display: flex;
-    }
-
-    .nav-menu a, .menu-item-content {
-      color: white;
-      text-decoration: none;
-      padding: 15px;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-menu a:hover, .menu-item-content:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .has-submenu {
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .menu-item-content {
+    body.slice-mode {
+      background: #111;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 1rem;
     }
-
-    .submenu {
-      display: none;
-      flex-direction: column;
+    .slideshow {
+      width: 80vw;
+      max-width: 800px;
+      aspect-ratio: 4/3;
+      background: #222;
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    }
+    .slide {
+      position: absolute;
       width: 100%;
-      background-color: rgba(50, 50, 50, 0.9);
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: 1;
     }
-
-    .submenu.active {
+    .slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .dots {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
       display: flex;
+      gap: 12px;
+      z-index: 10;
     }
-
-    .submenu a {
-      padding: 12px 15px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 0.95em;
-      padding-left: 30px;
-      text-align: left;
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      border: 2px solid #fff;
+      transition: background 0.2s;
+      cursor: pointer;
     }
-
-    .arrow {
-      margin-left: 5px;
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-
-    .arrow.down {
-      transform: rotate(90deg);
+    .dot.active {
+      background: #fff;
     }
   </style>
-</head>
-
-<body class="bg-black text-white m-0 p-0 w-full h-full overflow-x-hidden">
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="logo">
-        <img src="neo-logo.png" alt="Neo In-ear Monitor Logo">
-      </div>
-      <div class="menu-toggle" id="mobile-menu">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-    <div class="nav-menu" id="nav-menu">
-      <a href="#home">Home</a>
-      <div class="has-submenu" id="products-menu">
-        <div class="menu-item-content">
-          Products <span class="arrow">›</span>
-        </div>
-        <div class="submenu" id="products-submenu">
-          <a href="#n6p">Neo 6 Pro</a>
-          <a href="#n8p">Neo 8 Pro</a>
-        </div>
-      </div>
-      <a href="#specs">Specs</a>
-      <a href="#buy">Book for Demo</a>
-      <a href="#contact">Contact Us</a>
-    </div>
-  </nav>
-
-  <!-- Home Section -->
-  <section id="home" class="w-full h-auto overflow-hidden" style="margin-top: 64px;">
+</head>  
+<body class="bg-black text-white m-0 p-0 w-full h-full overflow-x-hidden">  
+  <!-- Navbar -->  
+  <nav class="navbar">  
+    <div class="navbar-container">  
+      <div class="logo">  
+        <img src="neo-logo.png" alt="Neo In-ear Monitor Logo">  
+      </div>  
+      <div class="menu-toggle" id="mobile-menu">  
+        <span></span><span></span><span></span>  
+      </div>  
+    </div>  
+    <div class="nav-menu" id="nav-menu">  
+      <a href="#home">Home</a>  
+      <div class="has-submenu" id="products-menu">  
+        <div class="menu-item-content">  
+          Products <span class="arrow">›</span>  
+        </div>  
+        <div class="submenu" id="products-submenu">  
+          <a href="#n6p">Neo 6 Pro</a>  
+          <a href="#n8p">Neo 8 Pro</a>  
+        </div>  
+      </div>  
+      <a href="#specs">Specs</a>  
+      <a href="#buy">Book for Demo</a>  
+      <a href="#contact">Contact Us</a>  
+    </div>  
+  </nav>  
+  
+  <!-- Home Section -->  
+  <section id="home" class="w-full h-auto overflow-hidden" style="margin-top: 64px;">  
     <div class="w-full">
-      <img src="Top Banner 1 EN.png" alt="Top Banner 1">
-      <img src="Top Banner 2 EN.png" alt="Top Banner 2">
-    </div>
-  </section>
 
-  <section id="specs" class="py-20 px-6">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold mb-8 text-center">Specifications</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-gray-900 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">Neo 6 Pro</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li>• 6 Balanced Armature Drivers</li>
-            <li>• 3-Way Crossover</li>
-            <li>• Handcrafted Shell</li>
-          </ul>
+      <!-- slice 轮播代码开始，原样插入 -->
+      <div class="slideshow" id="slideshow">
+        <div class="slide active">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800" alt="1">
         </div>
-        <div class="bg-gray-900 p-6 rounded-lg">
-          <h3 class="text-xl font-semibold mb-4">Neo 8 Pro</h3>
-          <ul class="space-y-2 text-gray-300">
-            <li>• 8 Balanced Armature Drivers</li>
-            <li>• 4-Way Crossover</li>
-            <li>• Enhanced Stage Imaging</li>
-          </ul>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=800" alt="2">
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="buy" class="bg-black text-white py-24 px-4 text-center">
-    <h3 class="text-3xl font-semibold mb-6">Ready to experience Neo CIEM?</h3>
-    <a href="#contact" class="inline-block bg-white text-black px-6 py-3 rounded-full text-lg hover:bg-gray-300 transition">Book a Demo</a>
-  </section>
-
-  <section id="contact" class="bg-gray-900 py-20 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8">Contact Us</h2>
-      <p class="text-lg text-gray-300 mb-8">Feel free to reach out to us via WhatsApp or Messenger for any inquiries.</p>
-      <a href="https://wa.me/60165105093" target="_blank" class="inline-block border border-white px-6 py-3 rounded-full text-lg hover:bg-white hover:text-black transition">WhatsApp Mr. Kee</a>
-      <span class="mx-2 text-white">or</span>
-      <a href="https://m.me/neoinear" target="_blank" class="inline-block border border-white px-6 py-3 rounded-full text-lg hover:bg-white hover:text-black transition">Message on Messenger</a>
-    </div>
-  </section>
-
-  <footer class="bg-black text-gray-400 py-12 px-4">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-      <div></div>
-      <div></div>
-      <div>
-        <h4 class="text-white font-semibold mb-2">Follow Us</h4>
-        <div class="flex justify-center md:justify-start space-x-4 mt-2">
-          <a href="https://www.instagram.com/neociem" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <img src="/api/placeholder/24/24" alt="Instagram" class="inline-block h-6 w-6">
-          </a>
-          <a href="https://www.facebook.com/neociem" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <img src="/api/placeholder/24/24" alt="Facebook" class="inline-block h-6 w-6">
-          </a>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=800" alt="3">
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1519985176271-adb1088fa94c?w=800" alt="4">
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1424746219973-8fe3bd07d8e3?w=800" alt="5">
+        </div>
+        <div class="dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+          <span class="dot" data-index="3"></span>
+          <span class="dot" data-index="4"></span>
         </div>
       </div>
-    </div>
-    <div class="text-center text-gray-500 text-sm mt-8">
-      &copy; 2025 Neo CIEM. All rights reserved.
-    </div>
-  </footer>
+      <!-- slice 轮播代码结束 -->
+
+      <img src="Top Banner 2 EN.png" alt="Top Banner 2">  
+    </div>  
+  </section>  
+  
+  <section id="specs" class="py-20 px-6">  
+    <div class="max-w-4xl mx-auto">  
+      <h2 class="text-3xl font-bold mb-8 text-center">Specifications</h2>  
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">  
+        <div class="bg-gray-900 p-6 rounded-lg">  
+          <h3 class="text-xl font-semibold mb-4">Neo 6 Pro</h3>  
+          <ul class="space-y-2 text-gray-300">  
+            <li>• 6 Balanced Armature Drivers</li>  
+            <li>• 3-Way Crossover</li>  
+            <li>• Handcrafted Shell</li>  
+          </ul>  
+        </div>  
+        <div class="bg-gray-900 p-6 rounded-lg">  
+          <h3 class="text-xl font-semibold mb-4">Neo 8 Pro</h3>  
+          <ul class="space-y-2 text-gray-300">  
+            <li>• 8 Balanced Armature Drivers</li>  
+            <li>• 4-Way Crossover</li>  
+            <li>• Enhanced Stage Imaging</li>  
+          </ul>  
+        </div>  
+      </div>  
+    </div>  
+  </section>  
+  
+  <section id="buy" class="bg-black text-white py-24 px-4 text-center">  
+    <h3 class="text-3xl font-semibold mb-6">Ready to experience Neo CIEM?</h3>  
+    <a href="#contact" class="inline-block bg-white text-black px-6 py-3 rounded-full text-lg hover:bg-gray-300 transition">Book a Demo</a>  
+  </section>  
+  
+  <section id="contact" class="bg-gray-900 py-20 px-6">  
+    <div class="max-w-4xl mx-auto text-center">  
+      <h2 class="text-3xl font-bold mb-8">Contact Us</h2>  
+      <p class="text-lg text-gray-300 mb-8">Feel free to reach out to us via WhatsApp or Messenger for any inquiries.</p>  
+      <a href="https://wa.me/60165105093" target="_blank" class="inline-block border border-white px-6 py-3 rounded-full text-lg hover:bg-white hover:text-black transition">WhatsApp Mr. Kee</a>  
+      <span class="mx-2 text-white">or</span>  
+      <a href="https://m.me/neoinear" target="_blank" class="inline-block border border-white px-6 py-3 rounded-full text-lg hover:bg-white hover:text-black transition">Message on Messenger</a>  
+    </div>  
+  </section>  
+  
+  <footer class="bg-black text-gray-400 py-12 px-4">  
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">  
+      <div></div>  
+      <div></div>  
+      <div>  
+        <h4 class="text-white font-semibold mb-2">Follow Us</h4>  
+        <div class="flex justify-center md:justify-start space-x-4 mt-2">  
+          <a href="https://www.instagram.com/neociem" target="_blank" rel="noopener noreferrer" aria-label="Instagram">  
+            <img src="/api/placeholder/24/24" alt="Instagram" class="inline-block h-6 w-6">  
+          </a>  
+          <a href="https://www.facebook.com/neociem" target="_blank" rel="noopener noreferrer" aria-label="Facebook">  
+            <img src="/api/placeholder/24/24" alt="Facebook" class="inline-block h-6 w-6">  
+          </a>  
+        </div>  
+      </div>  
+    </div>  
+    <div class="text-center text-gray-500 text-sm mt-8">  
+      &copy; 2025 Neo CIEM. All rights reserved.  
+    </div>  
+  </footer>  
 
 <script>
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navMenu = document.getElementById('nav-menu');
-  const productsMenu = document.getElementById('products-menu');
-  const productsSubmenu = document.getElementById('products-submenu');
-  const productsArrow = productsMenu.querySelector('.arrow');
-
-  mobileMenu.addEventListener('click', function () {
-    navMenu.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-  });
-
-  productsMenu.addEventListener('click', function (e) {
-    e.stopPropagation();
-    productsSubmenu.classList.toggle('active');
-    productsArrow.classList.toggle('down');
-  });
-
-  const submenuLinks = document.querySelectorAll('.submenu a');
-  submenuLinks.forEach(link => {
-    link.addEventListener('click', function () {
-      navMenu.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      productsSubmenu.classList.remove('active');
-      productsArrow.classList.remove('down');
+  // slice轮播JS
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+  let timer = null;
+  function showSlide(idx) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === idx);
+      dots[i].classList.toggle('active', i === idx);
     });
+    current = idx;
+  }
+  function nextSlide() {
+    showSlide((current + 1) % slides.length);
+  }
+  function startSlideshow() {
+    timer = setInterval(nextSlide, 5000);
+  }
+  function stopSlideshow() {
+    clearInterval(timer);
+  }
+  dots.forEach(dot => {
+    dot.onclick = () => {
+      stopSlideshow();
+      showSlide(+dot.dataset.index);
+      startSlideshow();
+    };
   });
+  startSlideshow();
 
-  const navLinks = document.querySelectorAll('.nav-menu > a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function () {
-      navMenu.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      productsSubmenu.classList.remove('active');
-      productsArrow.classList.remove('down');
-    });
-  });
+  // 原nav JS保持不变
+  const mobileMenu = document.getElementById('mobile-menu');  
+  const navMenu = document.getElementById('nav-menu');  
+  const productsMenu = document.getElementById('products-menu');  
+  const productsSubmenu = document.getElementById('products-submenu');  
+  const productsArrow = productsMenu.querySelector('.arrow');  
+
+  mobileMenu.addEventListener('click', function () {  
+    navMenu.classList.toggle('active');  
+    mobileMenu.classList.toggle('active');  
+  });  
+
+  productsMenu.addEventListener('click', function (e) {  
+    e.stopPropagation();  
+    productsSubmenu.classList.toggle('active');  
+    productsArrow.classList.toggle('down');  
+  });  
+
+  const submenuLinks = document.querySelectorAll('.submenu a');  
+  submenuLinks.forEach(link => {  
+    link.addEventListener('click', function () {  
+      navMenu.classList.remove('active');  
+      mobileMenu.classList.remove('active');  
+      productsSubmenu.classList.remove('active');  
+      productsArrow.classList.remove('down');  
+    });  
+  });  
+
+  const navLinks = document.querySelectorAll('.nav-menu > a');  
+  navLinks.forEach(link => {  
+    link.addEventListener('click', function () {  
+      navMenu.classList.remove('active');  
+      mobileMenu.classList.remove('active');  
+      productsSubmenu.classList.remove('active');  
+      productsArrow.classList.remove('down');  
+    });  
+  });  
 </script>
-</body>
+</body>  
 </html>
