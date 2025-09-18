@@ -219,12 +219,12 @@
       Experience Neo CIEM on your stage and discover a new world of music detail. <br>
       Book a personalized demo session—get in touch now!
     </p>
-    <form>
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <input type="tel" placeholder="Phone Number" required pattern="[0-9+\-\s]{7,}">
-      <input type="text" placeholder="Your Role (e.g. Singer, Musician)">
-      <textarea placeholder="Your Message (Optional)" rows="3"></textarea>
+    <form action="https://formspree.io/f/mblybpog" method="POST">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9+\-\s]{7,}">
+      <input type="text" name="role" placeholder="Your Role (e.g. Singer, Musician)">
+      <textarea name="message" placeholder="Your Message (Optional)" rows="3"></textarea>
       <button type="submit">Request Now</button>
     </form>
   </div>
