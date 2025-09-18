@@ -78,22 +78,31 @@
     }
     .top-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background: #222; }
 
-    /* ====== 下方 3:4 图片 ====== */
-    .bottom-img-list {
+    /* ====== 中间 3:4 图片 ====== */
+    .middle-img-list {
       width: 100vw; max-width: 600px; margin: 0 auto 36px;
       display: flex; flex-direction: column; gap: 36px;
     }
-    .bottom-img-item {
+    .middle-img-item {
       width: 100%; aspect-ratio: 3 / 4; background: #222;
       border-radius: 18px; overflow: hidden; box-shadow: 0 4px 18px #0002;
       display: flex; align-items: center; justify-content: center;
       scroll-margin-top: calc(var(--nav-h) + 12px);
     }
-    .bottom-img-item img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background: #222; }
+    .middle-img-item img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background: #222; }
+
+    /* ====== 下方 4:3 图片 ====== */
+    .bottom-img-box {
+      width: 100vw; max-width: 800px; aspect-ratio: 4 / 3;
+      margin: 0 auto 40px; border-radius: 18px; overflow: hidden; background: #222;
+      box-shadow: 0 4px 18px #0003; display: flex; align-items: center; justify-content: center;
+    }
+    .bottom-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background:#222; }
 
     @media (min-width: 800px) {
       .top-img-box { max-width: 480px; }
-      .bottom-img-list { max-width: 800px; }
+      .middle-img-list { max-width: 800px; }
+      .bottom-img-box { max-width: 1000px; }
     }
 
     /* ====== Demo 表单 ====== */
@@ -185,17 +194,22 @@
 
   <!-- 上方一张3:4图片 -->
   <div class="top-img-box">
-    <img src="P9071225.jpg" alt="舞台表演">
+    <img src="Top Banner.jpg" alt="舞台表演">
   </div>
 
-  <!-- 下方两张3:4图片 -->
-  <div class="bottom-img-list">
-    <div class="bottom-img-item" id="n6p">
+  <!-- 中间两张3:4图片 -->
+  <div class="middle-img-list">
+    <div class="middle-img-item" id="n6p">
       <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro">
     </div>
-    <div class="bottom-img-item" id="n8p">
+    <div class="middle-img-item" id="n8p">
       <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro">
     </div>
+  </div>
+
+  <!-- 下方一张4:3图片 -->
+  <div class="bottom-img-box">
+    <img src="Cable Design.jpg" alt="Cable Design">
   </div>
 
   <!-- Demo 表单 -->
