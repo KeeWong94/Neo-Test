@@ -14,7 +14,7 @@
       color: #fff;
       font-family: "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
     }
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
 
     /* ====== 顶部导航 ====== */
     .navbar {
@@ -78,7 +78,7 @@
     }
     .top-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background: #222; }
 
-    /* ====== 中间 3:4 图片 ====== */
+    /* ====== 中间 3:4 图片 + 价格与按钮 ====== */
     .middle-img-list {
       width: 100vw; max-width: 600px; margin: 0 auto 36px;
       display: flex; flex-direction: column; gap: 36px;
@@ -86,10 +86,27 @@
     .middle-img-item {
       width: 100%; aspect-ratio: 3 / 4; background: #222;
       border-radius: 18px; overflow: hidden; box-shadow: 0 4px 18px #0002;
-      display: flex; align-items: center; justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
       scroll-margin-top: calc(var(--nav-h) + 12px);
+      position: relative;
+      padding-bottom: 28px;
     }
-    .middle-img-item img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background: #222; }
+    .middle-img-item img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background: #222; border-radius:18px; }
+
+    .price-tag {
+      color: #fff; font-size: 2.2rem; font-weight: bold;
+      margin-bottom: 12px;
+      z-index: 2;
+    }
+    .learn-more-btn {
+      background-color: #00bfff; color: #fff; padding: 8px 20px;
+      border-radius: 12px; font-size: 0.55rem; font-weight: 600;
+      text-align: center; cursor: pointer;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+      z-index: 2;
+    }
+    .learn-more-btn:hover { background-color: #0095d1; transform: scale(1.05); }
 
     /* ====== 下方 4:3 图片 ====== */
     .bottom-img-box {
@@ -103,6 +120,8 @@
       .top-img-box { max-width: 480px; }
       .middle-img-list { max-width: 800px; }
       .bottom-img-box { max-width: 1000px; }
+      .price-tag { font-size: 3rem; }
+      .learn-more-btn { font-size: 0.7rem; padding: 10px 24px; }
     }
 
     /* ====== Demo 表单 ====== */
@@ -141,6 +160,7 @@
     @media (max-width: 480px) {
       .social-icons img { width: 42px; height: 42px; }
       .messenger-icon img { width: 38px; height: 38px; }
+      .price-tag { font-size: 2rem; }
     }
   </style>
 </head>
@@ -197,13 +217,17 @@
     <img src="Top Banner.jpg" alt="舞台表演">
   </div>
 
-  <!-- 中间两张3:4图片 -->
+  <!-- 中间两张3:4图片 + 价格 + LEARN MORE -->
   <div class="middle-img-list">
     <div class="middle-img-item" id="n6p">
       <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro">
+      <div class="price-tag">RM2400</div>
+      <a href="neo6pro.html" class="learn-more-btn">LEARN MORE</a>
     </div>
     <div class="middle-img-item" id="n8p">
       <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro">
+      <div class="price-tag">RM3300</div>
+      <a href="neo8pro.html" class="learn-more-btn">LEARN MORE</a>
     </div>
   </div>
 
