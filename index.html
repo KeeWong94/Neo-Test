@@ -2,14 +2,13 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>静态图片展示 + Demo 表单 + 联系信息（含汉堡菜单）</title>
+  <title>Neo CIEM Showcase</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root { --nav-h: 64px; }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin:0; padding:0; }
     html { scroll-behavior: smooth; }
     body {
-      margin: 0;
       background: #111;
       color: #fff;
       font-family: "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -54,11 +53,9 @@
     }
     .nav-link:hover { background: rgba(255,255,255,0.08); }
 
-    /* ====== 子菜单（常开） ====== */
     .submenu {
       display: flex; flex-direction: column; width: 100%;
-      background: #000;
-      text-align: center;
+      background: #000; text-align: center;
     }
     .submenu a {
       color: #fff; text-decoration: none;
@@ -70,230 +67,386 @@
 
     .nav-spacer { height: var(--nav-h); }
 
-    /* ====== 上方 3:4 图片 ====== */
-    .top-img-box {
-      width: 100vw; max-width: 400px; aspect-ratio: 3 / 4;
-      margin: 40px auto 32px; border-radius: 18px; overflow: hidden; background: #222;
-      box-shadow: 0 4px 18px #0003; display: flex; align-items: center; justify-content: center;
+    /* ====== 图片展示 ====== */
+    .top-img-box, .middle-img-item, .bottom-img-box {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px #0003;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #222;
+      margin: 40px auto;
     }
-    .top-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background: #222; }
-
-    /* ====== 中间 3:4 图片 + 价格与按钮 ====== */
-    .middle-img-list {
-      width: 100vw; max-width: 600px; margin: 0 auto 36px;
-      display: flex; flex-direction: column; gap: 36px;
-    }
-    .middle-img-item {
-      width: 100%; aspect-ratio: 3 / 4; background: #222;
-      border-radius: 18px; overflow: hidden; box-shadow: 0 4px 18px #0002;
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-      scroll-margin-top: calc(var(--nav-h) + 12px);
-      position: relative;
-      padding-bottom: 28px;
-    }
-    .middle-img-item img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background: #222; border-radius:18px; }
-
-    .price-tag {
-      color: #fff; font-size: 2.2rem; font-weight: bold;
-      margin-bottom: 12px;
-      z-index: 2;
-    }
-    .learn-more-btn {
-      background-color: #00bfff; color: #fff; padding: 8px 20px;
-      border-radius: 12px; font-size: 0.55rem; font-weight: 600;
-      text-align: center; cursor: pointer;
-      text-decoration: none;
-      transition: background .2s, transform .2s;
-      z-index: 2;
-    }
-    .learn-more-btn:hover { background-color: #0095d1; transform: scale(1.05); }
-
-    /* ====== 下方 4:3 图片 ====== */
-    .bottom-img-box {
-      width: 100vw; max-width: 800px; aspect-ratio: 4 / 3;
-      margin: 0 auto 40px; border-radius: 18px; overflow: hidden; background: #222;
-      box-shadow: 0 4px 18px #0003; display: flex; align-items: center; justify-content: center;
-    }
-    .bottom-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; background:#222; }
-
-    @media (min-width: 800px) {
-      .top-img-box { max-width: 480px; }
-      .middle-img-list { max-width: 800px; }
-      .bottom-img-box { max-width: 1000px; }
-      .price-tag { font-size: 3rem; }
-      .learn-more-btn { font-size: 0.7rem; padding: 10px 24px; }
-    }
+    .top-img-box { width: 100vw; max-width: 400px; aspect-ratio: 3/4; }
+    .middle-img-list { width: 100vw; max-width: 600px; margin: 0 auto 36px; display: flex; flex-direction: column; gap: 36px; }
+    .middle-img-item { width: 100%; aspect-ratio: 3/4; position: relative; scroll-margin-top: calc(var(--nav-h)+12px); }
+    .middle-img-item img, .top-img-box img, .bottom-img-box img { width:100%; height:100%; object-fit: cover; display:block; }
+    .middle-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 16px; background: rgba(0,0,0,0.35); padding-bottom: 28px; }
+    .price-tag { background: rgba(0,0,0,0.6); padding: 8px 18px; border-radius:12px; font-size:2.7rem; font-weight:bold; color:#fff; }
+    .learn-more-btn { background:#00bfff; color:#fff; padding:10px 22px; border-radius:12px; font-weight:600; cursor:pointer; text-decoration:none; transition:0.2s; }
+    .learn-more-btn:hover { background:#0095d1; transform:scale(1.05); }
+    .bottom-img-box { width:100vw; max-width:800px; aspect-ratio:4/3; margin-bottom:40px; }
 
     /* ====== Demo 表单 ====== */
-    .demo-section {
-      max-width: 900px; margin: 40px auto 0; padding: 32px 16px 0 16px;
-      background: #181a1b; border-radius: 18px; box-shadow: 0 4px 32px #0002;
-    }
-    .demo-section h2 { font-size: 2.1rem; font-weight: 700; color: #fff; text-align: center; margin-bottom: 14px; letter-spacing: .01em; }
-    .demo-section p { color: #c8e6fa; font-size: 1.12rem; text-align: center; margin-bottom: 22px; line-height: 1.7; }
-    .demo-section form { max-width: 440px; margin: 0 auto 28px; display: grid; gap: 18px; }
-    .demo-section input, .demo-section textarea { border-radius: 10px; padding: 13px 12px; border: none; font-size: 1rem; outline: none; background: #24272a; color: #fff; }
-    .demo-section button {
-      margin-top: 4px; border-radius: 10px; padding: 12px; font-size: 1.08rem; font-weight: 600;
-      background: linear-gradient(90deg,#0083ff 40%,#00e1ff 100%); color: #fff; border: none; box-shadow: 0 2px 8px #0002; cursor: pointer; transition: background .18s;
-    }
+    .demo-section { max-width:900px; margin:40px auto 0; padding:32px 16px 0; background:#181a1b; border-radius:18px; box-shadow:0 4px 32px #0002; }
+    .demo-section h2 { font-size:2.1rem; text-align:center; margin-bottom:14px; }
+    .demo-section p { text-align:center; color:#c8e6fa; margin-bottom:22px; }
+    .demo-section form { max-width:440px; margin:0 auto 28px; display:grid; gap:18px; }
+    .demo-section input, .demo-section textarea { border-radius:10px; padding:13px 12px; border:none; outline:none; background:#24272a; color:#fff; font-size:1rem; }
+    .demo-section button { border-radius:10px; padding:12px; font-size:1.08rem; font-weight:600; background:linear-gradient(90deg,#0083ff 40%,#00e1ff 100%); color:#fff; border:none; cursor:pointer; transition:0.18s; }
 
     /* ====== Messenger + Follow Us ====== */
-    .message-box {
-      max-width: 360px; margin: 60px auto 40px; background: #fff; color: #000;
-      border-radius: 16px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); text-align: center;
+    .message-box { max-width:360px; margin:60px auto 40px; background:#fff; color:#000; border-radius:16px; padding:20px; text-align:center; }
+    .message-box p { margin:0 0 10px; font-weight:bold; }
+    .message-box a { font-weight:bold; color:#0078ff; text-decoration:none; }
+    .message-box a:hover { text-decoration:underline; }
+    .messenger-icon img { width:44px; height:44px; border-radius:50%; margin-top:14px; }
+
+    .follow-section { text-align:center; margin-top:40px; }
+    .follow-title { color:#ccc; margin-bottom:12px; }
+    .social-icons { display:flex; justify-content:center; gap:24px; margin-bottom:60px; }
+    .social-icons img { width:48px; height:48px; border-radius:12px; transition:0.2s; background:#fff; }
+    .social-icons img[alt="Facebook"] { background:#1877F2; }
+    .social-icons img:hover { transform:scale(1.1); box-shadow:0 4px 10px #0006; }
+
+    .footer { text-align:center; font-size:.85rem; color:#666; padding-bottom:30px; }
+
+    @media (min-width:800px){
+      .top-img-box{max-width:480px;}
+      .middle-img-list{max-width:800px;}
+      .bottom-img-box{max-width:1000px;}
+      .price-tag{font-size:3.3rem;}
+      .learn-more-btn{font-size:0.9rem;padding:12px 28px;}
     }
-    .message-box p { font-size: 1rem; font-weight: bold; margin: 0 0 10px; line-height: 1.5; color:#000; }
-    .message-box a { font-weight: bold; color: #0078ff; text-decoration: none; font-size: 1rem; }
-    .message-box a:hover { text-decoration: underline; }
-    .messenger-icon { margin-top: 14px; }
-    .messenger-icon img { width: 44px; height: 44px; border-radius: 50%; }
-
-    .follow-section { margin-top: 40px; text-align: center; }
-    .follow-title { font-size: 1rem; color: #ccc; margin-bottom: 12px; }
-    .social-icons { display: flex; justify-content: center; gap: 24px; margin-bottom: 60px; }
-    .social-icons img { width: 48px; height: 48px; border-radius: 12px; transition: transform .2s ease, box-shadow .2s ease; background:#fff; }
-    .social-icons img[alt="Facebook"] { background-color: #1877F2; }
-    .social-icons img:hover { transform: scale(1.1); box-shadow: 0 4px 10px #0006; }
-
-    .footer { font-size: .85rem; color: #666; padding-bottom: 30px; text-align: center; }
-    @media (max-width: 480px) {
-      .social-icons img { width: 42px; height: 42px; }
-      .messenger-icon img { width: 38px; height: 38px; }
-      .price-tag { font-size: 2rem; }
+    @media (max-width:480px){
+      .social-icons img{width:42px;height:42px;}
+      .messenger-icon img{width:38px;height:38px;}
+      .price-tag{font-size:2.25rem;}
     }
   </style>
 </head>
 <body>
 
-  <!-- 顶部导航 -->
-  <nav class="navbar">
-    <a href="#home" class="logo-link" aria-label="Neo In-ear Monitor Home">
-      <img src="neo-logo.png" alt="Neo In-ear Monitor" class="logo-img">
-    </a>
-    <div class="menu-toggle" id="mobile-menu" aria-label="Open Menu">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
-  <div class="nav-spacer" id="home"></div>
+<!-- 顶部导航 -->
+<nav class="navbar">
+  <a href="#home" class="logo-link">
+    <img src="neo-logo.png" alt="Neo CIEM" class="logo-img">
+  </a>
+  <div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-spacer" id="home"></div>
 
-  <!-- 汉堡菜单内容 -->
-  <div class="nav-menu" id="nav-menu">
-    <a class="nav-link" href="#home">Home</a>
+<!-- 汉堡菜单 -->
+<div class="nav-menu" id="nav-menu">
+  <a class="nav-link" href="#home">Home</a>
+  <div class="nav-link">Models</div>
+  <div class="submenu">
+    <a href="#n6p">Neo 6 Pro</a>
+    <a href="#n8p">Neo 8 Pro</a>
+  </div>
+  <a class="nav-link" href="#requirements">Request a Demo Now</a>
 
-    <div class="nav-link">Models</div>
-    <div class="submenu">
-      <a href="#n6p">Neo 6 Pro</a>
-      <a href="#n8p">Neo 8 Pro</a>
-    </div>
-
-    <a class="nav-link" href="#requirements">Requests a Demo now</a>
-
+  <!-- Messenger + Follow Us inside hamburger -->
+  <div style="margin-top:20px; padding:0 15px;">
     <div class="message-box">
       <p>Have any question or ready to order?</p>
-      <a href="https://m.me/neoinear" target="_blank" rel="noopener">Chat with us now!</a>
+      <a href="https://m.me/neoinear" target="_blank">Chat with us now!</a>
       <div class="messenger-icon">
-        <a href="https://m.me/neoinear" target="_blank" rel="noopener">
+        <a href="https://m.me/neoinear" target="_blank">
           <img src="messenger-icon.png" alt="Messenger">
         </a>
       </div>
     </div>
-
     <div class="follow-section">
-      <div class="follow-title">Follow us on:</div>
+      <div class="follow-title">Follow Us</div>
       <div class="social-icons">
-        <a href="https://facebook.com/neoinear" target="_blank" rel="noopener">
+        <a href="https://facebook.com/neoinear" target="_blank">
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
         </a>
-        <a href="https://www.instagram.com/neociem/" target="_blank" rel="noopener">
+        <a href="https://www.instagram.com/neociem/" target="_blank">
           <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
         </a>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- 上方一张3:4图片 -->
-  <div class="top-img-box">
-    <img src="Top Banner.jpg" alt="舞台表演">
-  </div>
+<!-- 上方图片 -->
+<div class="top-img-box">
+  <img src="Top Banner.jpg" alt="舞台表演">
+</div>
 
-  <!-- 中间两张3:4图片 + 价格 + LEARN MORE -->
-  <div class="middle-img-list">
-    <div class="middle-img-item" id="n6p">
-      <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro">
+<!-- 中间产品 -->
+<div class="middle-img-list">
+  <div class="middle-img-item" id="n6p">
+    <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro">
+    <div class="middle-overlay">
       <div class="price-tag">RM2400</div>
       <a href="neo6pro.html" class="learn-more-btn">LEARN MORE</a>
     </div>
-    <div class="middle-img-item" id="n8p">
-      <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro">
+  </div>
+  <div class="middle-img-item" id="n8p">
+    <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro">
+    <div class="middle-overlay">
       <div class="price-tag">RM3300</div>
       <a href="neo8pro.html" class="learn-more-btn">LEARN MORE</a>
     </div>
   </div>
+</div>
 
-  <!-- 下方一张4:3图片 -->
-  <div class="bottom-img-box">
-    <img src="Cable Design.jpg" alt="Cable Design">
+<!-- 下方图片 -->
+<div class="bottom-img-box">
+  <img src="Cable Design.jpg" alt="Cable Design">
+</div>
+
+<!-- Interactive Layout -->
+<div style="max-width:1200px;margin:0 auto 40px;padding:0 20px;color:#f0f0f0;">
+  <!-- 此处可直接嵌入你完整的Interactive Layout code -->
+  <!-- 复制你给的Interactive Layout代码到这里 -->
+  <!-- BEGIN INTERACTIVE LAYOUT -->
+ <div class="paragraph">  
+      <h2>Our models are available in multiple colors, allowing you to select the finish that best suits your style</h2>  
+    </div>  
+
+    <div class="flex-container" id="boxgroup-centre">  
+      <div class="box" id="boxLeft">  
+        <img src="L01.png" alt="Main Image Left" id="jpeg01L" class="main-image">  
+        <div class="text-container" id="textLeft">  
+          Left Content  
+        </div>  
+      </div>  
+      <div class="box" id="boxRight">  
+        <img src="R01.png" alt="Main Image Right" id="jpeg01R" class="main-image">  
+        <div class="text-container" id="textRight">  
+          Right Content  
+        </div>  
+      </div>  
+    </div>  
+
+    <div class="tabs">  
+      <div class="tab" id="textLs">Left</div>  
+      <div class="tab active" id="textBs">Both</div>  
+      <div class="tab" id="textRs">Right</div>  
+    </div>  
+
+    <!-- Left content area -->  
+    <div class="content-box" id="boxLs">  
+      <h3 class="section-title">Transparent Colors</h3>  
+      <div class="image-gallery">  
+        <img src="L01.png" class="thumbnail" data-target="L01">  
+        <img src="L02.png" class="thumbnail" data-target="L02">  
+        <img src="L03.png" class="thumbnail" data-target="L03">  
+        <img src="L04.png" class="thumbnail" data-target="L04">  
+        <img src="L05.png" class="thumbnail" data-target="L05">  
+        <img src="L06.png" class="thumbnail" data-target="L06">  
+        <img src="L07.png" class="thumbnail" data-target="L07">  
+        <img src="L08.png" class="thumbnail" data-target="L08">  
+        <img src="L09.png" class="thumbnail" data-target="L09">  
+        <img src="L10.png" class="thumbnail" data-target="L10">  
+        <img src="L11.png" class="thumbnail" data-target="L11">  
+      </div>  
+
+      <h3 class="section-title">Solid Colors</h3>  
+      <div class="image-gallery">  
+        <img src="L12.png" class="thumbnail" data-target="L12">  
+        <img src="L13.png" class="thumbnail" data-target="L13">  
+        <img src="L14.png" class="thumbnail" data-target="L14">  
+        <img src="L15.png" class="thumbnail" data-target="L15">  
+        <img src="L16.png" class="thumbnail" data-target="L16">  
+        <img src="L17.png" class="thumbnail" data-target="L17">  
+        <img src="L18.png" class="thumbnail" data-target="L18">  
+        <img src="L19.png" class="thumbnail" data-target="L19">  
+        <img src="L20.png" class="thumbnail" data-target="L20">  
+        <img src="L21.png" class="thumbnail" data-target="L21">  
+        <img src="L22.png" class="thumbnail" data-target="L22">  
+      </div>  
+
+      <h3 class="section-title">Glitter Colors</h3>  
+      <div class="image-gallery">  
+        <img src="L23.png" class="thumbnail" data-target="L23">  
+        <img src="L24.png" class="thumbnail" data-target="L24">  
+        <img src="L25.png" class="thumbnail" data-target="L25">  
+        <img src="L26.png" class="thumbnail" data-target="L26">  
+        <img src="L27.png" class="thumbnail" data-target="L27">  
+        <img src="L28.png" class="thumbnail" data-target="L28">  
+        <img src="L29.png" class="thumbnail" data-target="L29">  
+      </div>  
+    </div>  
+
+    <!-- Both content area, default open -->  
+    <div class="content-box active" id="boxBs">  
+      <h3 class="section-title">Transparent Colors</h3>  
+      <div class="image-gallery">  
+        <img src="B01.png" class="thumbnail" data-target="B01">  
+        <img src="B02.png" class="thumbnail" data-target="B02">  
+        <img src="B03.png" class="thumbnail" data-target="B03">  
+        <img src="B04.png" class="thumbnail" data-target="B04">  
+        <img src="B05.png" class="thumbnail" data-target="B05">  
+        <img src="B06.png" class="thumbnail" data-target="B06">  
+        <img src="B07.png" class="thumbnail" data-target="B07">  
+        <img src="B08.png" class="thumbnail" data-target="B08">  
+        <img src="B09.png" class="thumbnail" data-target="B09">  
+        <img src="B10.png" class="thumbnail" data-target="B10">  
+        <img src="B11.png" class="thumbnail" data-target="B11">  
+      </div>  
+
+      <h3 class="section-title">Solid Colors</h3>  
+      <div class="image-gallery">  
+        <img src="B12.png" class="thumbnail" data-target="B12">  
+        <img src="B13.png" class="thumbnail" data-target="B13">  
+        <img src="B14.png" class="thumbnail" data-target="B14">  
+        <img src="B15.png" class="thumbnail" data-target="B15">  
+        <img src="B16.png" class="thumbnail" data-target="B16">  
+        <img src="B17.png" class="thumbnail" data-target="B17">  
+        <img src="B18.png" class="thumbnail" data-target="B18">  
+        <img src="B19.png" class="thumbnail" data-target="B19">  
+        <img src="B20.png" class="thumbnail" data-target="B20">  
+        <img src="B21.png" class="thumbnail" data-target="B21">  
+        <img src="B22.png" class="thumbnail" data-target="B22">  
+      </div>  
+
+      <h3 class="section-title">Glitter Colors</h3>  
+      <div class="image-gallery">  
+        <img src="B23.png" class="thumbnail" data-target="B23">  
+        <img src="B24.png" class="thumbnail" data-target="B24">  
+        <img src="B25.png" class="thumbnail" data-target="B25">  
+        <img src="B26.png" class="thumbnail" data-target="B26">  
+        <img src="B27.png" class="thumbnail" data-target="B27">  
+        <img src="B28.png" class="thumbnail" data-target="B28">  
+        <img src="B29.png" class="thumbnail" data-target="B29">  
+      </div>  
+    </div>  
+
+    <!-- Right content area -->  
+    <div class="content-box" id="boxRs">  
+      <h3 class="section-title">Transparent Colors</h3>  
+      <div class="image-gallery">  
+        <img src="R01.png" class="thumbnail" data-target="R01">  
+        <img src="R02.png" class="thumbnail" data-target="R02">  
+        <img src="R03.png" class="thumbnail" data-target="R03">  
+        <img src="R04.png" class="thumbnail" data-target="R04">  
+        <img src="R05.png" class="thumbnail" data-target="R05">  
+        <img src="R06.png" class="thumbnail" data-target="R06">  
+        <img src="R07.png" class="thumbnail" data-target="R07">  
+        <img src="R08.png" class="thumbnail" data-target="R08">  
+        <img src="R09.png" class="thumbnail" data-target="R09">  
+        <img src="R10.png" class="thumbnail" data-target="R10">  
+        <img src="R11.png" class="thumbnail" data-target="R11">  
+      </div>  
+
+      <h3 class="section-title">Solid Colors</h3>  
+      <div class="image-gallery">  
+        <img src="R12.png" class="thumbnail" data-target="R12">  
+        <img src="R13.png" class="thumbnail" data-target="R13">  
+        <img src="R14.png" class="thumbnail" data-target="R14">  
+        <img src="R15.png" class="thumbnail" data-target="R15">  
+        <img src="R16.png" class="thumbnail" data-target="R16">  
+        <img src="R17.png" class="thumbnail" data-target="R17">  
+        <img src="R18.png" class="thumbnail" data-target="R18">  
+        <img src="R19.png" class="thumbnail" data-target="R19">  
+        <img src="R20.png" class="thumbnail" data-target="R20">  
+        <img src="R21.png" class="thumbnail" data-target="R21">  
+        <img src="R22.png" class="thumbnail" data-target="R22">  
+      </div>  
+
+      <h3 class="section-title">Glitter Colors</h3>  
+      <div class="image-gallery">  
+        <img src="R23.png" class="thumbnail" data-target="R23">  
+        <img src="R24.png" class="thumbnail" data-target="R24">  
+        <img src="R25.png" class="thumbnail" data-target="R25">  
+        <img src="R26.png" class="thumbnail" data-target="R26">  
+        <img src="R27.png" class="thumbnail" data-target="R27">  
+        <img src="R28.png" class="thumbnail" data-target="R28">  
+        <img src="R29.png" class="thumbnail" data-target="R29">  
+      </div>  
+    </div>  
+
+<!-- Demo 表单 -->
+<div class="demo-section" id="requirements">
+  <h2>Request a Demo Now</h2>
+  <p>Experience Neo CIEM on your stage and discover a new world of music detail. <br>Book a personalized demo session—get in touch now!</p>
+  <form action="https://formspree.io/f/mblybpog" method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="model" placeholder="Preferred Model" required>
+    <textarea name="message" placeholder="Your Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<!-- Messenger + Follow Us bottom -->
+<div class="message-box">
+  <p>Have any question or ready to order?</p>
+  <a href="https://m.me/neoinear" target="_blank">Chat with us now!</a>
+  <div class="messenger-icon">
+    <a href="https://m.me/neoinear" target="_blank">
+      <img src="messenger-icon.png" alt="Messenger">
+    </a>
   </div>
-
-  <!-- Demo 表单 -->
-  <div class="demo-section" id="requirements">
-    <h2>Request a Demo Now</h2>
-    <p>
-      Experience Neo CIEM on your stage and discover a new world of music detail. <br>
-      Book a personalized demo session—get in touch now!
-    </p>
-    <form action="https://formspree.io/f/mblybpog" method="POST">
-      <input type="text" name="name" placeholder="Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9+\-\s]{7,}">
-      <input type="text" name="role" placeholder="Your Role (e.g. Singer, Musician)">
-      <textarea name="message" placeholder="Your Message (Optional)" rows="3"></textarea>
-      <button type="submit">Request Now</button>
-    </form>
+</div>
+<div class="follow-section">
+  <div class="follow-title">Follow Us</div>
+  <div class="social-icons">
+    <a href="https://facebook.com/neoinear" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com/neociem/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    </a>
   </div>
+</div>
 
-  <!-- 页面里的 Messenger -->
-  <div class="message-box" id="msg-box">
-    <p>Have any question or ready to order?</p>
-    <a href="https://m.me/neoinear" target="_blank" rel="noopener">Chat with us now!</a>
-    <div class="messenger-icon">
-      <a href="https://m.me/neoinear" target="_blank" rel="noopener">
-        <img src="messenger-icon.png" alt="Messenger">
-      </a>
-    </div>
-  </div>
+<div class="footer">© 2025 Neo CIEM. All rights reserved.</div>
 
-  <!-- 页面里的 Follow Us -->
-  <div class="follow-section" id="follow">
-    <div class="follow-title">Follow us on:</div>
-    <div class="social-icons">
-      <a href="https://facebook.com/neoinear" target="_blank" rel="noopener">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
-      </a>
-      <a href="https://www.instagram.com/neociem/" target="_blank" rel="noopener">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-      </a>
-    </div>
-  </div>
+<script>
+  // 汉堡菜单切换
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navMenu = document.getElementById('nav-menu');
+  mobileMenu.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
 
-  <div class="footer">© 2025 Neo CIEM. All rights reserved.</div>
+  // Interactive Layout Tabs
+  const leftColorNames = [  
+      "Transparent Clear","Transparent Black","Transparent Red","Transparent Sky Blue","Transparent Navy Blue","Transparent Apple Green","Transparent Emerald Green","Transparent Yellow","Transparent Orange","Transparent Purple","Transparent Pink",  
+      "Solid White","Solid Black","Solid Red","Solid Sky Blue","Solid Navy Blue","Solid Apple Green","Solid Emerald Green","Solid Yellow","Solid Orange","Solid Purple","Solid Pink",  
+      "Glitter Silver","Glitter Gold","Glitter Red","Glitter Blue","Glitter Green","Glitter Purple","Glitter Pink"  
+  ];  
+  const rightColorNames = [...leftColorNames];  
+  const tabs = document.querySelectorAll('.tab');  
+  const contentBoxes = document.querySelectorAll('.content-box');  
+  tabs.forEach(tab => {  
+    tab.addEventListener('click', () => {  
+      tabs.forEach(t => t.classList.remove('active'));  
+      contentBoxes.forEach(box => box.classList.remove('active'));  
+      tab.classList.add('active');  
+      const targetId = tab.id.replace('text', 'box');  
+      document.getElementById(targetId).classList.add('active');  
+    });  
+  });  
+  const thumbnails = document.querySelectorAll('.thumbnail');  
+  thumbnails.forEach(thumb => {  
+    thumb.addEventListener('click', () => {  
+      const target = thumb.getAttribute('data-target');  
+      const type = target.charAt(0);  
+      const number = parseInt(target.substring(1), 10);  
+      if (type === 'L') {  
+        document.getElementById('jpeg01L').src = `L${number.toString().padStart(2,"0")}.png`;  
+        document.getElementById('textLeft').textContent = `Left: ${leftColorNames[number-1]}`;  
+      } else if (type === 'R') {  
+        document.getElementById('jpeg01R').src = `R${number.toString().padStart(2,"0")}.png`;  
+        document.getElementById('textRight').textContent = `Right: ${rightColorNames[number-1]}`;  
+      } else if (type === 'B') {  
+        document.getElementById('jpeg01L').src = `L${number.toString().padStart(2,"0")}.png`;  
+        document.getElementById('jpeg01R').src = `R${number.toString().padStart(2,"0")}.png`;  
+        document.getElementById('textLeft').textContent = `Left: ${leftColorNames[number-1]}`;  
+        document.getElementById('textRight').textContent = `Right: ${rightColorNames[number-1]}`;  
+      }  
+    });  
+  });  
+</script>
 
-  <script>
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navMenu = document.getElementById('nav-menu');
-
-    mobileMenu.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      mobileMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.nav-menu a[href^="#"]').forEach(a => {
-      a.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        mobileMenu.classList.remove('active');
-      });
-    });
-  </script>
 </body>
 </html>
