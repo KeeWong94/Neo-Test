@@ -432,8 +432,10 @@
       if(targetId.startsWith('L')) document.getElementById('jpeg01L').src = th.src;
       if(targetId.startsWith('R')) document.getElementById('jpeg01R').src = th.src;
       if(targetId.startsWith('B')){
-        document.getElementById('jpeg01L').src = th.src;
-        document.getElementById('jpeg01R').src = th.src;
+        document.getElementById('jpeg01L').src = `L${number.toString().padStart(2,"0")}.png`;  
+        document.getElementById('jpeg01R').src = `R${number.toString().padStart(2,"0")}.png`;  
+        document.getElementById('textLeft').textContent = `Left: ${leftColorNames[number-1]}`;  
+        document.getElementById('textRight').textContent = `Right: ${rightColorNames[number-1]}`; 
       }
     });
   });
