@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neo 8 Pro - Premium 8 Balanced Armature Earphones</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+    }
+
+    body {
+      background-color: #000000;
+      color: #f5f5f7;
+      line-height: 1.47059;
+      font-weight: 400;
+      letter-spacing: -0.022em;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 64px;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      z-index: 1000;
+      border-bottom: 1px solid #111;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .back-btn {
+      padding: 8px 16px;
+      border: 1px solid #00aaff;
+      border-radius: 8px;
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #00aaff;
+      color: #000;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(150deg, #0a0a0a 0%, #000000 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 80px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #ffffff, #aaaaaa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero h2 {
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 30px;
+      color: #f5f5f7;
+      max-width: 700px;
+    }
+
+    .iem-image {
+      width: 800px;
+      max-width: 95%;
+      margin: 40px auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .iem-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 120px 0;
+      text-align: center;
+      background-color: #050505;
+    }
+
+    .section-title {
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #f5f5f7;
+    }
+
+    .section-subtitle {
+      font-size: 21px;
+      font-weight: 400;
+      color: #86868b;
+      max-width: 800px;
+      margin: 0 auto 80px;
+      line-height: 1.6;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .feature-item {
+      padding: 40px 30px;
+      border-radius: 20px;
+      background: #111111;
+      transition: transform 0.3s;
+      border: 1px solid #222222;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 150, 255, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 50px;
+      margin-bottom: 25px;
+      color: #00aaff;
+    }
+
+    .feature-title {
+      font-size: 21px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #f5f5f7;
+    }
+
+    .feature-desc {
+      font-size: 17px;
+      color: #aaaaaa;
+    }
+
+    /* Specifications Section */
+    .specs {
+      padding: 120px 0;
+      background: #0a0a0a;
+      text-align: center;
+    }
+
+    .specs-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      text-align: left;
+      margin-top: 60px;
+    }
+
+    .spec-item {
+      padding: 25px;
+      background: #111111;
+      border-radius: 18px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid #222222;
+    }
+
+    .spec-title {
+      font-size: 21px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #f5f5f7;
+    }
+
+    .spec-desc {
+      font-size: 17px;
+      color: #aaaaaa;
+    }
+
+    /* Comparison Section */
+    .comparison {
+      padding: 120px 0;
+      background: #050505;
+      text-align: center;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 60px auto 0;
+      padding: 0 20px;
+    }
+
+    .comparison-item {
+      padding: 30px;
+      border-radius: 20px;
+      background: #111111;
+      border: 1px solid #222222;
+    }
+
+    .comparison-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #f5f5f7;
+    }
+
+    .comparison-item ul {
+      text-align: left;
+      color: #aaaaaa;
+      font-size: 17px;
+      list-style-type: none;
+    }
+
+    .comparison-item li {
+      margin-bottom: 12px;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .comparison-item li:before {
+      content: "•";
+      color: #00aaff;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #888;
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid #111;
+    }
+
+    footer p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* Highlight Styles */
+    .highlight {
+      color: #f5f5f7;
+      font-weight: 600;
+    }
+
+    .highlight-tech {
+      color: #00aaff;
+      font-weight: 600;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 60px;
+      }
+
+      .section-title {
+        font-size: 48px;
+      }
+
+      .iem-image {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .specs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .section-title {
+        font-size: 40px;
+      }
+
+      .section-subtitle {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="Neo Logo.png" alt="Neo Logo">
+    </div>
+    <a href="index.html" class="back-btn">Back</a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Neo 8 Pro</h1>
+      <h2>Professional-grade <span class="highlight-tech">8 balanced armature</span> earphones delivering <span class="highlight">highly resolved detail</span> and <span class="highlight">flat tuning for monitoring precision</span></h2>
+      <div class="iem-image">
+        <img src="Neo 8 Pro.png" alt="Neo 8 Pro">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 class="section-title">Re-engineered Driver Technology</h2>
+    <p class="section-subtitle">The Neo 8 Pro features a <span class="highlight-tech">re-engineered 8 balanced armature (BA) driver configuration</span> in each ear. This sophisticated arrangement enables <span class="highlight">exceptional audio performance</span> across the entire frequency spectrum.<br><br>
+      With <span class="highlight-tech">high sensitivity</span> and <span class="highlight-tech">extended frequency response</span>, the Neo 8 Pro delivers <span class="highlight">highly resolved detail</span> and <span class="highlight">flat tuning for monitoring precision</span>.<br><br>
+      Engineered to <span class="highlight">redefine reference sound</span> for our top-tier professional IEMs, these earphones provide <span class="highlight">distortion-free performance</span> even at high SPLs (Sound Pressure Levels), making them perfect for critical listening and professional use.</p>
+    
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <i class="fas fa-wave-square"></i>
+        </div>
+        <h3 class="feature-title">Highly Resolved Detail</h3>
+        <p class="feature-desc">Engineered for <span class="highlight">maximum clarity and precision</span>, ensuring a clean, detailed, and well-balanced response with <span class="highlight-tech">distortion-free performance</span>.</p>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <i class="fas fa-microchip"></i>
+        </div>
+        <h3 class="feature-title">8 Precision Driver System</h3>
+        <p class="feature-desc">Features a <span class="highlight-tech">re-engineered 8 balanced armature (BA)</span> driver configuration in each ear for <span class="highlight">exceptional audio fidelity</span>.</p>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <i class="fas fa-volume-up"></i>
+        </div>
+        <h3 class="feature-title">Extended Frequency Response</h3>
+        <p class="feature-desc">With <span class="highlight-tech">extended frequency response</span>, it delivers <span class="highlight">precise, full-range sound</span> for professional monitoring applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specifications Section -->
+  <section class="specs">
+    <h2 class="section-title">Technical Specifications</h2>
+    <p class="section-subtitle">Every detail meticulously designed for <span class="highlight">exceptional audio experience</span></p>
+    
+    <div class="specs-container">
+      <div class="specs-grid">
+        <div class="spec-item">
+          <h3 class="spec-title">Driver Units</h3>
+          <p class="spec-desc"><span class="highlight-tech">8 balanced armature (BA)</span> driver configuration, each specialized for specific frequency ranges</p>
+        </div>
+        
+        <div class="spec-item">
+          <h3 class="spec-title">Frequency Response</h3>
+          <p class="spec-desc"><span class="highlight-tech">20Hz - 20kHz</span>, extending beyond human hearing range to ensure every detail is accurately reproduced</p>
+        </div>
+        
+        <div class="spec-item">
+          <h3 class="spec-title">Impedance</h3>
+          <p class="spec-desc"><span class="highlight-tech">32Ω @ 1kHz</span>, optimized for professional audio equipment</p>
+        </div>
+        
+        <div class="spec-item">
+          <h3 class="spec-title">Sensitivity</h3>
+          <p class="spec-desc"><span class="highlight-tech">118dB SPL/mW</span>, high efficiency conversion for precise monitoring</p>
+        </div>
+        
+        <div class="spec-item">
+          <h3 class="spec-title">Noise Isolation</h3>
+          <p class="spec-desc"><span class="highlight-tech">-26dB</span> passive noise reduction for immersive listening experience</p>
+        </div>
+        
+        <div class="spec-item">
+          <h3 class="spec-title">Connector</h3>
+          <p class="spec-desc"><span class="highlight-tech">Detachable Cable</span> for cable customization and replacement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Comparison Section -->
+  <section class="comparison">
+    <h2 class="section-title">Evolution of Excellence</h2>
+    <p class="section-subtitle">Building upon the acclaimed Neo 6 Pro with enhanced driver technology</p>
+    
+    <div class="comparison-grid">
+      <div class="comparison-item">
+        <h3 class="comparison-title">Neo 6 Pro</h3>
+        <ul>
+          <li>Triple dual balanced armature drivers</li>
+          <li>6 drivers per side</li>
+          <li>20Ω @ 1kHz impedance</li>
+          <li>121dB SPL/mW sensitivity</li>
+          <li>Excellent clarity and headroom</li>
+          <li>Well-balanced response</li>
+        </ul>
+      </div>
+      
+      <div class="comparison-item">
+        <h3 class="comparison-title">Neo 8 Pro</h3>
+        <ul>
+          <li>Re-engineered 8 balanced armature drivers</li>
+          <li>8 drivers per side</li>
+          <li>32Ω @ 1kHz impedance</li>
+          <li>118dB SPL/mW sensitivity</li>
+          <li>Highly resolved detail and extended frequency response</li>
+          <li>Flat tuning for monitoring precision</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Neo CIEM. All rights reserved.</p>
+  </footer>
+</body>
+</html>
