@@ -182,13 +182,13 @@
 
 <!-- section 1 轮播图 -->
 <section class="section-dark">
-  <div class="top-img-box">
-    <!-- 文字固定在中间 -->
-    <div class="hero-text">
-      <h1>Neo In-ear Monitor</h1>
-      <p>Professional IEMs engineered for vocalists, instrumentalists, and live sound engineers</p>
-    </div>
+  <!-- 文字始终固定在轮播图上方中间 -->
+  <div class="hero-text">
+    <h1>Neo In-ear Monitor</h1>
+    <p>Professional IEMs engineered for vocalists, instrumentalists, and live sound engineers</p>
+  </div>
 
+  <div class="top-img-box">
     <div class="slider-container">
       <div class="slider-track" id="slider-track">
         <img src="Top Banner.jpg" alt="舞台表演">
@@ -209,29 +209,24 @@
 </section>
 
 <style>
+  .hero-text {
+    text-align: center;
+    margin-bottom: 30px; /* 与轮播图保持距离 */
+  }
+  .hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .hero-text p {
+    font-size: 1.2rem;
+    color: #444;
+  }
   .top-img-box {
     position: relative;
   }
-  .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    z-index: 2;
-  }
-  .hero-text h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-  }
-  .hero-text p {
-    font-size: 1.3rem;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
-  }
 </style>
+
 
 <!-- section 2 产品 -->
 <section class="section-gray">
