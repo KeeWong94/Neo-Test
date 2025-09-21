@@ -7,7 +7,6 @@
   <style>
     :root { 
       --nav-h: 64px; 
-      --top-img-scale: 0.9; /* 调节 Section1 图片整体比例 */
     }
     * { box-sizing: border-box; margin:0; padding:0; }
     html { scroll-behavior: smooth; }
@@ -77,13 +76,26 @@
     .section-gray { background: #1a1a1a; }
 
     /* ====== Section1 轮播图 ====== */
+    .hero-text {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .hero-text h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
     .top-img-box {
       max-width: 800px;
       margin: 0 auto;
       overflow: hidden;
       border-radius: 18px;
       box-shadow: 0 4px 18px #0003;
-      transform: scale(var(0.6));
+      position: relative;
     }
     .slider-container {
       position: relative;
@@ -99,7 +111,7 @@
     .slider-track img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* 自动填充并裁切 */
       flex-shrink: 0;
     }
     .slider-dots {
@@ -118,6 +130,14 @@
     }
     .slider-dots .active {
       background: #00bfff;
+    }
+    .hero-subtext {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .hero-subtext p {
+      font-size: 1.1rem;
+      color: #ccc;
     }
 
     /* ====== Section2 产品图 ====== */
@@ -212,45 +232,6 @@
     <p>whether you're singing solo, playing rock anthems, or touring the world.</p>
   </div>
 </section>
-
-<style>
-  .hero-text {
-    text-align: center;
-    margin-bottom: 30px; /* 与轮播图保持距离 */
-  }
-  .hero-text h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  .hero-text p {
-    font-size: 1.2rem;
-    color: #444;
-  }
-  .top-img-box {
-    position: relative;
-    text-align: center;
-  }
-  .slider-container {
-    width: 80%;   /* 控制整体大小 */
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  .slider-track img {
-    width: 100%;
-    height: 500px;          /* 固定高度，图片自动填充 */
-    object-fit: cover;      /* 关键：填满容器 */
-    border-radius: 8px;
-  }
-  .hero-subtext {
-    text-align: center;
-    margin-top: 20px;
-  }
-  .hero-subtext p {
-    font-size: 1.1rem;
-    color: #555;
-  }
-</style>
 
 <!-- section 2 产品 -->
 <section class="section-gray">
