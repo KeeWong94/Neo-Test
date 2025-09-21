@@ -100,20 +100,19 @@
     .slider-container {
       position: relative;
       width: 100%;
-      aspect-ratio: 3/4;
+      height: 60vh; /* 改为基于视口高度 */
+      max-height: 600px; /* 限制最大高度 */
       overflow: hidden;
-      margin: 0 auto; 
-      max-width: 90%; 
     }
     .slider-track {
       display: flex;
       transition: transform 0.5s ease;
-      width: 500%; /* 5张图 */
+      height: 100%; /* 高度100% */
     }
     .slider-track img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* 自动缩小填充 */
+      object-fit: contain; /* 保持contain确保图片完整显示 */
       flex-shrink: 0;
       background: #000;
     }
@@ -207,7 +206,7 @@
 <section class="section-dark">
   <div class="hero-text">
     <h1>Neo In-ear Monitor</h1>
-    <p>Professional IEMs engineered for vocalists, instrumentalists, and live sound engineers
+    <p>Professional IEMs engineered for vocalists, instrumentalists, and live sound engineers</p>
   </div>
 
   <div class="top-img-box">
