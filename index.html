@@ -183,7 +183,7 @@
 <!-- section 1 轮播图 -->
 <section class="section-dark">
   <div class="top-img-box">
-    <!-- 文字覆盖在轮播图上 -->
+    <!-- 文字固定在中间 -->
     <div class="hero-text">
       <h1>Neo In-ear Monitor</h1>
       <p>Professional IEMs engineered for vocalists, instrumentalists, and live sound engineers</p>
@@ -207,6 +207,31 @@
     </div>
   </div>
 </section>
+
+<style>
+  .top-img-box {
+    position: relative;
+  }
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+  }
+  .hero-text h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+  }
+  .hero-text p {
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+  }
+</style>
 
 <!-- section 2 产品 -->
 <section class="section-gray">
