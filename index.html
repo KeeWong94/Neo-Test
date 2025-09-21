@@ -112,26 +112,6 @@
     .social-icons img:hover { transform:scale(1.1); box-shadow:0 4px 10px #0006; }
 
     .footer { text-align:center; font-size:.85rem; color:#666; padding-bottom:30px; }
-
-    /* ====== Interactive Layout styles (from new layout) ====== */
-    .paragraph { margin-bottom: 20px; line-height: 1.6; text-align: center; }
-    .flex-container { display:flex; justify-content: space-between; margin-bottom: 20px; gap:20px; flex-wrap:wrap; }
-    .box { flex:1; padding:15px; border-radius:5px; text-align:center; background-color:#333; color:#fff; border:1px solid #555; }
-    .main-image { width:100%; max-width:300px; height:auto; margin-bottom:10px; border-radius:5px; }
-    .text-container { margin-top:10px; }
-    .tabs { display:flex; justify-content:center; margin-bottom:20px; gap:10px; flex-wrap:wrap; }
-    .tab { padding:10px 20px; background:#444; border:1px solid #666; border-radius:5px; cursor:pointer; color:#fff; }
-    .tab.active { background:#4CAF50; color:#fff; }
-    .content-box { border:1px solid #444; border-radius:5px; padding:20px; margin-bottom:20px; display:none; background:#222; color:#fff; }
-    .content-box.active { display:block; }
-    .image-gallery { display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 20px; justify-content:flex-start; }
-    .thumbnail { width:30px; height:30px; cursor:pointer; border:1px solid #666; border-radius:4px; }
-    .thumbnail:hover { border-color:#4CAF50; }
-    .section-title { margin:15px 0 5px; color:#fff; }
-    @media (min-width:800px){
-      .main-image { max-width:400px; }
-      .box { padding:20px; }
-    }
   </style>
 </head>
 <body>
@@ -178,12 +158,12 @@
   </div>
 </div>
 
-<!-- 上方图片 -->
+<!-- section 1 -->
 <div class="top-img-box">
   <img src="Top Banner.jpg" alt="舞台表演">
 </div>
 
-<!-- 中间产品 -->
+<!-- section 2 -->
 <div class="middle-img-list">
   <div class="middle-img-item" id="n6p">
     <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro">
@@ -201,167 +181,12 @@
   </div>
 </div>
 
-<!-- 下方图片 -->
+<!-- section 3 -->
 <div class="bottom-img-box">
   <img src="Cable Design.jpg" alt="Cable Design">
 </div>
 
-<!-- Interactive Layout -->
-<div>
-  <div class="paragraph">  
-    <h2>Our models are available in multiple colors, allowing you to select the finish that best suits your style</h2>  
-  </div>  
-
-  <div class="flex-container" id="boxgroup-centre">  
-    <div class="box" id="boxLeft">  
-      <img src="L01.png" alt="Main Image Left" id="jpeg01L" class="main-image">  
-      <div class="text-container" id="textLeft">Left Content</div>  
-    </div>  
-    <div class="box" id="boxRight">  
-      <img src="R01.png" alt="Main Image Right" id="jpeg01R" class="main-image">  
-      <div class="text-container" id="textRight">Right Content</div>  
-    </div>  
-  </div>  
-
-  <div class="tabs">  
-    <div class="tab" id="textLs">Left</div>  
-    <div class="tab active" id="textBs">Both</div>  
-    <div class="tab" id="textRs">Right</div>  
-  </div>  
-
-  <!-- Left content area -->  
-  <div class="content-box" id="boxLs">  
-    <h3 class="section-title">Transparent Colors</h3>  
-    <div class="image-gallery">  
-      <img src="L01.png" class="thumbnail" data-target="L01">  
-      <img src="L02.png" class="thumbnail" data-target="L02">  
-      <img src="L03.png" class="thumbnail" data-target="L03">  
-      <img src="L04.png" class="thumbnail" data-target="L04">  
-      <img src="L05.png" class="thumbnail" data-target="L05">  
-      <img src="L06.png" class="thumbnail" data-target="L06">  
-      <img src="L07.png" class="thumbnail" data-target="L07">  
-      <img src="L08.png" class="thumbnail" data-target="L08">  
-      <img src="L09.png" class="thumbnail" data-target="L09">  
-      <img src="L10.png" class="thumbnail" data-target="L10">  
-      <img src="L11.png" class="thumbnail" data-target="L11">  
-    </div>  
-    <h3 class="section-title">Solid Colors</h3>  
-    <div class="image-gallery">  
-      <img src="L12.png" class="thumbnail" data-target="L12">  
-      <img src="L13.png" class="thumbnail" data-target="L13">  
-      <img src="L14.png" class="thumbnail" data-target="L14">  
-      <img src="L15.png" class="thumbnail" data-target="L15">  
-      <img src="L16.png" class="thumbnail" data-target="L16">  
-      <img src="L17.png" class="thumbnail" data-target="L17">  
-      <img src="L18.png" class="thumbnail" data-target="L18">  
-      <img src="L19.png" class="thumbnail" data-target="L19">  
-      <img src="L20.png" class="thumbnail" data-target="L20">  
-      <img src="L21.png" class="thumbnail" data-target="L21">  
-      <img src="L22.png" class="thumbnail" data-target="L22">  
-    </div>  
-    <h3 class="section-title">Glitter Colors</h3>  
-    <div class="image-gallery">  
-      <img src="L23.png" class="thumbnail" data-target="L23">  
-      <img src="L24.png" class="thumbnail" data-target="L24">  
-      <img src="L25.png" class="thumbnail" data-target="L25">  
-      <img src="L26.png" class="thumbnail" data-target="L26">  
-      <img src="L27.png" class="thumbnail" data-target="L27">  
-      <img src="L28.png" class="thumbnail" data-target="L28">  
-      <img src="L29.png" class="thumbnail" data-target="L29">  
-    </div>  
-  </div>  
-
-  <!-- Both content area -->  
-  <div class="content-box active" id="boxBs">  
-    <h3 class="section-title">Transparent Colors</h3>  
-    <div class="image-gallery">  
-      <img src="B01.png" class="thumbnail" data-target="01">  
-      <img src="B02.png" class="thumbnail" data-target="02">  
-      <img src="B03.png" class="thumbnail" data-target="03">  
-      <img src="B04.png" class="thumbnail" data-target="04">  
-      <img src="B05.png" class="thumbnail" data-target="05">  
-      <img src="B06.png" class="thumbnail" data-target="06">  
-      <img src="B07.png" class="thumbnail" data-target="07">  
-      <img src="B08.png" class="thumbnail" data-target="08">  
-      <img src="B09.png" class="thumbnail" data-target="09">  
-      <img src="B10.png" class="thumbnail" data-target="10">  
-      <img src="B11.png" class="thumbnail" data-target="11">  
-    </div>  
-
-    <h3 class="section-title">Solid Colors</h3>  
-    <div class="image-gallery">  
-      <img src="B12.png" class="thumbnail" data-target="12">  
-      <img src="B13.png" class="thumbnail" data-target="13">  
-      <img src="B14.png" class="thumbnail" data-target="14">  
-      <img src="B15.png" class="thumbnail" data-target="15">  
-      <img src="B16.png" class="thumbnail" data-target="16">  
-      <img src="B17.png" class="thumbnail" data-target="17">  
-      <img src="B18.png" class="thumbnail" data-target="18">  
-      <img src="B19.png" class="thumbnail" data-target="19">  
-      <img src="B20.png" class="thumbnail" data-target="20">  
-      <img src="B21.png" class="thumbnail" data-target="21">  
-      <img src="B22.png" class="thumbnail" data-target="22">  
-    </div>  
-
-    <h3 class="section-title">Glitter Colors</h3>  
-    <div class="image-gallery">  
-      <img src="B23.png" class="thumbnail" data-target="23">  
-      <img src="B24.png" class="thumbnail" data-target="24">  
-      <img src="B25.png" class="thumbnail" data-target="25">  
-      <img src="B26.png" class="thumbnail" data-target="26">  
-      <img src="B27.png" class="thumbnail" data-target="27">  
-      <img src="B28.png" class="thumbnail" data-target="28">  
-      <img src="B29.png" class="thumbnail" data-target="29">  
-    </div>  
-  </div>  
-
-  <!-- Right content area -->  
-  <div class="content-box" id="boxRs">  
-    <h3 class="section-title">Transparent Colors</h3>  
-    <div class="image-gallery">  
-      <img src="R01.png" class="thumbnail" data-target="R01">  
-      <img src="R02.png" class="thumbnail" data-target="R02">  
-      <img src="R03.png" class="thumbnail" data-target="R03">  
-      <img src="R04.png" class="thumbnail" data-target="R04">  
-      <img src="R05.png" class="thumbnail" data-target="R05">  
-      <img src="R06.png" class="thumbnail" data-target="R06">  
-      <img src="R07.png" class="thumbnail" data-target="R07">  
-      <img src="R08.png" class="thumbnail" data-target="R08">  
-      <img src="R09.png" class="thumbnail" data-target="R09">  
-      <img src="R10.png" class="thumbnail" data-target="R10">  
-      <img src="R11.png" class="thumbnail" data-target="R11">  
-    </div>  
-
-    <h3 class="section-title">Solid Colors</h3>  
-    <div class="image-gallery">  
-      <img src="R12.png" class="thumbnail" data-target="R12">  
-      <img src="R13.png" class="thumbnail" data-target="R13">  
-      <img src="R14.png" class="thumbnail" data-target="R14">  
-      <img src="R15.png" class="thumbnail" data-target="R15">  
-      <img src="R16.png" class="thumbnail" data-target="R16">  
-      <img src="R17.png" class="thumbnail" data-target="R17">  
-      <img src="R18.png" class="thumbnail" data-target="R18">  
-      <img src="R19.png" class="thumbnail" data-target="R19">  
-      <img src="R20.png" class="thumbnail" data-target="R20">  
-      <img src="R21.png" class="thumbnail" data-target="R21">  
-      <img src="R22.png" class="thumbnail" data-target="R22">  
-    </div>  
-
-    <h3 class="section-title">Glitter Colors</h3>  
-    <div class="image-gallery">  
-      <img src="R23.png" class="thumbnail" data-target="R23">  
-      <img src="R24.png" class="thumbnail" data-target="R24">  
-      <img src="R25.png" class="thumbnail" data-target="R25">  
-      <img src="R26.png" class="thumbnail" data-target="R26">  
-      <img src="R27.png" class="thumbnail" data-target="R27">  
-      <img src="R28.png" class="thumbnail" data-target="R28">  
-      <img src="R29.png" class="thumbnail" data-target="R29">  
-    </div>  
-  </div>  
-</div>
-
-
-<!-- Demo 表单 -->
+<!-- section 4 -->
 <div class="demo-section" id="requirements">
   <h2>Request a Demo Now</h2>
   <p>Fill out the form below and our team will contact you</p>
@@ -372,9 +197,9 @@
     <textarea name="message" placeholder="Additional Message"></textarea>
     <button type="submit">Submit</button>
   </form>
-</section>
+</div>
 
-<!-- Messenger + Follow Us -->
+<!-- section 5 -->
 <div class="message-box">
   <p>Have any question or ready to order?</p>
   <a href="https://m.me/neoinear" target="_blank">Chat with us now!</a>
@@ -396,7 +221,6 @@
   </div>
 </div>
 
-
 <!-- Footer -->
 <div class="footer">
   <p>&copy; 2025 Neo CIEM. All rights reserved.</p>
@@ -416,33 +240,6 @@
     link.addEventListener("click", () => {
       mobileMenu.classList.remove("active");
       navMenu.classList.remove("active");
-    });
-  });
-
-  // Tabs 切换
-  const tabs = document.querySelectorAll(".tab");
-  const contentBoxes = document.querySelectorAll(".content-box");
-  tabs.forEach((tab, index) => {
-    tab.addEventListener("click", () => {
-      tabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-      contentBoxes.forEach(box => box.classList.remove("active"));
-      contentBoxes[index].classList.add("active");
-    });
-  });
-
-  // 缩略图切换
-  document.querySelectorAll(".thumbnail").forEach(thumb => {
-    thumb.addEventListener("click", () => {
-      const target = thumb.getAttribute("data-target");
-      if (target.startsWith("L")) {
-        document.getElementById("jpeg01L").src = target + ".png";
-      } else if (target.startsWith("R")) {
-        document.getElementById("jpeg01R").src = target + ".png";
-      } else {
-        document.getElementById("jpeg01L").src = "L" + target + ".png";
-        document.getElementById("jpeg01R").src = "R" + target + ".png";
-      }
     });
   });
 </script>
