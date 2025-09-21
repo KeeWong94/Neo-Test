@@ -111,8 +111,9 @@
     .slider-track img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* 自动填充并裁切 */
+      object-fit: contain; /* 自动缩小填充 */
       flex-shrink: 0;
+      background: #000;
     }
     .slider-dots {
       position: absolute;
@@ -142,16 +143,16 @@
 
     /* ====== Section2 产品图 ====== */
     .middle-img-list { max-width: 600px; margin: 0 auto 36px; display: flex; flex-direction: column; gap: 36px; }
-    .middle-img-item { width: 100%; aspect-ratio: 3/4; position: relative; scroll-margin-top: calc(var(--nav-h)+12px); border-radius:18px; overflow:hidden; }
-    .middle-img-item img { width:100%; height:100%; object-fit:cover; display:block; }
+    .middle-img-item { width: 100%; aspect-ratio: 3/4; position: relative; scroll-margin-top: calc(var(--nav-h)+12px); border-radius:18px; overflow:hidden; background:#000; }
+    .middle-img-item img { width:100%; height:100%; object-fit:contain; display:block; background:#000; }
     .middle-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 16px; background: transparent; padding-bottom: 28px; }
     .price-tag { background: rgba(0,0,0,0.6); padding: 8px 18px; border-radius:12px; font-size:2.7rem; font-weight:bold; color:#fff; }
     .learn-more-btn { background:#00bfff; color:#fff; padding:10px 22px; border-radius:12px; font-weight:600; cursor:pointer; text-decoration:none; transition:0.2s; }
     .learn-more-btn:hover { background:#0095d1; transform:scale(1.05); }
 
     /* ====== Section3 大图 ====== */
-    .bottom-img-box { width:100%; max-width:800px; aspect-ratio:4/3; margin:0 auto; border-radius:18px; overflow:hidden; box-shadow:0 4px 18px #0003; }
-    .bottom-img-box img { width:100%; height:100%; object-fit:cover; }
+    .bottom-img-box { width:100%; max-width:800px; aspect-ratio:4/3; margin:0 auto; border-radius:18px; overflow:hidden; box-shadow:0 4px 18px #0003; background:#000; }
+    .bottom-img-box img { width:100%; height:100%; object-fit:contain; background:#000; }
 
     /* ====== Section4 表单 ====== */
     .demo-section { max-width:900px; margin:0 auto; padding:32px 16px; background:#181a1b; border-radius:18px; box-shadow:0 4px 32px #0002; }
@@ -202,7 +203,6 @@
 
 <!-- section 1 轮播图 -->
 <section class="section-dark">
-  <!-- 文字始终固定在轮播图上方中间 -->
   <div class="hero-text">
     <h1>Neo In-ear Monitor</h1>
     <p>Professional IEMs engineered for vocalists, instrumentalists, and live sound engineers</p>
@@ -227,7 +227,6 @@
     </div>
   </div>
 
-  <!-- 轮播图下方文字 -->
   <div class="hero-subtext">
     <p>whether you're singing solo, playing rock anthems, or touring the world.</p>
   </div>
@@ -305,7 +304,6 @@
 </div>
 
 <script>
-  // 汉堡菜单开关
   const mobileMenu = document.getElementById("mobile-menu");
   const navMenu = document.getElementById("nav-menu");
   mobileMenu.addEventListener("click", () => {
@@ -319,7 +317,6 @@
     });
   });
 
-  // Section1 轮播图
   const track = document.getElementById("slider-track");
   const dots = document.getElementById("slider-dots").children;
   let index = 0;
