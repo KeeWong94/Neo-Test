@@ -7,6 +7,7 @@
   <style>
     :root { 
       --nav-h: 64px; 
+      --menu-width: 50vw; /* 汉堡菜单宽度50% */
     }
     * { box-sizing: border-box; margin:0; padding:0; }
     html { scroll-behavior: smooth; }
@@ -43,28 +44,26 @@
 
     /* ====== 汉堡菜单内容 ====== */
     .nav-menu {
-      display: none; flex-direction: column; width: 100%;
-      background: rgba(0,0,0,0.95); padding: 20px 0;
-      position: fixed; top: var(--nav-h); left: 0; z-index: 999;
-      max-height: calc(100dvh - var(--nav-h)); overflow: auto;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; flex-direction: column; position: fixed;
+      top: 0; left: -100%; width: var(--menu-width); height: 100vh;
+      background: rgba(0,0,0,0.95); padding-top: var(--nav-h);
+      z-index: 999; transition: left 0.3s ease;
+      border-right: 1px solid rgba(255,255,255,0.08);
     }
-    .nav-menu.active { display: flex; }
+    .nav-menu.active { left: 0; }
+
     .nav-link {
-      color: #fff; text-decoration: none; padding: 15px; text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #fff; text-decoration: none; padding: 20px 25px;
+      font-size: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .nav-link:hover { background: rgba(255,255,255,0.08); }
 
     .submenu {
-      display: flex; flex-direction: column; width: 100%;
-      background: #000; text-align: center;
+      display: flex; flex-direction: column;
     }
     .submenu a {
-      color: #fff; text-decoration: none;
-      padding: 12px 15px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      font-size: .95em;
+      color: #fff; text-decoration: none; padding: 15px 40px;
+      font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .submenu a:hover { background: rgba(255,255,255,0.12); }
 
@@ -80,383 +79,65 @@
       text-align: center;
       margin-bottom: 30px;
     }
-    .hero-text h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .hero-text p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    .top-img-box {
-      max-width: 480px;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: 18px;
-      box-shadow: 0 4px 18px #0003;
-      position: relative;
-    }
-    /* 手机端缩小 */
-    @media (max-width: 768px) {
-      .top-img-box {
-        max-width: 90%;
-      }
-    }
-    .slider-container {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3/4;
-      overflow: hidden;
-    }
-    .slider-track {
-      display: flex;
-      transition: transform 0.5s ease;
-      width: 500%;
-      height: 100%;
-    }
-    .slider-track img {
-      width: 20%;
-      height: 100%;
-      object-fit: contain;
-      flex-shrink: 0;
-      background: #000;
-    }
-    .slider-dots {
-      position: absolute;
-      bottom: 12px; left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-    }
-    .slider-dots span {
-      width: 12px; height: 12px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.5);
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .slider-dots .active {
-      background: #00bfff;
-    }
-    .hero-subtext {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .hero-subtext p {
-      font-size: 1.1rem;
-      color: #ccc;
-    }
+    .hero-text h1 { font-size: 2.5rem; font-weight: bold; margin-bottom: 10px; }
+    .hero-text p { font-size: 1.2rem; color: #ccc; }
+    .top-img-box { max-width: 480px; margin: 0 auto; overflow: hidden; border-radius: 18px; box-shadow: 0 4px 18px #0003; position: relative; }
+    @media (max-width: 768px) { .top-img-box { max-width: 90%; } }
+    .slider-container { position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; }
+    .slider-track { display: flex; transition: transform 0.5s ease; width: 500%; height: 100%; }
+    .slider-track img { width: 20%; height: 100%; object-fit: contain; flex-shrink: 0; background: #000; }
+    .slider-dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; }
+    .slider-dots span { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: 0.3s; }
+    .slider-dots .active { background: #00bfff; }
+    .hero-subtext { text-align: center; margin-top: 20px; }
+    .hero-subtext p { font-size: 1.1rem; color: #ccc; }
 
     /* ====== Section2 产品图 ====== */
-    .products-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    .products-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
-    .products-title h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #fff;
-      display: inline-block;
-      border-bottom: 3px solid #3498db;
-      padding-bottom: 5px;
-    }
-    
-    .products-grid {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-    }
-    
-    .product-item {
-      flex: 1;
-      max-width: 500px;
-      position: relative;
-    }
-    
-    .product-image-container {
-      width: 100%;
-      position: relative;
-      padding-top: 133.33%; /* 3:4比例 */
-      background: #000;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    
-    .product-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    /* 基础样式 */
-    .product-info-top {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      width: 100%;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-      z-index: 10;
-      color: white;
-    }
-
-    .product-info-top .product-name {
-      font-size: 3.5rem;
-      font-weight: bold;
-    }
-
-    .product-info-top .product-description {
-      font-size: 1.5rem;
-      margin-top: 10px;
-    }
-
-    .product-info-middle {
-      position: absolute;
-      top: 80%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      width: 100%;
-      z-index: 10;
-      color: white;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-    }
-
-    .price-text {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 0;
-    }
-
-    .learn-more-link {
-      color: #3498db;
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.5rem;
-      display: block;
-      margin-top: 0;
-    }
-
-    /* 电脑端样式 - 水平排列 */
-    @media (min-width: 769px) {
-      .product-info-middle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-      }
-      
-      .price-text {
-        margin-bottom: 0;
-      }
-      
-      .learn-more-link {
-        display: inline-block;
-        margin-top: 0;
-      }
-    }
-
-    /* 移动端样式 - 垂直排列 */
-    @media (max-width: 768px) {
-      .products-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-      }
-      
-      .product-item {
-        max-width: 100%;
-        width: 90%;
-      }
-      
-      .product-info-top {
-        top: 20%;
-      }
-      
-      .product-info-middle {
-        top: 75%;
-        /* 修改这行代码使整个价格和链接区域下移50% */
-        transform: translate(-50%, 0%);
-      }
-      
-      .product-info-top .product-name {
-        font-size: 2.5rem;
-      }
-      
-      .product-info-top .product-description {
-        font-size: 1.2rem;
-      }
-      
-      .price-text {
-        font-size: 1.2rem;
-        margin-bottom: 0;
-      }
-      
-      .learn-more-link {
-        font-size: 1.2rem;
-        margin-top: 10px;
-        transform: translateY(0);
-      }
-    }
-
-    /* 小屏幕手机 */
-    @media (max-width: 480px) {
-      .product-info-top {
-        top: 18%;
-      }
-      
-      .product-info-middle {
-        top: 72%;
-        /* 同样修改这行代码使整个价格和链接区域下移50% */
-        transform: translate(-50%, 0%);
-      }
-      
-      .product-info-top .product-name {
-        font-size: 2rem;
-      }
-      
-      .product-info-top .product-description {
-        font-size: 1rem;
-      }
-      
-      .price-text {
-        font-size: 1.1rem;
-      }
-      
-      .learn-more-link {
-        font-size: 1.1rem;
-        margin-top: 12px;
-      }
-    }
+    .products-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .products-title { text-align: center; margin-bottom: 40px; }
+    .products-title h2 { font-size: 2rem; font-weight: 700; color: #fff; display: inline-block; border-bottom: 3px solid #3498db; padding-bottom: 5px; }
+    .products-grid { display: flex; justify-content: center; gap: 40px; }
+    .product-item { flex: 1; max-width: 500px; position: relative; }
+    .product-image-container { width: 100%; position: relative; padding-top: 133.33%; background: #000; border-radius: 8px; overflow: hidden; }
+    .product-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+    .product-info-top { position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); z-index: 10; color: white; }
+    .product-info-top .product-name { font-size: 3.5rem; font-weight: bold; }
+    .product-info-top .product-description { font-size: 1.5rem; margin-top: 10px; }
+    .product-info-middle { position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; z-index: 10; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); }
+    .price-text { font-size: 1.5rem; font-weight: bold; margin-bottom: 0; }
+    .learn-more-link { color: #3498db; font-weight: bold; text-decoration: none; font-size: 1.5rem; display: block; margin-top: 0; }
+    @media (max-width: 768px) { .products-grid { flex-direction: column; align-items: center; gap: 30px; } .product-info-middle { top: 75%; transform: translate(-50%, 0%); } }
 
     /* ====== Section3 表单 ====== */
-    .demo-section { 
-      max-width:900px; 
-      margin:0 auto; 
-      padding:32px 16px; 
-      background:#181a1b; 
-      border-radius:18px; 
-      box-shadow:0 4px 32px #0002; 
-    }
-    .demo-section h2 { 
-      font-size:2.1rem; 
-      text-align:center; 
-      margin-bottom:14px; 
-    }
-    .demo-section p { 
-      text-align:center; 
-      color:#c8e6fa; 
-      margin-bottom:22px; 
-    }
-    .demo-section form { 
-      max-width:440px; 
-      margin:0 auto 28px; 
-      display:grid; 
-      gap:18px; 
-    }
-    .demo-section input, 
-    .demo-section textarea { 
-      border-radius:10px; 
-      padding:13px 12px; 
-      border:none; 
-      outline:none; 
-      background:#24272a; 
-      color:#fff; 
-      font-size:1rem; 
-    }
-    .demo-section button { 
-      border-radius:10px; 
-      padding:12px; 
-      font-size:1.08rem; 
-      font-weight:600; 
-      background:linear-gradient(90deg,#0083ff 40%,#00e1ff 100%); 
-      color:#fff; 
-      border:none; 
-      cursor:pointer; 
-      transition:0.18s; 
-    }
-    .demo-section button:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-    }
+    .demo-section { max-width:900px; margin:0 auto; padding:32px 16px; background:#181a1b; border-radius:18px; box-shadow:0 4px 32px #0002; }
+    .demo-section h2 { font-size:2.1rem; text-align:center; margin-bottom:14px; }
+    .demo-section p { text-align:center; color:#c8e6fa; margin-bottom:22px; }
+    .demo-section form { max-width:440px; margin:0 auto 28px; display:grid; gap:18px; }
+    .demo-section input, .demo-section textarea { border-radius:10px; padding:13px 12px; border:none; outline:none; background:#24272a; color:#fff; font-size:1rem; }
+    .demo-section button { border-radius:10px; padding:12px; font-size:1.08rem; font-weight:600; background:linear-gradient(90deg,#0083ff 40%,#00e1ff 100%); color:#fff; border:none; cursor:pointer; transition:0.18s; }
+    .demo-section button:hover { opacity: 0.9; transform: translateY(-2px); }
 
-    /* Messenger 样式 - 移动到表单下方 */
-    .demo-message-box { 
-      max-width:360px; 
-      margin:20px auto 0; 
-      background:#fff; 
-      color:#000; 
-      border-radius:16px; 
-      padding:20px; 
-      text-align:center; 
-    }
-    .demo-message-box p { 
-      margin:0 0 10px; 
-      font-weight:bold; 
-    }
-    .demo-message-box a { 
-      font-weight:bold; 
-      color:#0078ff; 
-      text-decoration:none; 
-    }
-    .demo-message-box a:hover { 
-      text-decoration:underline; 
-    }
-    .demo-messenger-icon img { 
-      width:44px; 
-      height:44px; 
-      border-radius:50%; 
-      margin-top:14px; 
-    }
+    .demo-message-box { max-width:360px; margin:20px auto 0; background:#fff; color:#000; border-radius:16px; padding:20px; text-align:center; }
+    .demo-message-box p { margin:0 0 10px; font-weight:bold; }
+    .demo-message-box a { font-weight:bold; color:#0078ff; text-decoration:none; }
+    .demo-message-box a:hover { text-decoration:underline; }
+    .demo-messenger-icon img { width:44px; height:44px; border-radius:50%; margin-top:14px; }
 
     /* ====== Section4 Follow Us ====== */
-    .follow-section { 
-      text-align:center; 
-      margin-top:20px; 
-    }
-    .follow-title { 
-      color:#ccc; 
-      margin-bottom:12px; 
-    }
-    .social-icons { 
-      display:flex; 
-      justify-content:center; 
-      gap:24px; 
-      margin-bottom:40px; 
-    }
-    .social-icons img { 
-      width:48px; 
-      height:48px; 
-      border-radius:12px; 
-      transition:0.2s; 
-      background:#fff; 
-    }
-    .social-icons img[alt="Facebook"] { 
-      background:#1877F2; 
-    }
-    .social-icons img:hover { 
-      transform:scale(1.1); 
-      box-shadow:0 4px 10px #0006; 
-    }
+    .follow-section { text-align:center; margin-top:20px; }
+    .gallery-title { font-size:32px; font-weight:bold; margin-bottom:40px; color:#fff; text-transform: uppercase; letter-spacing:1.5px; }
+    .gallery-container { display:flex; justify-content:center; gap:30px; margin-bottom:50px; flex-wrap:wrap; }
+    .gallery-item { width:300px; height:300px; border-radius:10px; overflow:hidden; box-shadow:0 6px 15px rgba(0,0,0,0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.2); }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; display:block; }
+    .follow-title { font-size:28px; margin-bottom:25px; color:#fff; font-weight:600; }
+    .social-icons { display:flex; justify-content:center; gap:25px; }
+    .social-icons a { display:inline-block; width:50px; height:50px; transition:transform 0.3s ease; border-radius:50%; overflow:hidden; }
+    .social-icons a:hover { transform:scale(1.15); }
+    .social-icons img { width:100%; height:100%; object-fit:cover; }
 
-    .footer { 
-      text-align:center; 
-      font-size:.85rem; 
-      color:#666; 
-      padding-bottom:30px; 
-    }
+    /* Footer */
+    .footer { text-align:center; font-size:.85rem; color:#666; padding-bottom:30px; }
   </style>
 </head>
 <body>
@@ -473,7 +154,7 @@
 <!-- 汉堡菜单 -->
 <div class="nav-menu" id="nav-menu">
   <a class="nav-link" href="#home">Home</a>
-  <div class="nav-link">Models</div>
+  <div class="nav-link">Products/Models</div>
   <div class="submenu">
     <a href="#n6p">Neo 6 Pro</a>
     <a href="#n8p">Neo 8 Pro</a>
@@ -481,21 +162,20 @@
   <a class="nav-link" href="#requirements">Request a Demo Now</a>
 </div>
 
-<!-- section 1 轮播图 - 深黑背景 -->
+<!-- Section1 -->
 <section class="section-dark">
   <div class="hero-text">
     <h1>Neo In-ear Monitor</h1>
     <p>Professional IEMs engineered for vocalists, instrumentalists, and live sound engineers</p>
   </div>
-
   <div class="top-img-box">
     <div class="slider-container">
       <div class="slider-track" id="slider-track">
-        <img src="Top Banner.jpg" alt="舞台表演">
-        <img src="Top Banner 1.jpg" alt="舞台表演1">
-        <img src="Top Banner 2.jpg" alt="舞台表演2">
-        <img src="Top Banner 3.jpg" alt="舞台表演3">
-        <img src="Top Banner 4.jpg" alt="舞台表演4">
+        <img src="Top Banner1.jpg" alt="">
+        <img src="Top Banner2.jpg" alt="">
+        <img src="Top Banner3.jpg" alt="">
+        <img src="Top Banner4.jpg" alt="">
+        <img src="Top Banner5.jpg" alt="">
       </div>
       <div class="slider-dots" id="slider-dots">
         <span class="active"></span>
@@ -506,317 +186,74 @@
       </div>
     </div>
   </div>
-
   <div class="hero-subtext">
-    <p>whether you're singing solo, playing rock anthems, or touring the world.</p>
+    <p>Whether you're singing solo, playing rock anthems, or touring the world.</p>
   </div>
 </section>
 
-<!-- section 2 产品 - 深灰背景 -->
-<section class="section-gray">
-  <div class="products-container">
-    <!-- Products/Models标题居中 -->
-    <div class="products-title">
-      <h2>Products/Models</h2>
-    </div>
-    
-    <!-- 产品图横向并排 -->
-    <div class="products-grid">
-      <!-- Neo 6 Pro -->
-      <div class="product-item" id="n6p">
-        <div class="product-image-container">
-          <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro" class="product-image">
-          <div class="product-info-top">
-            <div class="product-name">Neo 6 Pro</div>
-            <div class="product-description">6 Drivers Professional IEM</div>
-          </div>
-          <div class="product-info-middle">
-            <div class="price-text">RSP. RM2400</div>
-            <a href="neo6pro.html" class="learn-more-link">Learn More ></a>
-          </div>
+<!-- Section2 -->
+<section class="section-gray products-container" id="n6p">
+  <div class="products-title"><h2>Our Products/Models</h2></div>
+  <div class="products-grid">
+    <div class="product-item">
+      <div class="product-image-container">
+        <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro" class="product-image">
+        <div class="product-info-top">
+          <div class="product-name">Neo 6 Pro</div>
+          <div class="product-description">Premium Triple Dual Balanced Armature Earphones</div>
+        </div>
+        <div class="product-info-middle">
+          <div class="price-text">RM2400</div>
+          <a href="neo6pro.html" class="learn-more-link">LEARN MORE</a>
         </div>
       </div>
-      
-      <!-- Neo 8 Pro -->
-      <div class="product-item" id="n8p">
-        <div class="product-image-container">
-          <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro" class="product-image">
-          <div class="product-info-top">
-            <div class="product-name">Neo 8 Pro</div>
-            <div class="product-description">8 Drivers Professional IEM</div>
-          </div>
-          <div class="product-info-middle">
-            <div class="price-text">RSP. RM3300</div>
-            <a href="neo8pro.html" class="learn-more-link">Learn More ></a>
-          </div>
+    </div>
+    <div class="product-item" id="n8p">
+      <div class="product-image-container">
+        <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro" class="product-image">
+        <div class="product-info-top">
+          <div class="product-name">Neo 8 Pro</div>
+          <div class="product-description">Premium 8 Balanced Armature Earphones</div>
+        </div>
+        <div class="product-info-middle">
+          <div class="price-text">RM3400</div>
+          <a href="neo8pro.html" class="learn-more-link">LEARN MORE</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- section 3 表单 - 深黑背景 -->
-<section class="section-dark" id="requirements">
-  <div class="demo-section">
-    <h2>Request a Demo Now</h2>
-    <p>Fill out the form below and our team will contact you</p>
-    <form action="https://formspree.io/f/mblybpog" method="POST" enctype="multipart/form-data">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="text" name="phone" placeholder="Phone Number" required>
-      <button type="submit">Submit</button>
-    </form>
-    
-    <!-- Messenger 部分 -->
-    <div class="demo-message-box">
-      <p style="color: #000000; margin-bottom: 15px;">Have any question or ready to order?</p>
-      <div class="messenger-row">
-        <div class="demo-messenger-icon">
-          <a href="https://m.me/neoinear" target="_blank">
-            <img src="messenger-icon.png" alt="Messenger">
-          </a>
-        </div>
-        <a href="https://m.me/neoinear" target="_blank" class="chat-container">
-          <span class="got-questions">Got questions?</span>
-          <span class="chat-link">Chat us now! <span class="arrow">→</span></span>
-        </a>
-      </div>
-    </div>
+<!-- Section3 表单示例 -->
+<section class="section-dark demo-section" id="requirements">
+  <h2>Request a Demo</h2>
+  <p>Fill in the form below and we will contact you for a personalized demo.</p>
+  <form>
+    <input type="text" placeholder="Full Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="text" placeholder="Phone" required>
+    <textarea placeholder="Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<!-- Section4 Follow Us -->
+<section class="section-gray follow-section">
+  <div class="gallery-title">Follow Us</div>
+  <div class="gallery-container">
+    <div class="gallery-item"><img src="social1.jpg" alt=""></div>
+    <div class="gallery-item"><img src="social2.jpg" alt=""></div>
+    <div class="gallery-item"><img src="social3.jpg" alt=""></div>
   </div>
 </section>
 
-<!-- section 4 Follow Us - 深灰背景 -->
-<section class="section-gray">
-  <div class="follow-section">
-    <div class="gallery-title">Neo Custom IEM Gallery</div>
-    
-    <div class="gallery-container">
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 1">
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 2">
-      </div>
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1592921870785-0457ab5d816d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 3">
-      </div>
-    </div>
-    
-    <div class="follow-title">Follow Us</div>
-    <div class="social-icons">
-      <a href="https://facebook.com/neoinear" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
-      </a>
-      <a href="https://www.instagram.com/neociem/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-      </a>
-    </div>
-  </div>
-</section>
-
-<style>
-.messenger-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-decoration: none;
-  color: #0066cc;
-  transition: all 0.3s ease;
-}
-
-.got-questions {
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: 2px;
-}
-
-.chat-link {
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-}
-
-.arrow {
-  margin-left: 5px;
-  transition: transform 0.3s ease;
-}
-
-.chat-container:hover {
-  color: #004999;
-}
-
-.chat-container:hover .chat-link {
-  transform: translateX(5px);
-}
-
-.chat-container:hover .arrow {
-  transform: translateX(3px);
-}
-
-.demo-message-box {
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* 新增样式使图标和文本水平排列 */
-.messenger-row {
-  flex-direction: row;
-  align-items: center;
-}
-
-.demo-messenger-icon {
-  margin-right: 10px;
-}
-
-/* 图库样式 */
-.gallery-title {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 40px;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-}
-
-.gallery-container {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 50px;
-  flex-wrap: wrap;
-}
-
-.gallery-item {
-  width: 300px;
-  height: 300px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.follow-title {
-  font-size: 28px;
-  margin-bottom: 25px;
-  color: #fff;
-  font-weight: 600;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-}
-
-.social-icons a {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  transition: transform 0.3s ease;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.social-icons a:hover {
-  transform: scale(1.15);
-}
-
-.social-icons img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1000px) {
-  .gallery-item {
-    width: 250px;
-    height: 250px;
-  }
-}
-
-@media (max-width: 800px) {
-  .gallery-item {
-    width: 220px;
-    height: 220px;
-  }
-}
-
-@media (max-width: 700px) {
-  .gallery-container {
-    gap: 20px;
-  }
-  
-  .gallery-item {
-    width: 200px;
-    height: 200px;
-  }
-}
-
-@media (max-width: 600px) {
-  .gallery-container {
-    gap: 15px;
-  }
-  
-  .gallery-item {
-    width: 28vw;
-    height: 28vw;
-    min-width: 100px;
-    min-height: 100px;
-  }
-  
-  .gallery-title {
-    font-size: 26px;
-    margin-bottom: 30px;
-  }
-  
-  .follow-title {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 400px) {
-  .gallery-container {
-    gap: 10px;
-  }
-  
-  .gallery-item {
-    width: 27vw;
-    height: 27vw;
-  }
-  
-  .social-icons a {
-    width: 45px;
-    height: 45px;
-  }
-}
-</style>
-
-<!-- Footer - 深黑背景 -->
+<!-- Footer -->
 <div class="footer section-dark">
   <p>&copy; 2025 Neo CIEM. All rights reserved.</p>
 </div>
 
 <script>
+  // 汉堡菜单控制
   const mobileMenu = document.getElementById("mobile-menu");
   const navMenu = document.getElementById("nav-menu");
   mobileMenu.addEventListener("click", () => {
@@ -830,6 +267,7 @@
     });
   });
 
+  // slider
   const track = document.getElementById("slider-track");
   const dots = document.getElementById("slider-dots").children;
   let index = 0;
