@@ -484,93 +484,6 @@
 </section>
 
 <style>
-/* 基础样式 */
-.product-image-container {
-  position: relative;
-  width: 100%;
-  padding-top: 133.33%; /* 3:4比例 */
-  background: #000;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.product-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.product-info-top {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 100%;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-  z-index: 10;
-  color: white;
-}
-
-.product-info-top .product-name {
-  font-size: 3.5rem;
-  font-weight: bold;
-}
-
-.product-info-top .product-description {
-  font-size: 1.5rem;
-  margin-top: 10px;
-}
-
-.product-info-middle {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 100%;
-  z-index: 10;
-  color: white;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
-}
-
-.price-text {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 0;
-}
-
-.learn-more-link {
-  color: #3498db;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.5rem;
-  display: block;
-  margin-top: 0;
-}
-
-/* 电脑端样式 - 水平排列 */
-@media (min-width: 769px) {
-  .product-info-middle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .price-text {
-    margin-bottom: 0;
-  }
-  
-  .learn-more-link {
-    display: inline-block;
-    margin-top: 0;
-  }
-}
-
 /* 移动端样式 - 垂直排列 */
 @media (max-width: 768px) {
   .product-info-top {
@@ -579,6 +492,8 @@
   
   .product-info-middle {
     top: 75%;
+    /* 添加这行代码使整个价格和链接区域下移50% */
+    transform: translate(-50%, 0%); /* 修改了Y轴平移值 */
   }
   
   .product-info-top .product-name {
@@ -609,6 +524,8 @@
   
   .product-info-middle {
     top: 72%;
+    /* 同样添加这行代码使整个价格和链接区域下移50% */
+    transform: translate(-50%, 0%); /* 修改了Y轴平移值 */
   }
   
   .product-info-top .product-name {
@@ -629,7 +546,6 @@
   }
 }
 </style>
-
 <!-- section 3 表单 -->
 <section class="section-dark" id="requirements">
   <div class="demo-section">
