@@ -458,7 +458,7 @@
             <div class="product-name" style="font-size: 3.5rem;">Neo 6 Pro</div>
             <div class="product-description" style="font-size: 1.5rem;">6 Drivers Professional IEM</div>
           </div>
-          <div class="product-info">
+          <div class="product-info-bottom">
             <div class="product-price-container">
               <span>RSP. RM2400</span>
               <a href="neo6pro.html" class="learn-more-link">Learn More ></a>
@@ -475,7 +475,7 @@
             <div class="product-name" style="font-size: 3.5rem;">Neo 8 Pro</div>
             <div class="product-description" style="font-size: 1.5rem;">8 Drivers Professional IEM</div>
           </div>
-          <div class="product-info">
+          <div class="product-info-bottom">
             <div class="product-price-container">
               <span>RSP. RM3300</span>
               <a href="neo8pro.html" class="learn-more-link">Learn More ></a>
@@ -495,7 +495,7 @@
 
 .product-info-top {
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -505,20 +505,37 @@
   color: white;
 }
 
-.product-info {
+.product-info-bottom {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   left: 0;
   right: 0;
-  padding: 1rem;
+  text-align: center;
   z-index: 10;
+  color: white;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+}
+
+.product-price-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.learn-more-link {
+  color: #3498db;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.5rem;
 }
 
 /* 响应式调整 */
 @media (max-width: 768px) {
   .product-info-top {
-    top: 20%;
+    top: 15%;
   }
   
   .product-info-top .product-name {
@@ -527,6 +544,16 @@
   
   .product-info-top .product-description {
     font-size: 1.2rem !important;
+  }
+  
+  .product-price-container {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .learn-more-link {
+    font-size: 1.2rem;
   }
 }
 </style>
