@@ -533,10 +533,10 @@
   font-size: 1.5rem;
 }
 
-/* 响应式调整 */
+/* 响应式调整 - 移动端 */
 @media (max-width: 768px) {
   .product-info-top {
-    top: 15%;
+    top: 20%;
   }
   
   .product-info-middle {
@@ -553,12 +553,41 @@
   
   .product-price-container {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     font-size: 1.2rem;
   }
   
   .learn-more-link {
     font-size: 1.2rem;
+    margin-top: 5px;
+  }
+}
+
+/* 响应式调整 - 小屏幕手机 */
+@media (max-width: 480px) {
+  .product-info-top {
+    top: 18%;
+  }
+  
+  .product-info-middle {
+    top: 72%;
+  }
+  
+  .product-info-top .product-name {
+    font-size: 2rem !important;
+  }
+  
+  .product-info-top .product-description {
+    font-size: 1rem !important;
+  }
+  
+  .product-price-container {
+    gap: 5px;
+    font-size: 1.1rem;
+  }
+  
+  .learn-more-link {
+    font-size: 1.1rem;
   }
 }
 </style>
