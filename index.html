@@ -90,35 +90,35 @@
       color: #ccc;
     }
     .top-img-box {
-      max-width: 480px; /* 缩小20%：从600px改为480px */
+      max-width: 480px;
       margin: 0 auto;
       overflow: hidden;
       border-radius: 18px;
       box-shadow: 0 4px 18px #0003;
       position: relative;
     }
-    /* 手机端缩小20% */
+    /* 手机端缩小 */
     @media (max-width: 768px) {
       .top-img-box {
-        max-width: 80%; /* 手机端宽度为80% */
+        max-width: 90%;
       }
     }
     .slider-container {
       position: relative;
       width: 100%;
-      aspect-ratio: 3/4; /* 保持3:4比例 */
+      aspect-ratio: 3/4;
       overflow: hidden;
     }
     .slider-track {
       display: flex;
       transition: transform 0.5s ease;
-      width: 500%; /* 5张图 */
+      width: 500%;
       height: 100%;
     }
     .slider-track img {
-      width: 20%; /* 每张图片占20%宽度 */
+      width: 20%;
       height: 100%;
-      object-fit: contain; /* 确保图片完整显示 */
+      object-fit: contain;
       flex-shrink: 0;
       background: #000;
     }
@@ -240,45 +240,151 @@
       .products-grid {
         flex-direction: column;
         align-items: center;
+        gap: 30px;
       }
       
       .product-item {
         max-width: 100%;
+        width: 90%;
       }
       
       .product-name {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       
-      .product-description,
+      .product-description {
+        font-size: 1.2rem;
+      }
+      
       .product-price-container {
         font-size: 1.2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .product-info {
+        top: 70%;
+        left: 5%;
+        width: 90%;
       }
     }
 
     /* ====== Section3 表单 ====== */
-    .demo-section { max-width:900px; margin:0 auto; padding:32px 16px; background:#181a1b; border-radius:18px; box-shadow:0 4px 32px #0002; }
-    .demo-section h2 { font-size:2.1rem; text-align:center; margin-bottom:14px; }
-    .demo-section p { text-align:center; color:#c8e6fa; margin-bottom:22px; }
-    .demo-section form { max-width:440px; margin:0 auto 28px; display:grid; gap:18px; }
-    .demo-section input, .demo-section textarea { border-radius:10px; padding:13px 12px; border:none; outline:none; background:#24272a; color:#fff; font-size:1rem; }
-    .demo-section button { border-radius:10px; padding:12px; font-size:1.08rem; font-weight:600; background:linear-gradient(90deg,#0083ff 40%,#00e1ff 100%); color:#fff; border:none; cursor:pointer; transition:0.18s; }
+    .demo-section { 
+      max-width:900px; 
+      margin:0 auto; 
+      padding:32px 16px; 
+      background:#181a1b; 
+      border-radius:18px; 
+      box-shadow:0 4px 32px #0002; 
+    }
+    .demo-section h2 { 
+      font-size:2.1rem; 
+      text-align:center; 
+      margin-bottom:14px; 
+    }
+    .demo-section p { 
+      text-align:center; 
+      color:#c8e6fa; 
+      margin-bottom:22px; 
+    }
+    .demo-section form { 
+      max-width:440px; 
+      margin:0 auto 28px; 
+      display:grid; 
+      gap:18px; 
+    }
+    .demo-section input, 
+    .demo-section textarea { 
+      border-radius:10px; 
+      padding:13px 12px; 
+      border:none; 
+      outline:none; 
+      background:#24272a; 
+      color:#fff; 
+      font-size:1rem; 
+    }
+    .demo-section button { 
+      border-radius:10px; 
+      padding:12px; 
+      font-size:1.08rem; 
+      font-weight:600; 
+      background:linear-gradient(90deg,#0083ff 40%,#00e1ff 100%); 
+      color:#fff; 
+      border:none; 
+      cursor:pointer; 
+      transition:0.18s; 
+    }
+    .demo-section button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
 
     /* ====== Messenger + Follow Us ====== */
-    .message-box { max-width:360px; margin:40px auto; background:#fff; color:#000; border-radius:16px; padding:20px; text-align:center; }
-    .message-box p { margin:0 0 10px; font-weight:bold; }
-    .message-box a { font-weight:bold; color:#0078ff; text-decoration:none; }
-    .message-box a:hover { text-decoration:underline; }
-    .messenger-icon img { width:44px; height:44px; border-radius:50%; margin-top:14px; }
+    .message-box { 
+      max-width:360px; 
+      margin:40px auto; 
+      background:#fff; 
+      color:#000; 
+      border-radius:16px; 
+      padding:20px; 
+      text-align:center; 
+    }
+    .message-box p { 
+      margin:0 0 10px; 
+      font-weight:bold; 
+    }
+    .message-box a { 
+      font-weight:bold; 
+      color:#0078ff; 
+      text-decoration:none; 
+    }
+    .message-box a:hover { 
+      text-decoration:underline; 
+    }
+    .messenger-icon img { 
+      width:44px; 
+      height:44px; 
+      border-radius:50%; 
+      margin-top:14px; 
+    }
 
-    .follow-section { text-align:center; margin-top:20px; }
-    .follow-title { color:#ccc; margin-bottom:12px; }
-    .social-icons { display:flex; justify-content:center; gap:24px; margin-bottom:40px; }
-    .social-icons img { width:48px; height:48px; border-radius:12px; transition:0.2s; background:#fff; }
-    .social-icons img[alt="Facebook"] { background:#1877F2; }
-    .social-icons img:hover { transform:scale(1.1); box-shadow:0 4px 10px #0006; }
+    .follow-section { 
+      text-align:center; 
+      margin-top:20px; 
+    }
+    .follow-title { 
+      color:#ccc; 
+      margin-bottom:12px; 
+    }
+    .social-icons { 
+      display:flex; 
+      justify-content:center; 
+      gap:24px; 
+      margin-bottom:40px; 
+    }
+    .social-icons img { 
+      width:48px; 
+      height:48px; 
+      border-radius:12px; 
+      transition:0.2s; 
+      background:#fff; 
+    }
+    .social-icons img[alt="Facebook"] { 
+      background:#1877F2; 
+    }
+    .social-icons img:hover { 
+      transform:scale(1.1); 
+      box-shadow:0 4px 10px #0006; 
+    }
 
-    .footer { text-align:center; font-size:.85rem; color:#666; padding-bottom:30px; }
+    .footer { 
+      text-align:center; 
+      font-size:.85rem; 
+      color:#666; 
+      padding-bottom:30px; 
+    }
   </style>
 </head>
 <body>
@@ -440,7 +546,7 @@
   let index = 0;
   function showSlide(i) {
     index = i;
-    track.style.transform = `translateX(-${i * 20}%)`; // 改为20%，因为每张图片占20%宽度
+    track.style.transform = `translateX(-${i * 20}%)`;
     for (let d=0; d<dots.length; d++) dots[d].classList.remove("active");
     dots[i].classList.add("active");
   }
