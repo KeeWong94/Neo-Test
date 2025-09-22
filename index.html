@@ -18,6 +18,7 @@
       color: #fff;
       font-family: "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
     }
     
     a { color: inherit; text-decoration: none; }
@@ -49,6 +50,7 @@
       width: 36px; height: 27px; cursor: pointer;
       transform: scale(0.92);
       transition: transform 0.3s ease;
+      z-index: 1001;
     }
     
     .menu-toggle:hover {
@@ -63,39 +65,78 @@
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
     
-    /* ====== 汉堡菜单内容 ====== */
+    /* ====== 汉堡菜单内容 - 从左侧滑入 ====== */
     .nav-menu {
-      display: none; flex-direction: column; width: 100%;
-      background: rgba(0,0,0,0.95); padding: 20px 0;
-      position: fixed; top: var(--nav-h); left: 0; z-index: 999;
-      max-height: calc(100dvh - var(--nav-h)); overflow: auto;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; 
+      flex-direction: column; 
+      width: 50%;
+      background: rgba(0,0,0,0.98); 
+      padding: 80px 0 20px 0;
+      position: fixed; 
+      top: 0; 
+      left: -50%;
+      height: 100vh; 
+      z-index: 998;
+      overflow: auto;
+      box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+      transition: left 0.4s ease;
     }
     
-    .nav-menu.active { display: flex; }
+    .nav-menu.active { 
+      left: 0;
+    }
+    
+    .nav-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 997;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .nav-menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
     
     .nav-link {
-      color: #fff; text-decoration: none; padding: 15px; text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #fff; 
+      text-decoration: none; 
+      padding: 18px 25px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       transition: background 0.3s ease;
+      font-size: 1.1rem;
+      display: block;
     }
     
-    .nav-link:hover { background: rgba(255,255,255,0.08); }
+    .nav-link:hover { 
+      background: rgba(255,255,255,0.08); 
+    }
     
     .submenu {
-      display: flex; flex-direction: column; width: 100%;
-      background: #000; text-align: center;
+      display: flex; 
+      flex-direction: column; 
+      width: 100%;
+      background: rgba(20, 20, 20, 0.8); 
     }
     
     .submenu a {
-      color: #fff; text-decoration: none;
-      padding: 12px 15px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      font-size: .95em;
+      color: #fff; 
+      text-decoration: none;
+      padding: 15px 25px 15px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-size: 1rem;
       transition: background 0.3s ease;
     }
     
-    .submenu a:hover { background: rgba(255,255,255,0.12); }
+    .submenu a:hover { 
+      background: rgba(255,255,255,0.12); 
+    }
     
     .nav-spacer { height: var(--nav-h); }
     
@@ -143,6 +184,12 @@
       
       .hero-text p {
         font-size: 1rem;
+      }
+      
+      /* 在小屏幕上菜单宽度为80% */
+      .nav-menu {
+        width: 80%;
+        left: -80%;
       }
     }
     
@@ -403,6 +450,12 @@
       .learn-more-link {
         font-size: 1.1rem;
         margin-top: 12px;
+      }
+      
+      /* 在非常小的屏幕上菜单宽度为90% */
+      .nav-menu {
+        width: 90%;
+        left: -90%;
       }
     }
 
@@ -785,6 +838,9 @@
     <a class="nav-link" href="#requirements">Request a Demo Now</a>
   </div>
   
+  <!-- 菜单遮罩层 -->
+  <div class="nav-menu-overlay" id="nav-overlay"></div>
+  
   <!-- section 1 轮播图 - 深黑背景 -->
   <section class="section-dark">
     <div class="hero-text">
@@ -928,11 +984,22 @@
     document.addEventListener('DOMContentLoaded', function() {
       const mobileMenu = document.getElementById('mobile-menu');
       const navMenu = document.getElementById('nav-menu');
+      const navOverlay = document.getElementById('nav-overlay');
       
-      mobileMenu.addEventListener('click', function() {
-        this.classList.toggle('active');
+      // 打开/关闭菜单
+      function toggleMenu() {
+        mobileMenu.classList.toggle('active');
         navMenu.classList.toggle('active');
-      });
+        navOverlay.classList.toggle('active');
+        
+        // 防止背景滚动
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+      }
+      
+      mobileMenu.addEventListener('click', toggleMenu);
+      
+      // 点击遮罩层关闭菜单
+      navOverlay.addEventListener('click', toggleMenu);
       
       // 点击菜单项关闭菜单
       const navLinks = document.querySelectorAll('.nav-link, .submenu a');
@@ -940,6 +1007,8 @@
         link.addEventListener('click', function() {
           mobileMenu.classList.remove('active');
           navMenu.classList.remove('active');
+          navOverlay.classList.remove('active');
+          document.body.style.overflow = '';
         });
       });
       
