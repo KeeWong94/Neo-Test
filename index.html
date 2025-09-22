@@ -567,16 +567,18 @@
       <button type="submit">Submit</button>
     </form>
     
-    <!-- Messenger 部分移动到表单下方 -->
+    <!-- Messenger 部分 -->
     <div class="demo-message-box">
-      <p style="color: black;">Have any question or ready to order?</p>
+      <p style="color: #000000; margin-bottom: 15px;">Have any question or ready to order?</p>
       <div class="messenger-row">
-        <a href="https://m.me/neoinear" target="_blank">Chat us now!</a>
         <div class="demo-messenger-icon">
           <a href="https://m.me/neoinear" target="_blank">
             <img src="messenger-icon.png" alt="Messenger">
           </a>
         </div>
+        <a href="https://m.me/neoinear" target="_blank" class="chat-link">
+          Chat us now! <span class="arrow">→</span>
+        </a>
       </div>
     </div>
   </div>
@@ -588,7 +590,29 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-top: 10px;
+}
+
+.chat-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #0066cc;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.chat-link:hover {
+  color: #004999;
+  transform: translateX(5px);
+}
+
+.arrow {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.chat-link:hover .arrow {
+  transform: translateX(3px);
 }
 
 .demo-message-box {
