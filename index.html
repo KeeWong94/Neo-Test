@@ -830,10 +830,10 @@
   <!-- 汉堡菜单 -->
   <div class="nav-menu" id="nav-menu">
     <a class="nav-link" href="#home">Home</a>
-    <div class="nav-link">Models</div>
+    <a class="nav-link" href="#products-models">Products/Models</a>
     <div class="submenu">
-      <a href="#n6p">Neo 6 Pro</a>
-      <a href="#n8p">Neo 8 Pro</a>
+      <a href="neo6pro.html">Neo 6 Pro</a>
+      <a href="neo8pro.html">Neo 8 Pro</a>
     </div>
     <a class="nav-link" href="#requirements">Request a Demo Now</a>
   </div>
@@ -873,7 +873,7 @@
   </section>
   
   <!-- section 2 产品 - 深灰背景 -->
-  <section class="section-gray">
+  <section class="section-gray" id="products-models">
     <div class="products-container">
       <!-- Products/Models标题居中 -->
       <div class="products-title">
@@ -1005,6 +1005,11 @@
       const navLinks = document.querySelectorAll('.nav-link, .submenu a');
       navLinks.forEach(link => {
         link.addEventListener('click', function() {
+          // 对于外部链接（neo6pro.html和neo8pro.html），直接跳转，不关闭菜单
+          if (this.getAttribute('href').includes('.html')) {
+            return; // 不关闭菜单，让浏览器直接跳转
+          }
+          
           mobileMenu.classList.remove('active');
           navMenu.classList.remove('active');
           navOverlay.classList.remove('active');
