@@ -458,7 +458,7 @@
             <div class="product-name" style="font-size: 3.5rem;">Neo 6 Pro</div>
             <div class="product-description" style="font-size: 1.5rem;">6 Drivers Professional IEM</div>
           </div>
-          <div class="product-info-bottom">
+          <div class="product-info-middle">
             <div class="product-price-container">
               <span>RSP. RM2400</span>
               <a href="neo6pro.html" class="learn-more-link">Learn More ></a>
@@ -475,7 +475,7 @@
             <div class="product-name" style="font-size: 3.5rem;">Neo 8 Pro</div>
             <div class="product-description" style="font-size: 1.5rem;">8 Drivers Professional IEM</div>
           </div>
-          <div class="product-info-bottom">
+          <div class="product-info-middle">
             <div class="product-price-container">
               <span>RSP. RM3300</span>
               <a href="neo8pro.html" class="learn-more-link">Learn More ></a>
@@ -505,12 +505,13 @@
   color: white;
 }
 
-.product-info-bottom {
+.product-info-middle {
   position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  width: 100%;
   z-index: 10;
   color: white;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
@@ -536,6 +537,10 @@
 @media (max-width: 768px) {
   .product-info-top {
     top: 15%;
+  }
+  
+  .product-info-middle {
+    top: 75%;
   }
   
   .product-info-top .product-name {
