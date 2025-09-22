@@ -149,13 +149,112 @@
     }
 
     /* ====== Section2 产品图 ====== */
-    .middle-img-list { max-width: 600px; margin: 0 auto 36px; display: flex; flex-direction: column; gap: 36px; }
-    .middle-img-item { width: 100%; aspect-ratio: 3/4; position: relative; scroll-margin-top: calc(var(--nav-h)+12px); border-radius:18px; overflow:hidden; background:#000; }
-    .middle-img-item img { width:100%; height:100%; object-fit:contain; display:block; background:#000; }
-    .middle-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 16px; background: transparent; padding-bottom: 28px; }
-    .price-tag { background: rgba(0,0,0,0.6); padding: 8px 18px; border-radius:12px; font-size:2.7rem; font-weight:bold; color:#fff; }
-    .learn-more-btn { background:#00bfff; color:#fff; padding:10px 22px; border-radius:12px; font-weight:600; cursor:pointer; text-decoration:none; transition:0.2s; }
-    .learn-more-btn:hover { background:#0095d1; transform:scale(1.05); }
+    .products-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .products-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .products-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      display: inline-block;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 5px;
+    }
+    
+    .products-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+    }
+    
+    .product-item {
+      flex: 1;
+      max-width: 500px;
+      position: relative;
+    }
+    
+    .product-image-container {
+      width: 100%;
+      position: relative;
+      padding-top: 133.33%; /* 3:4比例 */
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .product-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .product-info {
+      position: absolute;
+      top: 75%;
+      left: 10%;
+      z-index: 10;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+      text-align: left;
+    }
+    
+    .product-name {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    
+    .product-description {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+    
+    .product-price-container {
+      font-size: 1.5rem;
+      margin-top: 5px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .learn-more-link {
+      color: #3498db;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.5rem;
+    }
+    
+    /* 响应式设计 - 手机端 */
+    @media (max-width: 768px) {
+      .products-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .product-item {
+        max-width: 100%;
+      }
+      
+      .product-name {
+        font-size: 2rem;
+      }
+      
+      .product-description,
+      .product-price-container {
+        font-size: 1.2rem;
+      }
+    }
 
     /* ====== Section3 表单 ====== */
     .demo-section { max-width:900px; margin:0 auto; padding:32px 16px; background:#181a1b; border-radius:18px; box-shadow:0 4px 32px #0002; }
@@ -237,47 +336,40 @@
 
 <!-- section 2 产品 -->
 <section class="section-gray">
-  <!-- 添加Products/Models标题 -->
-  <div style="margin-bottom: 30px; padding-left: 20px;">
-    <h2 style="font-size: 2rem; font-weight: 700; color: #fff; display: inline-block; border-bottom: 3px solid #3498db; padding-bottom: 5px;">
-      Products/Models
-    </h2>
-  </div>
-  
-  <div class="middle-img-list" style="display:flex; justify-content:center; gap:40px; transform: scale(0.8); transform-origin: top center;">
-    <!-- Neo 6 Pro -->
-    <div class="middle-img-item" id="n6p" style="flex:1; text-align:center; position: relative;">
-      <!-- 3:4比例的图片容器 -->
-      <div style="width: 100%; position: relative; padding-top: 133.33%; background: #f0f2f5; border-radius: 8px; overflow: hidden;">
-        <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-        <!-- 模型名称、描述和价格 -->
-        <div style="position: absolute; top: 75%; left: 10%; transform: none; z-index: 10; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); text-align: left;">
-          <div style="font-size: 2.5rem; font-weight: bold;">Neo 6 Pro</div>
-          <div style="font-size: 1.5rem; margin-top: 10px;">6 Drivers Professional IEM</div>
-          <div style="font-size: 1.5rem; margin-top: 5px; font-weight: bold; display: flex; align-items: center; gap: 20px;">
-            <span>RSP. RM2400</span>
-            <a href="neo6pro.html" style="color: #3498db; font-weight: bold; text-decoration: none; font-size: 1.5rem;">
-              Learn More >
-            </a>
+  <div class="products-container">
+    <!-- Products/Models标题居中 -->
+    <div class="products-title">
+      <h2>Products/Models</h2>
+    </div>
+    
+    <!-- 产品图横向并排 -->
+    <div class="products-grid">
+      <!-- Neo 6 Pro -->
+      <div class="product-item" id="n6p">
+        <div class="product-image-container">
+          <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro" class="product-image">
+          <div class="product-info">
+            <div class="product-name">Neo 6 Pro</div>
+            <div class="product-description">6 Drivers Professional IEM</div>
+            <div class="product-price-container">
+              <span>RSP. RM2400</span>
+              <a href="neo6pro.html" class="learn-more-link">Learn More ></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <!-- Neo 8 Pro -->
-    <div class="middle-img-item" id="n8p" style="flex:1; text-align:center; position: relative;">
-      <!-- 3:4比例的图片容器 -->
-      <div style="width: 100%; position: relative; padding-top: 133.33%; background: #f0f2f5; border-radius: 8px; overflow: hidden;">
-        <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
-        <!-- 模型名称、描述和价格 -->
-        <div style="position: absolute; top: 75%; left: 10%; transform: none; z-index: 10; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); text-align: left;">
-          <div style="font-size: 2.5rem; font-weight: bold;">Neo 8 Pro</div>
-          <div style="font-size: 1.5rem; margin-top: 10px;">8 Drivers Professional IEM</div>
-          <div style="font-size: 1.5rem; margin-top: 5px; font-weight: bold; display: flex; align-items: center; gap: 20px;">
-            <span>RSP. RM3300</span>
-            <a href="neo8pro.html" style="color: #3498db; font-weight: bold; text-decoration: none; font-size: 1.5rem;">
-              Learn More >
-            </a>
+      
+      <!-- Neo 8 Pro -->
+      <div class="product-item" id="n8p">
+        <div class="product-image-container">
+          <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro" class="product-image">
+          <div class="product-info">
+            <div class="product-name">Neo 8 Pro</div>
+            <div class="product-description">8 Drivers Professional IEM</div>
+            <div class="product-price-container">
+              <span>RSP. RM3300</span>
+              <a href="neo8pro.html" class="learn-more-link">Learn More ></a>
+            </div>
           </div>
         </div>
       </div>
