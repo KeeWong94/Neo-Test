@@ -577,10 +577,8 @@
           </a>
         </div>
         <a href="https://m.me/neoinear" target="_blank" class="chat-container">
-          <p class="got-questions">Got questions?</p>
-          <div class="chat-link">
-            Chat us now! <span class="arrow">→</span>
-          </div>
+          <span class="got-questions">Got questions?</span>
+          <span class="chat-link">Chat us now! <span class="arrow">→</span></span>
         </a>
       </div>
     </div>
@@ -600,35 +598,33 @@
   flex-direction: column;
   align-items: flex-start;
   text-decoration: none;
+  color: #0066cc;
+  transition: all 0.3s ease;
 }
 
 .got-questions {
-  color: #004080; /* 深蓝色 */
-  margin: 0 0 5px 0;
   font-weight: bold;
   font-size: 1.1em;
+  margin-bottom: 2px;
 }
 
 .chat-link {
   display: flex;
   align-items: center;
-  color: #0066cc;
   font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.chat-container:hover .got-questions {
-  color: #00264d; /* 更深的蓝色悬停效果 */
-}
-
-.chat-container:hover .chat-link {
-  color: #004999;
-  transform: translateX(5px);
 }
 
 .arrow {
   margin-left: 5px;
   transition: transform 0.3s ease;
+}
+
+.chat-container:hover {
+  color: #004999;
+}
+
+.chat-container:hover .chat-link {
+  transform: translateX(5px);
 }
 
 .chat-container:hover .arrow {
