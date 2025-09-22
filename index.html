@@ -454,9 +454,11 @@
       <div class="product-item" id="n6p">
         <div class="product-image-container">
           <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro" class="product-image">
+          <div class="product-info-top">
+            <div class="product-name" style="font-size: 3.5rem;">Neo 6 Pro</div>
+            <div class="product-description" style="font-size: 1.5rem;">6 Drivers Professional IEM</div>
+          </div>
           <div class="product-info">
-            <div class="product-name">Neo 6 Pro</div>
-            <div class="product-description">6 Drivers Professional IEM</div>
             <div class="product-price-container">
               <span>RSP. RM2400</span>
               <a href="neo6pro.html" class="learn-more-link">Learn More ></a>
@@ -469,9 +471,11 @@
       <div class="product-item" id="n8p">
         <div class="product-image-container">
           <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro" class="product-image">
+          <div class="product-info-top">
+            <div class="product-name" style="font-size: 3.5rem;">Neo 8 Pro</div>
+            <div class="product-description" style="font-size: 1.5rem;">8 Drivers Professional IEM</div>
+          </div>
           <div class="product-info">
-            <div class="product-name">Neo 8 Pro</div>
-            <div class="product-description">8 Drivers Professional IEM</div>
             <div class="product-price-container">
               <span>RSP. RM3300</span>
               <a href="neo8pro.html" class="learn-more-link">Learn More ></a>
@@ -482,6 +486,50 @@
     </div>
   </div>
 </section>
+
+<style>
+/* 新增的样式 */
+.product-image-container {
+  position: relative;
+}
+
+.product-info-top {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+  z-index: 10;
+  color: white;
+}
+
+.product-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 10;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .product-info-top {
+    top: 20%;
+  }
+  
+  .product-info-top .product-name {
+    font-size: 2.5rem !important;
+  }
+  
+  .product-info-top .product-description {
+    font-size: 1.2rem !important;
+  }
+}
+</style>
 
 <!-- section 3 表单 -->
 <section class="section-dark" id="requirements">
