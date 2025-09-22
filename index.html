@@ -392,35 +392,36 @@
       transform: translateY(-2px);
     }
 
-    /* ====== Messenger + Follow Us ====== */
-    .message-box { 
+    /* Messenger 样式 - 移动到表单下方 */
+    .demo-message-box { 
       max-width:360px; 
-      margin:40px auto; 
+      margin:20px auto 0; 
       background:#fff; 
       color:#000; 
       border-radius:16px; 
       padding:20px; 
       text-align:center; 
     }
-    .message-box p { 
+    .demo-message-box p { 
       margin:0 0 10px; 
       font-weight:bold; 
     }
-    .message-box a { 
+    .demo-message-box a { 
       font-weight:bold; 
       color:#0078ff; 
       text-decoration:none; 
     }
-    .message-box a:hover { 
+    .demo-message-box a:hover { 
       text-decoration:underline; 
     }
-    .messenger-icon img { 
+    .demo-messenger-icon img { 
       width:44px; 
       height:44px; 
       border-radius:50%; 
       margin-top:14px; 
     }
 
+    /* ====== Section4 Follow Us ====== */
     .follow-section { 
       text-align:center; 
       margin-top:20px; 
@@ -563,23 +564,24 @@
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Email Address" required>
       <input type="text" name="phone" placeholder="Phone Number" required>
-      <textarea name="message" placeholder="Additional Message"></textarea>
       <button type="submit">Submit</button>
     </form>
+    
+    <!-- Messenger 部分移动到表单下方 -->
+    <div class="demo-message-box">
+      <p>Have any question or ready to order?</p>
+      <a href="https://m.me/neoinear" target="_blank">Chat with us now!</a>
+      <div class="demo-messenger-icon">
+        <a href="https://m.me/neoinear" target="_blank">
+          <img src="messenger-icon.png" alt="Messenger">
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- section 4 Messenger + Follow Us -->
+<!-- section 4 Follow Us -->
 <section class="section-gray">
-  <div class="message-box">
-    <p>Have any question or ready to order?</p>
-    <a href="https://m.me/neoinear" target="_blank">Chat with us now!</a>
-    <div class="messenger-icon">
-      <a href="https://m.me/neoinear" target="_blank">
-        <img src="messenger-icon.png" alt="Messenger">
-      </a>
-    </div>
-  </div>
   <div class="follow-section">
     <div class="follow-title">Follow Us</div>
     <div class="social-icons">
@@ -587,7 +589,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
       </a>
       <a href="https://www.instagram.com/neociem/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        <img src="https://upload.wikimedia/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
       </a>
     </div>
   </div>
