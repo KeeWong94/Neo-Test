@@ -224,28 +224,261 @@
   </div>
 </section>
 
-<!-- Section3 表单示例 -->
-<section class="section-dark demo-section" id="requirements">
-  <h2>Request a Demo</h2>
-  <p>Fill in the form below and we will contact you for a personalized demo.</p>
-  <form>
-    <input type="text" placeholder="Full Name" required>
-    <input type="email" placeholder="Email" required>
-    <input type="text" placeholder="Phone" required>
-    <textarea placeholder="Message"></textarea>
-    <button type="submit">Submit</button>
-  </form>
-</section>
-
-<!-- Section4 Follow Us -->
-<section class="section-gray follow-section">
-  <div class="gallery-title">Follow Us</div>
-  <div class="gallery-container">
-    <div class="gallery-item"><img src="social1.jpg" alt=""></div>
-    <div class="gallery-item"><img src="social2.jpg" alt=""></div>
-    <div class="gallery-item"><img src="social3.jpg" alt=""></div>
+<!-- section 3 表单 - 深黑背景 -->
+<section class="section-dark" id="requirements">
+  <div class="demo-section">
+    <h2>Request a Demo Now</h2>
+    <p>Fill out the form below and our team will contact you</p>
+    <form action="https://formspree.io/f/mblybpog" method="POST" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="phone" placeholder="Phone Number" required>
+      <button type="submit">Submit</button>
+    </form>
+    
+    <!-- Messenger 部分 -->
+    <div class="demo-message-box">
+      <p style="color: #000000; margin-bottom: 15px;">Have any question or ready to order?</p>
+      <div class="messenger-row">
+        <div class="demo-messenger-icon">
+          <a href="https://m.me/neoinear" target="_blank">
+            <img src="messenger-icon.png" alt="Messenger">
+          </a>
+        </div>
+        <a href="https://m.me/neoinear" target="_blank" class="chat-container">
+          <span class="got-questions">Got questions?</span>
+          <span class="chat-link">Chat us now! <span class="arrow">→</span></span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- section 4 Follow Us - 深灰背景 -->
+<section class="section-gray">
+  <div class="follow-section">
+    <div class="gallery-title">Neo Custom IEM Gallery</div>
+    
+    <div class="gallery-container">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 1">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 2">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1592921870785-0457ab5d816d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 3">
+      </div>
+    </div>
+    
+    <div class="follow-title">Follow Us</div>
+    <div class="social-icons">
+      <a href="https://facebook.com/neoinear" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/neociem/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.messenger-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  color: #0066cc;
+  transition: all 0.3s ease;
+}
+
+.got-questions {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 2px;
+}
+
+.chat-link {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.arrow {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.chat-container:hover {
+  color: #004999;
+}
+
+.chat-container:hover .chat-link {
+  transform: translateX(5px);
+}
+
+.chat-container:hover .arrow {
+  transform: translateX(3px);
+}
+
+.demo-message-box {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* 新增样式使图标和文本水平排列 */
+.messenger-row {
+  flex-direction: row;
+  align-items: center;
+}
+
+.demo-messenger-icon {
+  margin-right: 10px;
+}
+
+/* 图库样式 */
+.gallery-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.gallery-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.follow-title {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.social-icons a:hover {
+  transform: scale(1.15);
+}
+
+.social-icons img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  .gallery-item {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 800px) {
+  .gallery-item {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 700px) {
+  .gallery-container {
+    gap: 20px;
+  }
+  
+  .gallery-item {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-container {
+    gap: 15px;
+  }
+  
+  .gallery-item {
+    width: 28vw;
+    height: 28vw;
+    min-width: 100px;
+    min-height: 100px;
+  }
+  
+  .gallery-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+  
+  .follow-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .gallery-container {
+    gap: 10px;
+  }
+  
+  .gallery-item {
+    width: 27vw;
+    height: 27vw;
+  }
+  
+  .social-icons a {
+    width: 45px;
+    height: 45px;
+  }
+}
+</style>
 
 <!-- Footer -->
 <div class="footer section-dark">
