@@ -460,7 +460,7 @@
           </div>
           <div class="product-info-middle">
             <div class="product-price-container">
-              <span>RSP. RM2400</span>
+              <span class="price-text">RSP. RM2400</span>
               <a href="neo6pro.html" class="learn-more-link">Learn More ></a>
             </div>
           </div>
@@ -477,7 +477,7 @@
           </div>
           <div class="product-info-middle">
             <div class="product-price-container">
-              <span>RSP. RM3300</span>
+              <span class="price-text">RSP. RM3300</span>
               <a href="neo8pro.html" class="learn-more-link">Learn More ></a>
             </div>
           </div>
@@ -526,11 +526,16 @@
   font-weight: bold;
 }
 
+.price-text {
+  display: inline-block;
+}
+
 .learn-more-link {
   color: #3498db;
   font-weight: bold;
   text-decoration: none;
   font-size: 1.5rem;
+  display: inline-block;
 }
 
 /* 响应式调整 - 移动端 */
@@ -553,13 +558,17 @@
   
   .product-price-container {
     flex-direction: column;
-    gap: 8px;
+    gap: 0;
     font-size: 1.2rem;
+  }
+  
+  .price-text {
+    transform: translateY(0); /* 价格文本位置不变 */
   }
   
   .learn-more-link {
     font-size: 1.2rem;
-    margin-top: 10px; /* 增加上边距，使链接下移 */
+    transform: translateY(50%); /* 链接文本下移50% */
   }
 }
 
@@ -582,13 +591,13 @@
   }
   
   .product-price-container {
-    gap: 5px;
+    gap: 0;
     font-size: 1.1rem;
   }
   
   .learn-more-link {
     font-size: 1.1rem;
-    margin-top: 12px; /* 进一步增加上边距 */
+    transform: translateY(50%); /* 链接文本下移50% */
   }
 }
 </style>
