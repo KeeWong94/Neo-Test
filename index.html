@@ -455,8 +455,8 @@
         <div class="product-image-container">
           <img src="Neo 6 Pro WS.jpg" alt="Neo 6 Pro" class="product-image">
           <div class="product-info-top">
-            <div class="product-name" style="font-size: 3.5rem;">Neo 6 Pro</div>
-            <div class="product-description" style="font-size: 1.5rem;">6 Drivers Professional IEM</div>
+            <div class="product-name">Neo 6 Pro</div>
+            <div class="product-description">6 Drivers Professional IEM</div>
           </div>
           <div class="product-info-middle">
             <div class="product-price-container">
@@ -472,8 +472,8 @@
         <div class="product-image-container">
           <img src="Neo 8 Pro WS.jpg" alt="Neo 8 Pro" class="product-image">
           <div class="product-info-top">
-            <div class="product-name" style="font-size: 3.5rem;">Neo 8 Pro</div>
-            <div class="product-description" style="font-size: 1.5rem;">8 Drivers Professional IEM</div>
+            <div class="product-name">Neo 8 Pro</div>
+            <div class="product-description">8 Drivers Professional IEM</div>
           </div>
           <div class="product-info-middle">
             <div class="product-price-container">
@@ -488,9 +488,23 @@
 </section>
 
 <style>
-/* 新增的样式 */
+/* 基础样式 */
 .product-image-container {
   position: relative;
+  width: 100%;
+  padding-top: 133.33%; /* 3:4比例 */
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .product-info-top {
@@ -503,6 +517,16 @@
   text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
   z-index: 10;
   color: white;
+}
+
+.product-info-top .product-name {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.product-info-top .product-description {
+  font-size: 1.5rem;
+  margin-top: 10px;
 }
 
 .product-info-middle {
@@ -539,7 +563,7 @@
 }
 
 /* 响应式调整 - 移动端 */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .product-info-top {
     top: 20%;
   }
@@ -549,11 +573,11 @@
   }
   
   .product-info-top .product-name {
-    font-size: 2.5rem !important;
+    font-size: 2.5rem;
   }
   
   .product-info-top .product-description {
-    font-size: 1.2rem !important;
+    font-size: 1.2rem;
   }
   
   .product-price-container {
@@ -563,17 +587,18 @@
   }
   
   .price-text {
-    transform: translateY(0); /* 价格文本位置不变 */
+    transform: translateY(0);
   }
   
   .learn-more-link {
     font-size: 1.2rem;
-    transform: translateY(50%); /* 链接文本下移50% */
+    transform: translateY(50%);
+    margin-top: 5px;
   }
 }
 
 /* 响应式调整 - 小屏幕手机 */
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .product-info-top {
     top: 18%;
   }
@@ -583,21 +608,20 @@
   }
   
   .product-info-top .product-name {
-    font-size: 2rem !important;
+    font-size: 2rem;
   }
   
   .product-info-top .product-description {
-    font-size: 1rem !important;
+    font-size: 1rem;
   }
   
   .product-price-container {
-    gap: 0;
     font-size: 1.1rem;
   }
   
   .learn-more-link {
     font-size: 1.1rem;
-    transform: translateY(50%); /* 链接文本下移50% */
+    transform: translateY(50%);
   }
 }
 </style>
