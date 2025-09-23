@@ -80,6 +80,7 @@
       overflow: auto;
       box-shadow: 4px 0 15px rgba(0,0,0,0.5);
       transition: left 0.4s ease;
+      justify-content: flex-start;
     }
     
     .nav-menu.active { 
@@ -132,10 +133,99 @@
       border-bottom: 1px solid rgba(255,255,255,0.08);
       font-size: 1rem;
       transition: background 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     
     .submenu a:hover { 
       background: rgba(255,255,255,0.12); 
+    }
+    
+    .submenu-arrow {
+      font-weight: bold;
+      margin-left: 10px;
+      transition: transform 0.3s ease;
+    }
+    
+    .submenu a:hover .submenu-arrow {
+      transform: translateX(3px);
+    }
+    
+    /* ====== 汉堡菜单底部的Messenger帮助框 ====== */
+    .menu-messenger-container {
+      margin-top: auto; /* 将帮助框推到菜单底部 */
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .menu-messenger-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px 20px;
+      color: #000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: fit-content; /* 宽度根据内容自适应 */
+      max-width: 90%;
+    }
+    
+    .menu-messenger-box:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+    
+    .menu-messenger-box a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #000;
+    }
+    
+    .menu-messenger-icon {
+      width: 60px; /* 放大2倍 */
+      height: 60px; /* 放大2倍 */
+      margin-right: 15px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent; /* 无背景 */
+    }
+    
+    .menu-messenger-icon img {
+      width: 48px; /* 放大2倍 */
+      height: 48px; /* 放大2倍 */
+      /* 保持Messenger原色（蓝色） */
+    }
+    
+    .menu-messenger-text {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .need-help {
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    
+    .chat-now {
+      font-size: 0.9rem;
+      color: #0084ff;
+      display: flex;
+      align-items: center;
+    }
+    
+    .chat-now .arrow {
+      margin-left: 5px;
+      transition: transform 0.3s ease;
+    }
+    
+    .menu-messenger-box:hover .chat-now .arrow {
+      transform: translateX(3px);
     }
     
     .nav-spacer { height: var(--nav-h); }
@@ -456,6 +546,30 @@
       .nav-menu {
         width: 90%;
         left: -90%;
+      }
+      
+      /* 小屏幕上调整Messenger框的样式 */
+      .menu-messenger-box {
+        padding: 12px 16px;
+      }
+      
+      .menu-messenger-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 12px;
+      }
+      
+      .menu-messenger-icon img {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .need-help {
+        font-size: 0.9rem;
+      }
+      
+      .chat-now {
+        font-size: 0.85rem;
       }
     }
 
@@ -832,10 +946,26 @@
     <a class="nav-link" href="#home">Home</a>
     <a class="nav-link" href="#products-models">Products/Models</a>
     <div class="submenu">
-      <a href="neo6pro.html">Neo 6 Pro</a>
-      <a href="neo8pro.html">Neo 8 Pro</a>
+      <a href="neo6pro.html">Neo 6 Pro <span class="submenu-arrow">></span></a>
+      <a href="neo8pro.html">Neo 8 Pro <span class="submenu-arrow">></span></a>
     </div>
     <a class="nav-link" href="#requirements">Request a Demo Now</a>
+    
+    <!-- 汉堡菜单底部的Messenger帮助框 -->
+    <div class="menu-messenger-container">
+      <div class="menu-messenger-box">
+        <a href="https://m.me/neoinear" target="_blank">
+          <div class="menu-messenger-icon">
+            <!-- 使用原色Messenger Logo -->
+            <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yK/r/Wyrg_0Mf0cL.png" alt="Messenger">
+          </div>
+          <div class="menu-messenger-text">
+            <span class="need-help">Need Help?</span>
+            <span class="chat-now">Chat Us Now <span class="arrow">></span></span>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
   
   <!-- 菜单遮罩层 -->
@@ -1017,7 +1147,7 @@
         });
       });
       
-      // 轮播图功能
+     // 轮播图功能
       const sliderTrack = document.getElementById('slider-track');
       const dots = document.querySelectorAll('.slider-dots span');
       let currentSlide = 0;
