@@ -217,6 +217,7 @@
       color: #0084ff;
       display: flex;
       align-items: center;
+      font-weight: bold; /* 改为粗体 */
     }
     
     .chat-now .arrow {
@@ -280,6 +281,12 @@
       .nav-menu {
         width: 80%;
         left: -80%;
+      }
+      
+      /* 移动端菜单中Messenger帮助框位置上移10% */
+      .menu-messenger-container {
+        padding: 10px 20px;
+        margin-top: 10%;
       }
     }
     
@@ -1147,7 +1154,7 @@
         });
       });
       
-     // 轮播图功能
+    // 轮播图功能
       const sliderTrack = document.getElementById('slider-track');
       const dots = document.querySelectorAll('.slider-dots span');
       let currentSlide = 0;
