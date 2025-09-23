@@ -1083,34 +1083,126 @@
     </div>
   </section>
   
-  <!-- section 4 Follow Us - 深灰背景 -->
-  <section class="section-gray">
-    <div class="follow-section">
-      <div class="gallery-title">Neo Custom IEM Gallery</div>
+<!-- section 4 Follow Us - 深灰背景 -->
+<section class="section-gray">
+  <div class="follow-section">
+    <div class="gallery-title">Neo Custom IEM Gallery</div>
 
-      <div class="gallery-container">
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 1">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 2">
-        </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1592921870785-0457ab5d816d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 3">
-        </div>
+    <div class="gallery-container">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 1">
       </div>
-
-      <div class="follow-title">Follow Us</div>
-      <div class="social-icons">
-        <a href="https://facebook.com/neoinear" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
-        </a>
-        <a href="https://www.instagram.com/neociem/" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-        </a>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 2">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1592921870785-0457ab5d816d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Custom IEM 3">
       </div>
     </div>
-  </section>
+
+    <div class="follow-title">Follow Us</div>
+    <div class="social-icons">
+      <a href="https://facebook.com/neoinear" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/neociem/" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      </a>
+    </div>
+  </div>
+
+  <style>
+    .section-gray {
+      background-color: #333;
+      padding: 60px 0;
+      color: white;
+      text-align: center;
+    }
+    
+    .follow-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .gallery-title {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+    
+    .gallery-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+    
+    .gallery-item {
+      width: 300px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 230px; /* 300/1.3 ≈ 230.77 */
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item img:hover {
+      transform: scale(1.05);
+    }
+    
+    .follow-title {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+      transform: scale(1.1);
+    }
+    
+    .social-icons img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .gallery-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .gallery-item {
+        width: 90%;
+        max-width: 400px;
+      }
+      
+      .gallery-item img {
+        height: calc(90vw / 1.3);
+        max-height: 308px; /* 400/1.3 ≈ 307.69 */
+      }
+    }
+  </style>
+</section>
   
   <footer class="footer">
     <p>&copy; 2023 Neo CIEM. All rights reserved.</p>
