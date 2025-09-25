@@ -334,7 +334,7 @@
     }
     
     .neo6pro-product-title {
-      font-size: 2rem;
+      font-size: 4rem; /* 放大2倍 */
       color: #2c3e50;
       margin-bottom: 10px;
       font-weight: 700;
@@ -844,7 +844,6 @@
         min-height: 85vh; /* 减少15%高度 */
       }
       
-      /* 移动端section背景颜色 */
       section:nth-child(odd) { 
         background: #0a0a0a; /* 比#000更浅15% */
       }
@@ -895,7 +894,7 @@
       }
       
       .neo6pro-product-title {
-        font-size: 1.8rem;
+        font-size: 3.2rem; /* 移动端也放大2倍 */
       }
       
       .neo6pro-product-subtitle {
@@ -907,13 +906,15 @@
       }
       
       .neo6pro-button-container {
-        flex-direction: row;
-        gap: 10px;
+        flex-direction: column; /* 改为垂直排列 */
+        gap: 15px;
       }
       
       .neo6pro-feature-btn {
-        padding: 12px 0;
-        font-size: 0.9rem;
+        padding: 20px 0; /* 增加高度 */
+        font-size: 1.2rem; /* 增大字体 */
+        width: 200%; /* 宽度加多一倍 */
+        margin-left: -50%; /* 居中调整 */
       }
       
       /* 特性部分移动端样式 */
@@ -930,7 +931,12 @@
         font-size: 18px;
       }
       
-      /* 定制贴合部分移动端样式 */
+      /* 定制贴合部分移动端样式 - 背景高度上下crop小20% */
+      #section3 {
+        min-height: 68vh; /* 85vh * 0.8 = 68vh */
+        padding: 20px 0; /* 减少内边距 */
+      }
+      
       .custom-fit-content-title {
         font-size: 24px;
       }
@@ -939,9 +945,14 @@
         font-size: 14px;
       }
       
-      /* MMCX连接器部分移动端样式 */
+      /* MMCX连接器部分移动端样式 - 背景高度上下crop小20% */
+      #section4 {
+        min-height: 68vh; /* 85vh * 0.8 = 68vh */
+        padding: 20px 0; /* 减少内边距 */
+      }
+      
       .mmcx-connection {
-        padding: 40px 0;
+        padding: 20px 0;
       }
       
       .mmcx-main-title {
@@ -965,7 +976,7 @@
       .color-selector .image-box {
         flex: 0 0 48%; /* 确保两个盒子并排显示 */
         min-width: 150px; /* 更小的最小宽度 */
-        aspect-ratio: 3/3; /* 改为3:3比例 */
+        aspect-ratio: 3/3; /* 改为3:3比例（正方形） */
         padding: 10px;
       }
 
@@ -978,17 +989,19 @@
       }
 
       .color-selector .tabs-container {
-        transform: scale(0.8); /* 移动端额外缩小20% */
+        transform: scale(0.8); /* 额外缩小20% */
       }
 
       .color-selector .tabs {
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* 确保水平排列 */
+        gap: 15px; /* 增加间距 */
       }
 
       .color-selector .tab {
-        min-width: 80px;
-        padding: 10px 15px;
-        font-size: 14px;
+        min-width: 120px; /* 加大宽度 */
+        padding: 20px 30px; /* 加大内边距 */
+        font-size: 24px; /* 字体加大2倍 */
+        border-radius: 10px; /* 圆角加大 */
       }
 
       .color-selector .thumbnail {
@@ -1056,6 +1069,18 @@
         font-size: 1rem;
       }
       
+      /* Neo 6 Pro 小屏幕样式 */
+      .neo6pro-product-title {
+        font-size: 2.8rem; /* 小屏幕适当减小 */
+      }
+      
+      .neo6pro-feature-btn {
+        width: 180%; /* 小屏幕适当调整 */
+        margin-left: -40%; /* 居中调整 */
+        font-size: 1.1rem; /* 小屏幕适当减小 */
+        padding: 18px 0; /* 小屏幕适当调整 */
+      }
+      
       /* 颜色选择器小屏幕样式 */
       .color-selector {
         padding: 10px;
@@ -1073,7 +1098,7 @@
       .color-selector .image-box {
         flex: 0 0 48%; /* 确保两个盒子并排显示 */
         min-width: 140px; /* 更小的最小宽度 */
-        aspect-ratio: 3/3; /* 改为3:3比例 */
+        aspect-ratio: 3/3; /* 改为3:3比例（正方形） */
         padding: 8px;
       }
 
@@ -1086,9 +1111,9 @@
       }
 
       .color-selector .tab {
-        min-width: 70px;
-        padding: 8px 12px;
-        font-size: 14px;
+        min-width: 100px; /* 小屏幕适当调整 */
+        padding: 15px 20px; /* 小屏幕适当调整 */
+        font-size: 20px; /* 小屏幕适当调整 */
       }
 
       .color-selector .section-title {
@@ -1131,7 +1156,7 @@
       }
       
       .neo6pro-product-title {
-        font-size: 2.5rem;
+        font-size: 4rem; /* 保持放大2倍 */
       }
       
       .neo6pro-product-subtitle {
@@ -1196,7 +1221,7 @@
       }
       
       .neo6pro-product-title {
-        font-size: 3rem;
+        font-size: 4.5rem; /* 大桌面端适当放大 */
       }
       
       .neo6pro-product-subtitle {
@@ -1304,13 +1329,13 @@
   
   <section id="section3">
     <div class="custom-fit-section">
+      <!-- 将Designed to Fit Your Ears with Precision作为Section 3的标题 -->
       <h2 class="custom-fit-content-title">Designed to Fit Your Ears with Precision</h2>
       <div class="custom-fit-image-container">
         <img src="ear shape copy.png" alt="Custom IEM Design">
       </div>
       
       <div class="content">
-        <h2 class="custom-fit-content-title">Custom To Fit Your Ears</h2>
         <p class="custom-fit-content-description">
           Our Custom IEM is meticulously tailored to fit each individual's ears perfectly. 
           Using a personalized molding process, it ensures both comfort and a secure fit, 
