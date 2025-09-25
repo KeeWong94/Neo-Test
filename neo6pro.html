@@ -495,20 +495,6 @@
       object-fit: cover;
     }
     
-    .custom-fit-image-title {
-      position: absolute;
-      top: -50px; /* 移到照片上方 */
-      left: 0;
-      width: 100%;
-      font-size: 24px;
-      font-weight: bold;
-      color: #fff;
-      text-align: center;
-      padding: 0 20px;
-      z-index: 2;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-    }
-    
     .custom-fit-content-title {
       font-size: 28px;
       font-weight: bold;
@@ -853,7 +839,12 @@
     
     /* 手机端样式 */
     @media (max-width: 768px) {
-      /* 移动端section背景减少15% */
+      /* 移动端section背景减少15%高度 */
+      section {
+        min-height: 85vh; /* 减少15%高度 */
+      }
+      
+      /* 移动端section背景颜色 */
       section:nth-child(odd) { 
         background: #0a0a0a; /* 比#000更浅15% */
       }
@@ -940,11 +931,6 @@
       }
       
       /* 定制贴合部分移动端样式 */
-      .custom-fit-image-title {
-        font-size: 20px;
-        top: -40px; /* 移动端调整位置 */
-      }
-      
       .custom-fit-content-title {
         font-size: 24px;
       }
@@ -979,7 +965,7 @@
       .color-selector .image-box {
         flex: 0 0 48%; /* 确保两个盒子并排显示 */
         min-width: 150px; /* 更小的最小宽度 */
-        aspect-ratio: 4/3; /* 保持4:3比例 */
+        aspect-ratio: 3/3; /* 改为3:3比例 */
         padding: 10px;
       }
 
@@ -992,7 +978,7 @@
       }
 
       .color-selector .tabs-container {
-        transform: scale(1); /* 移动端不缩小 */
+        transform: scale(0.8); /* 移动端额外缩小20% */
       }
 
       .color-selector .tabs {
@@ -1087,7 +1073,7 @@
       .color-selector .image-box {
         flex: 0 0 48%; /* 确保两个盒子并排显示 */
         min-width: 140px; /* 更小的最小宽度 */
-        aspect-ratio: 4/3; /* 保持4:3比例 */
+        aspect-ratio: 3/3; /* 改为3:3比例 */
         padding: 8px;
       }
 
@@ -1295,6 +1281,7 @@
     </div>
   </section>
   
+  <!-- 移动到section2上方的Feature Section -->
   <section id="section-feature" class="feature-title-section">
     <h1>FEATURE</h1>
   </section>
@@ -1317,7 +1304,7 @@
   
   <section id="section3">
     <div class="custom-fit-section">
-     <h1>Designed to Fit Your Ears with Precision</h1>
+      <h2 class="custom-fit-content-title">Designed to Fit Your Ears with Precision</h2>
       <div class="custom-fit-image-container">
         <img src="ear shape copy.png" alt="Custom IEM Design">
       </div>
