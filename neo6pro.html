@@ -858,8 +858,8 @@
         padding: 10px 0 !important;
       }
       
-      /* Section 3 在移动端背景高度crop去20% */
-      #section3 {
+      /* Section 3 和 4 在移动端背景高度crop去20% */
+      #section3, #section4 {
         min-height: 68vh; /* 85vh的80% */
         padding: 20px 0;
       }
@@ -890,16 +890,27 @@
         font-size: 1.1rem;
       }
       
-      /* Neo 6 Pro 移动端样式 - 图片在上，文字在下 */
+      /* Neo 6 Pro 移动端样式 - 完全重写图片显示方式 */
       .neo6pro-content-section {
         flex-direction: column;
         min-height: auto;
+        position: relative;
       }
       
       .neo6pro-image-container {
-        flex: 0 0 100%;
-        padding-top: 75%; /* 保持4:3比例 */
-        display: block; /* 确保图片在移动端显示 */
+        flex: 0 0 auto; /* 取消固定比例 */
+        width: 100%;
+        height: 250px; /* 固定高度 */
+        padding-top: 0; /* 取消padding-top */
+        display: block;
+        position: relative;
+      }
+      
+      .neo6pro-image-container img {
+        position: relative; /* 改为相对定位 */
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* 确保图片完整显示 */
       }
       
       .neo6pro-text-container {
@@ -1077,6 +1088,10 @@
         font-size: 2.8rem; /* 小屏幕适当减小 */
       }
       
+      .neo6pro-image-container {
+        height: 200px; /* 小屏幕更小的高度 */
+      }
+      
       .neo6pro-feature-btn {
         width: 180%; /* 小屏幕适当调整 */
         margin-left: -40%; /* 居中调整 */
@@ -1153,6 +1168,11 @@
         flex: 0 0 40%;
         padding-top: 30%; /* 保持4:3比例 */
         display: block; /* 确保图片在桌面端显示 */
+        height: auto; /* 重置高度 */
+      }
+      
+      .neo6pro-image-container img {
+        position: absolute; /* 桌面端恢复绝对定位 */
       }
       
       .neo6pro-text-container {
@@ -1171,8 +1191,8 @@
         font-size: 2.2rem;
       }
       
-      /* Section 3 在桌面端保持原有高度 */
-      #section3 {
+      /* Section 3 和 4 在桌面端保持原有高度 */
+      #section3, #section4 {
         min-height: 100vh; /* 桌面端保持100vh */
         padding: 40px 0;
       }
