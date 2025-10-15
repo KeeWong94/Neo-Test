@@ -979,28 +979,23 @@
   </footer>
 
   <script>
-    // 汉堡菜单功能
     document.addEventListener('DOMContentLoaded', function() {
       const mobileMenu = document.getElementById('mobile-menu');
       const navMenu = document.getElementById('nav-menu');
       const navOverlay = document.getElementById('nav-overlay');
       
-      // 打开/关闭菜单
       function toggleMenu() {
         mobileMenu.classList.toggle('active');
         navMenu.classList.toggle('active');
         navOverlay.classList.toggle('active');
         
-        // 防止背景滚动
         document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
       }
       
       mobileMenu.addEventListener('click', toggleMenu);
       
-      // 点击遮罩层关闭菜单
       navOverlay.addEventListener('click', toggleMenu);
       
-      // 点击菜单项关闭菜单
       const navLinks = document.querySelectorAll('.nav-link, .submenu a');
       navLinks.forEach(link => {
         link.addEventListener('click', function() {
