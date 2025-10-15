@@ -318,101 +318,117 @@
     }
     
     /* ====== Section2 产品图 ====== */
-   .products-models {
-  background-color: #2c2c2c;
-  padding: 60px 20px;
-}
+    .products-models {
+      background-color: #2c2c2c;
+     padding: 60px 20px;
+    }
 
-.products-title {
-  text-align: center;
-  margin-bottom: 40px;
-}
+    .products-title {
+      text-align: center;
+     margin-bottom: 40px;
+    }
 
-.products-title h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  display: inline-block;
-  border-bottom: 3px solid #3498db;
-  padding-bottom: 5px;
-}
+    .products-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+     display: inline-block;
+     border-bottom: 3px solid #3498db;
+     padding-bottom: 5px;
+    }
 
-.products-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
-  max-width: 750px;
-  margin: 0 auto;
-}
+    .products-container {
+      display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: stretch;
+     gap: 40px;
+     max-width: 750px;
+     margin: 0 auto;
+     padding: 0 20px;
+    }
 
-.product-card {
-  background: rgb(160, 160, 160);
-  border: 3px solid #000;
-  border-radius: 8px;
-  width: 300px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-  overflow: hidden;
-}
+    .product-card {
+      position: relative;
+     background: rgb(160, 160, 160);
+     border: 2px solid #000;
+     border-radius: 8px;
+     width: 100%;
+     max-width: 300px;
+     height: 400px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     padding: 20px;
+     margin: 0;
+    }
 
-.product-image {
-  flex: 0 0 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
+    .product-info {
+      width: 100%;
+     text-align: center;
+     padding: 0px;
+     margin-top: 10px;
+    }
 
-.product-image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
+    .product-name {
+      font-size: 2rem;
+     font-weight: bold;
+     margin-bottom: 5px;
+    }
 
-.product-info {
-  flex: 0 0 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  padding: 0px;
-}
+    .product-description {
+     font-size: 1.2rem;
+    }
 
-.product-name {
-  font-size: 2.5rem;
-  margin-bottom: 8px;
-  font-weight: bold;
-}
+    .product-image {
+     flex: 1;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+     padding: 10px 0;
+    }
 
-.product-description {
-  font-size: 1.5rem;
-  margin-bottom: 8px;
-}
+    .product-image img {
+     max-width: 90%;
+     max-height: 90%;
+     object-fit: contain;
+    }
 
-.price {
-  font-size: 1.25rem;
-  color: #333;
-  margin-bottom: 10px;
-}
+    .bottom-content {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 15px;
+     padding: 0px;
+     margin-bottom: 10px;
+    }
 
-.learn-more {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #00a6ff;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-}
+    .price {
+     font-size: 1rem;
+     color: #333;
+     margin: 0;
+     font-weight: bold;
+    }
 
-.learn-more:hover {
-  background: #00a6ff;
-}
+    .learn-more {
+     font-size: 1.25rem;
+     display: inline-block;
+     padding: 10px 20px;
+     background: #00a6ff;
+     color: white; 
+     text-decoration: none;
+     border-radius: 4px;
+     border: 2px solid #00a6ff;
+     transition: all 0.3s ease;
+    }
+
+    .learn-more:hover {
+     background: #00a6ff;
+    color: white; 
+     transform: scale(1.05);
+    }
 
     /* ====== Section3 表单 ====== */
     .demo-section { 
@@ -791,34 +807,43 @@
   </section>
   
   <!-- section 2-->
-  <section class="section-gray">
+  <section class="products-models">
   <div class="products-title">
     <h2>Products/Models</h2>
   </div>
   
   <div class="products-container">
     <div class="product-card">
-      <div class="product-image">
-        <img src="Neo 6 Pro.png" alt="Neo 6 Pro">
-      </div>
       <div class="product-info">
         <div class="product-name">Neo 6 Pro</div>
         <div class="product-description">6 Drivers Professional IEM</div>
-        <p class="price">RSP. RM2400</p>
-        <a href="neo6pro.html" class="learn-more-link">Learn More ></a>
       </div>
-    </div>
-    
-    <div class="product-card">
+      
       <div class="product-image">
-        <img src="Neo 8 Pro.png" alt="Neo 8 Pro">
+        <img src="Neo 6 Pro.png" alt="Neo 6 Pro">
       </div>
+        
+      <div class="bottom-content">
+        <p class="price">RSP. RM2400</p>
+        <a href="neo6pro.html" class="learn-more">Learn More ></a>
+        </div>      
+     </div>    
+
+   <div class="product-card">
       <div class="product-info">
         <div class="product-name">Neo 8 Pro</div>
         <div class="product-description">8 Drivers Professional IEM</div>
-        <p class="price">RSP. RM3300</p>
-        <a href="neo8pro.html" class="learn-more-link">Learn More ></a>
       </div>
+
+      <div class="product-image">
+        <img src="Neo 8 Pro.png" alt="Neo 8 Pro">
+      </div>
+        
+      <div class="bottom-content">
+        <p class="price">RSP. RM3300</p>
+        <a href="neo8pro.html" class="learn-more">Learn More ></a>
+      </div>
+
     </div>
   </div>
 </section>
