@@ -5,31 +5,36 @@
   
   <div class="products-container">
     <div class="product-card">
-      <div class="product-image">
-        <img src="Neo 6 Pro.png" alt="Neo 6 Pro">
-      </div>
       <div class="product-info">
         <div class="product-name">Neo 6 Pro</div>
         <div class="product-description">6 Drivers Professional IEM</div>
-        </div>
-        <div>
+      </div>
+      
+      <div class="product-image">
+        <img src="Neo 6 Pro.png" alt="Neo 6 Pro">
+      </div>
+        
+      <div class="bottom-content">
         <p class="price">RSP. RM2400</p>
         <a href="neo6pro.html" class="learn-more">Learn More ></a>
-      </div>
-    </div>
-    
-    <div class="product-card">
-      <div class="product-image">
-        <img src="Neo 8 Pro.png" alt="Neo 8 Pro">
-      </div>
+        </div>      
+     </div>    
+
+   <div class="product-card">
       <div class="product-info">
         <div class="product-name">Neo 8 Pro</div>
         <div class="product-description">8 Drivers Professional IEM</div>
-        </div>
-        <div>
+      </div>
+
+      <div class="product-image">
+        <img src="Neo 8 Pro.png" alt="Neo 8 Pro">
+      </div>
+        
+      <div class="bottom-content">
         <p class="price">RSP. RM3300</p>
         <a href="neo8pro.html" class="learn-more">Learn More ></a>
       </div>
+
     </div>
   </div>
 </section>
@@ -58,85 +63,75 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 20px;
-  max-width: 700px;
+  align-items: stretch;
+  gap: 40px;
+  max-width: 750px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .product-card {
+  position: relative;
   background: rgb(160, 160, 160);
   border: 2px solid #000;
   border-radius: 8px;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin: 0;
+}
+
+.product-info {
+  width: 100%;
+  text-align: center;
   padding: 0px;
-  overflow: hidden;
-  position: relative;
+  margin-top: 10px;
+}
+
+.product-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-description {
+  font-size: 1.2rem;
 }
 
 .product-image {
-  flex: 0 0 50%;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding: 10px 0;
 }
 
 .product-image img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 90%;
+  max-height: 90%;
   object-fit: contain;
-  margin-top: 100px;
 }
 
-.product-info {
-  flex: 0 0 100%;
+.bottom-content {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  width: 100%;
+  gap: 15px;
   padding: 0px;
-  position: absolute;
-  padding: 10px;
-  z-index: 1;
-}
-
-.product-info > div:first-child {
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 8px;
-  width: 100%;
-}
-
-.product-info > div:last-child {
-  margin-top: auto;
-  padding: 10px;
-  width: 100%;
-  text-align: center;
-}
-.product-name {
-  font-size: 2rem;
-  margin-bottom: 0px;
-  font-weight: bold;
-  color: #000;
-}
-
-.product-description {
-  font-size: 1rem;
-  color: #333; 
-  margin-top: 15px; 
-  padding: 5px 10px;
+  margin-bottom: 10px;
 }
 
 .price {
   font-size: 1rem;
   color: #333;
-  margin-bottom: 2px;
+  margin: 0;
+  font-weight: bold;
 }
 
 .learn-more {
