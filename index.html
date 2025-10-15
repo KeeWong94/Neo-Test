@@ -348,18 +348,18 @@
     }
 
     .product-card {
+      flex: 0 0 auto;
       position: relative;
      background: rgb(160, 160, 160);
      border: 2px solid #000;
      border-radius: 8px;
-     width: 100%;
-     max-width: 300px;
-     height: 400px;
+     width: 300px;
+     height: 450px;
      display: flex;
      flex-direction: column;
      justify-content: space-between;
      padding: 20px;
-     margin: 0;
+     margin: 0 auto;
     }
 
     .product-info {
@@ -370,13 +370,14 @@
     }
 
     .product-name {
-      font-size: 2rem;
+     font-size: 2rem;
      font-weight: bold;
-     margin-bottom: 5px;
+     margin-bottom: 0px;
     }
 
     .product-description {
      font-size: 1.2rem;
+     color: #333;
     }
 
     .product-image {
@@ -385,7 +386,7 @@
      align-items: center;
      justify-content: center;
      width: 100%;
-     padding: 10px 0;
+     padding: 0px 0;
     }
 
     .product-image img {
@@ -405,7 +406,7 @@
     }
 
     .price {
-     font-size: 1rem;
+     font-size: 0.8rem;
      color: #333;
      margin: 0;
      font-weight: bold;
@@ -414,7 +415,7 @@
     .learn-more {
      font-size: 1.25rem;
      display: inline-block;
-     padding: 10px 20px;
+     padding: 8px 20px;
      background: #00a6ff;
      color: white; 
      text-decoration: none;
@@ -427,6 +428,19 @@
      background: #00a6ff;
     color: white; 
      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .products-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .product-card {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+      }
     }
 
     /* ====== Section3 表单 ====== */
